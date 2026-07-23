@@ -1,434 +1,495 @@
-<!DOCTYPE html>
+/* ============================================
+   TOKENS
+   ============================================ */
+:root {
+  --paper:   #F7F3E8;
+  --ink:     #171412;
+  --coral:   #FF5A36;
+  --cobalt:  #2B4FFF;
+  --yellow:  #FFD100;
+  --mint:    #05B083;
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>OBSCURA® | Creative Studio</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "error-container": "#93000a",
-                        "surface-container-low": "#1c1b1b",
-                        "outline": "#8e9192",
-                        "glass-surface": "rgba(255, 255, 255, 0.05)",
-                        "on-tertiary-container": "#636565",
-                        "surface-dim": "#131313",
-                        "tertiary-fixed-dim": "#c6c6c7",
-                        "secondary-fixed-dim": "#c6c6c6",
-                        "divider-line": "#262626",
-                        "primary-fixed": "#e2e2e2",
-                        "on-surface": "#e5e2e1",
-                        "on-error-container": "#ffdad6",
-                        "surface": "#131313",
-                        "outline-variant": "#444748",
-                        "subtle-gray": "#808080",
-                        "surface-container-lowest": "#0e0e0e",
-                        "tertiary-fixed": "#e2e2e2",
-                        "surface-container": "#20201f",
-                        "background": "#131313",
-                        "on-tertiary": "#2f3131",
-                        "on-secondary-container": "#b5b5b5",
-                        "inverse-on-surface": "#313030",
-                        "on-secondary-fixed": "#1b1b1b",
-                        "on-tertiary-fixed": "#1a1c1c",
-                        "inverse-primary": "#5d5f5f",
-                        "surface-container-high": "#2a2a2a",
-                        "on-secondary": "#303030",
-                        "secondary": "#c6c6c6",
-                        "on-primary-fixed-variant": "#454747",
-                        "tertiary": "#ffffff",
-                        "secondary-fixed": "#e2e2e2",
-                        "on-primary": "#2f3131",
-                        "error": "#ffb4ab",
-                        "tertiary-container": "#e2e2e2",
-                        "on-error": "#690005",
-                        "on-background": "#e5e2e1",
-                        "primary-container": "#e2e2e2",
-                        "inverse-surface": "#e5e2e1",
-                        "secondary-container": "#474747",
-                        "surface-tint": "#c6c6c7",
-                        "surface-container-highest": "#353535",
-                        "on-surface-variant": "#c4c7c8",
-                        "on-primary-fixed": "#1a1c1c",
-                        "on-secondary-fixed-variant": "#474747",
-                        "surface-bright": "#393939",
-                        "on-primary-container": "#636565",
-                        "on-tertiary-fixed-variant": "#454747",
-                        "surface-variant": "#353535",
-                        "primary-fixed-dim": "#c6c6c7",
-                        "primary": "#ffffff"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "section-gap": "160px",
-                        "margin-lg": "80px",
-                        "container-padding": "64px",
-                        "margin-sm": "16px",
-                        "gutter": "32px",
-                        "margin-md": "32px"
-                    },
-                    "fontFamily": {
-                        "display-xl": ["Hanken Grotesk"],
-                        "display-xl-mobile": ["Hanken Grotesk"],
-                        "label-caps": ["JetBrains Mono"],
-                        "body-lg": ["Hanken Grotesk"],
-                        "headline-lg": ["Hanken Grotesk"],
-                        "headline-lg-mobile": ["Hanken Grotesk"],
-                        "body-md": ["Hanken Grotesk"],
-                        "headline-md": ["Hanken Grotesk"]
-                    },
-                    "fontSize": {
-                        "display-xl": ["120px", { "lineHeight": "110px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
-                        "display-xl-mobile": ["64px", { "lineHeight": "60px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
-                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500" }],
-                        "body-lg": ["20px", { "lineHeight": "32px", "fontWeight": "400" }],
-                        "headline-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "headline-lg-mobile": ["40px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
-                    }
-                },
-            },
-        }
-    </script>
-<style>
-        body {
-            background-color: #131313;
-            color: #ffffff;
-            font-family: 'Hanken Grotesk', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
+  --display: "Fraunces", serif;
+  --body:    "Space Grotesk", sans-serif;
+  --hand:    "Caveat", cursive;
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  --gutter: clamp(24px, 5vw, 72px);
+  --radius: 18px;
+}
 
-        .horizontal-reveal {
-            width: 0;
-            transition: width 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-        }
+* { box-sizing: border-box; }
 
-        .horizontal-reveal.visible {
-            width: 100%;
-        }
+html { scroll-behavior: smooth; }
 
-        .magnetic-btn {
-            display: inline-block;
-            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-    </style>
-</head>
-<body class="dark bg-background text-on-background">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full bg-glass-surface backdrop-blur-xl border-b border-divider-line z-50 flex justify-between items-center px-margin-lg py-6 w-full max-w-full">
-<a class="font-headline-md text-headline-md font-extrabold tracking-tighter text-primary" href="/">OBSCURA</a>
-<div class="hidden md:flex gap-margin-md items-center font-body-md text-body-md font-label-caps text-label-caps">
-<a class="text-primary border-b border-primary pb-1 hover:text-primary transition-colors duration-300" href="#work">Work</a>
-<a class="text-subtle-gray hover:text-primary transition-colors duration-300" href="#services">Services</a>
-<a class="text-subtle-gray hover:text-primary transition-colors duration-300" href="#about">About</a>
-</div>
-<button class="font-body-md text-body-md font-label-caps text-label-caps text-primary border border-divider-line px-6 py-2 hover:bg-primary hover:text-on-primary transition-all duration-300">
-            Get in touch
-        </button>
-</nav>
-<!-- Hero Section -->
-<section class="min-h-screen flex flex-col justify-center px-margin-lg pt-32">
-<div class="max-w-6xl">
-<h1 class="font-display-xl text-display-xl-mobile md:text-display-xl mb-12 fade-in">
-                We are a creative studio building identity and visual systems for brands that want to be seen for what they are.
-            </h1>
-<div class="flex flex-col md:flex-row justify-between items-end gap-margin-md fade-in" style="transition-delay: 0.2s;">
-<button class="group flex items-center gap-4 border-b border-primary pb-2 hover:gap-8 transition-all duration-500">
-<span class="font-label-caps text-label-caps uppercase tracking-widest">Get in touch</span>
-<span class="material-symbols-outlined">arrow_forward</span>
-</button>
-<div class="flex items-center gap-4 text-subtle-gray font-label-caps text-label-caps">
-<span>scroll</span>
-<span class="material-symbols-outlined animate-bounce">arrow_downward</span>
-</div>
-</div>
-</div>
-</section>
-<!-- Meet Obscura (Intro) -->
-<section class="px-margin-lg py-section-gap border-t border-divider-line">
-<div class="grid grid-cols-12 gap-gutter">
-<div class="col-span-12 md:col-span-8">
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-24 fade-in">
-                    A small studio with a clear point of view on what identity should be.
-                </h2>
-</div>
-<div class="col-span-12 md:col-start-10 md:col-span-3 text-right">
-<span class="font-label-caps text-label-caps text-subtle-gray">01 — MEET OBSCURA®</span>
-</div>
-<div class="col-span-12 md:col-span-5 fade-in">
-<img alt="Abstract architectural shadows and sharp geometric lines representative of minimalist design studio aesthetics." class="w-full aspect-[4/5] object-cover grayscale" src="https://lh3.googleusercontent.com/aida/AP1WRLtvY62r6hH3xwRi0dWLwKmiLZZIH-HwSkKbbnzcab5xWkjfOxuwWsbN_SYuzx2wsdd63C_reTcn_efcHkYkhoD4smXqeE6LWr_0KCfi1DuGSkJ_hmjf2Wzwqm2ANIvlm_9211m0rtRgguKyBTj-EuKQRoLMe9Rk6q40lKeZGwhcoEFQRjRL3PtfVsnpcL_wI0_K5Q_Rj4_bMZ-b5_aKUNCxlV9j7Se3m7a3NmKRKrxvNTHu28KJ7h68RiCN"/>
-</div>
-<div class="col-span-12 md:col-start-7 md:col-span-5 flex flex-col justify-center space-y-8 fade-in" style="transition-delay: 0.3s;">
-<p class="font-body-lg text-body-lg text-on-surface">
-                    Most brands don't struggle with what they want to say — they struggle with how to make it land. Without a strong visual foundation, even the best thinking gets lost somewhere along the way.
-                </p>
-<p class="font-body-md text-body-md text-subtle-gray">
-                    OBSCURA® builds the identity and systems that give a brand its shape — so what you stand for is legible at every touchpoint, in every context, without needing to be explained or repeated.
-                </p>
-<a class="inline-flex items-center gap-2 group font-label-caps text-label-caps hover:pl-4 transition-all duration-300" href="#about">
-                    Get to know us <span class="material-symbols-outlined">arrow_forward</span>
-</a>
-</div>
-</div>
-</section>
-<!-- Featured Projects -->
-<section class="px-margin-lg py-section-gap bg-surface-container-lowest" id="work">
-<div class="flex justify-between items-end mb-24 fade-in">
-<div>
-<span class="font-label-caps text-label-caps text-subtle-gray block mb-4">02 — FEATURED PROJECTS</span>
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg">Selected Work</h2>
-</div>
-<p class="max-w-xs font-body-md text-body-md text-subtle-gray hidden md:block">
-                Each project begins with a different question and ends in the same place.
-            </p>
-</div>
-<div class="grid grid-cols-12 gap-gutter">
-<!-- Project 1 -->
-<div class="col-span-12 md:col-span-6 mb-24 fade-in">
-<div class="group relative overflow-hidden bg-surface-container mb-6 cursor-pointer">
-<img alt="Clean minimal product photography showcasing the LUMEN brand identity with high contrast lighting and sharp typography elements." class="w-full aspect-video md:aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLvFYChunKMkRLcmzIa0-Gq2mdAX23mkHOqh2RErTOYCHp7bAHOYYNMfyYTOjBh8TQJZ_DEU15pKC8k1w5BgU30g8VqwGuEdWFqZ6YChAG6k9NJJ5AdRddFFQ3TwS6CjKlmBGtiTnwBnjU_PJ5d-l97GrqBMfvUU6CTP2ugnqMFZIZYFpETmIkE5GQfxMHOAKpQ4pTHDJDqQ-1cmQobrig1CDbWAV6ucmRur4KeSalu2EWOGuOgzjNp3VA6Q"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
-<span class="font-label-caps text-label-caps border border-white px-8 py-3 bg-white text-black">VIEW CASE STUDY</span>
-</div>
-</div>
-<div class="flex justify-between items-start">
-<div>
-<h3 class="font-headline-md text-headline-md mb-2">LUMEN</h3>
-<p class="font-label-caps text-label-caps text-subtle-gray uppercase tracking-widest">Brand Identity / Digital</p>
-</div>
-<span class="font-label-caps text-label-caps">2026</span>
-</div>
-</div>
-<!-- Project 2 -->
-<div class="col-span-12 md:col-span-6 mt-24 md:mt-48 mb-24 fade-in" style="transition-delay: 0.2s;">
-<div class="group relative overflow-hidden bg-surface-container mb-6 cursor-pointer">
-<img alt="A sophisticated brand identity system applied to physical print collateral with premium paper textures and minimalist layout design." class="w-full aspect-video md:aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLvZxNaYt_ogx-aqmnhVooDCoOm7uySnhkhig60DjbzOigRpflX4B7j-vcJNue2GNZt9LpEtNXXF5-Tt9EuVOES8zYhAvRnpyAy1WJm9WtVXpDRmXgzwGYtQn0Jy6x9mcaLjrdT2Z2mWAF6BpfVxAUrwc_N1JThoNOc8IXAmMf1Lk7d7SpS8OTWo_q6p35i-CitUWCsdCcXMGeKAEqXoqxkvSTWB9SD0y-6dG5YcACP3ifJdM_tHUdH8kyiV"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
-<span class="font-label-caps text-label-caps border border-white px-8 py-3 bg-white text-black">VIEW CASE STUDY</span>
-</div>
-</div>
-<div class="flex justify-between items-start">
-<div>
-<h3 class="font-headline-md text-headline-md mb-2">CGROUND</h3>
-<p class="font-label-caps text-label-caps text-subtle-gray uppercase tracking-widest">Art Direction / Identity</p>
-</div>
-<span class="font-label-caps text-label-caps">2026</span>
-</div>
-</div>
-<!-- Project 3 -->
-<div class="col-span-12 md:col-start-4 md:col-span-6 fade-in">
-<div class="group relative overflow-hidden bg-surface-container mb-6 cursor-pointer">
-<img alt="Experimental UI design interface for a flexible workspace system featuring a grid-based layout and monochromatic color scheme." class="w-full aspect-video md:aspect-square object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLs3utKUAt-Fk7SNUDE0DO4i0FAugzVhBaw-OV5v2ZpEPADAosJ1eqXKCQ0VQsYH0mIx6U5vPVBk5mw10kSVd-tX9CPA1ZyXBvSXacyQbi6ug3vdj-M_pmjtNSWc13iQw9q8QQ80rmfYJ_Cl8fvs-ndK2XO8LY08teWMdMLZRwY16W36pQQ5ZSum22xydQk-qx9ypkoNMrYZ6dRwtvk8KLbUNNbF_bIPI7f_S8oRycNndbJKtRX6noyOJVTY"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
-<span class="font-label-caps text-label-caps border border-white px-8 py-3 bg-white text-black">VIEW CASE STUDY</span>
-</div>
-</div>
-<div class="flex justify-between items-start">
-<div>
-<h3 class="font-headline-md text-headline-md mb-2">MODULAR</h3>
-<p class="font-label-caps text-label-caps text-subtle-gray uppercase tracking-widest">Digital Systems / Workspace</p>
-</div>
-<span class="font-label-caps text-label-caps">2026</span>
-</div>
-</div>
-</div>
-<div class="mt-32 text-center fade-in">
-<a class="inline-flex items-center gap-4 group font-headline-md text-headline-md hover:gap-8 transition-all duration-300" href="#work">
-                See more work <span class="material-symbols-outlined text-4xl">arrow_forward</span>
-</a>
-</div>
-</section>
-<!-- Services Section -->
-<section class="px-margin-lg py-section-gap border-t border-divider-line" id="services">
-<div class="grid grid-cols-12 gap-gutter mb-32">
-<div class="col-span-12 md:col-span-3">
-<span class="font-label-caps text-label-caps text-subtle-gray">03 — SERVICES</span>
-</div>
-<div class="col-span-12 md:col-span-7">
-<h3 class="font-body-lg text-body-lg text-on-surface">
-                    From identity to execution, we build the visual systems that give brands their shape and keep them coherent.
-                </h3>
-</div>
-</div>
-<div class="border-t border-divider-line">
-<div class="group py-12 flex flex-col md:flex-row justify-between items-center border-b border-divider-line hover:pl-8 transition-all duration-500 cursor-default">
-<div class="flex items-center gap-8 w-full">
-<span class="font-label-caps text-label-caps text-subtle-gray">(01)</span>
-<h4 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase flex-grow">Brand Strategy</h4>
-</div>
-<span class="material-symbols-outlined text-4xl transform group-hover:rotate-45 transition-transform">arrow_outward</span>
-</div>
-<div class="group py-12 flex flex-col md:flex-row justify-between items-center border-b border-divider-line hover:pl-8 transition-all duration-500 cursor-default">
-<div class="flex items-center gap-8 w-full">
-<span class="font-label-caps text-label-caps text-subtle-gray">(02)</span>
-<h4 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase flex-grow">Art Direction</h4>
-</div>
-<span class="material-symbols-outlined text-4xl transform group-hover:rotate-45 transition-transform">arrow_outward</span>
-</div>
-<div class="group py-12 flex flex-col md:flex-row justify-between items-center border-b border-divider-line hover:pl-8 transition-all duration-500 cursor-default">
-<div class="flex items-center gap-8 w-full">
-<span class="font-label-caps text-label-caps text-subtle-gray">(03)</span>
-<h4 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase flex-grow">Editorial &amp; Print</h4>
-</div>
-<span class="material-symbols-outlined text-4xl transform group-hover:rotate-45 transition-transform">arrow_outward</span>
-</div>
-<div class="group py-12 flex flex-col md:flex-row justify-between items-center border-b border-divider-line hover:pl-8 transition-all duration-500 cursor-default">
-<div class="flex items-center gap-8 w-full">
-<span class="font-label-caps text-label-caps text-subtle-gray">(04)</span>
-<h4 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase flex-grow">Digital Design</h4>
-</div>
-<span class="material-symbols-outlined text-4xl transform group-hover:rotate-45 transition-transform">arrow_outward</span>
-</div>
-</div>
-</section>
-<!-- About Section -->
-<section class="px-margin-lg py-section-gap bg-surface-container-low" id="about">
-<div class="grid grid-cols-12 gap-gutter">
-<div class="col-span-12 mb-24">
-<h2 class="font-display-xl text-display-xl-mobile md:text-display-xl uppercase leading-none fade-in">
-                    FROM VISION<br/>TO REALITY
-                    <span class="material-symbols-outlined text-8xl md:text-[160px] inline-block align-middle ml-4">arrow_downward</span>
-</h2>
-</div>
-<div class="col-span-12 md:col-span-5 fade-in">
-<img alt="Artistic black and white photography emphasizing architectural form and dramatic shadow play, embodying the studio's design philosophy." class="w-full aspect-[4/5] object-cover filter brightness-75 contrast-125" src="https://lh3.googleusercontent.com/aida/AP1WRLtvY62r6hH3xwRi0dWLwKmiLZZIH-HwSkKbbnzcab5xWkjfOxuwWsbN_SYuzx2wsdd63C_reTcn_efcHkYkhoD4smXqeE6LWr_0KCfi1DuGSkJ_hmjf2Wzwqm2ANIvlm_9211m0rtRgguKyBTj-EuKQRoLMe9Rk6q40lKeZGwhcoEFQRjRL3PtfVsnpcL_wI0_K5Q_Rj4_bMZ-b5_aKUNCxlV9j7Se3m7a3NmKRKrxvNTHu28KJ7h68RiCN"/>
-</div>
-<div class="col-span-12 md:col-start-7 md:col-span-5 flex flex-col justify-center gap-12 fade-in" style="transition-delay: 0.3s;">
-<div>
-<span class="font-label-caps text-label-caps text-subtle-gray block mb-4">04 — ABOUT US</span>
-<h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-8">We make things that mean something.</h3>
-<p class="font-body-md text-body-md text-on-surface mb-6">
-                        OBSCURA® is a small creative studio built on the belief that visual identity is never superficial — it's the first and most persistent thing a brand communicates.
-                    </p>
-<p class="font-body-md text-body-md text-subtle-gray">
-                        We work slowly and selectively. We ask difficult questions before we make anything, and we build visual systems that hold their conviction after the project end.
-                    </p>
-</div>
-<a class="inline-flex items-center gap-4 border border-divider-line px-12 py-6 font-label-caps text-label-caps hover:bg-primary hover:text-on-primary transition-all duration-500" href="mailto:hello@obscurastudio.com">
-                    LEARN MORE ABOUT US <span class="material-symbols-outlined">arrow_forward</span>
-</a>
-</div>
-</div>
-</section>
-<!-- Final CTA -->
-<section class="px-margin-lg py-section-gap flex flex-col md:flex-row justify-between items-end border-t border-divider-line">
-<div class="max-w-xl">
-<h2 class="font-display-xl text-display-xl-mobile md:text-display-xl uppercase mb-8">LET'S BUILD SOMETING.</h2>
-<p class="font-body-lg text-body-lg text-subtle-gray">If what you've seen here makes sense for what you're doing — let's talk.</p>
-</div>
-<a class="group flex items-center gap-4 text-4xl md:text-6xl font-extrabold border-b-2 border-primary pb-4 hover:gap-12 transition-all duration-700" href="mailto:hello@obscurastudio.com">
-            Reach out to us <span class="material-symbols-outlined text-6xl">arrow_forward</span>
-</a>
-</section>
-<!-- Footer -->
-<footer class="bg-surface border-t border-divider-line w-full pt-section-gap pb-margin-lg">
-<div class="grid grid-cols-12 gap-gutter px-margin-lg mx-auto w-full">
-<div class="col-span-12 md:col-span-5 mb-16 md:mb-0">
-<p class="font-body-md text-body-md text-on-surface max-w-sm mb-8">
-                    OBSCURA® is a creative studio for brands that treat visual language as seriously as the work behind it.
-                </p>
-<span class="font-label-caps text-label-caps text-subtle-gray block mb-2">CONTACT US</span>
-<a class="font-headline-md text-headline-md border-b border-divider-line hover:border-primary transition-colors pb-2" href="mailto:hello@obscurastudio.com">hello@obscurastudio.com</a>
-</div>
-<div class="col-span-6 md:col-span-3">
-<span class="font-label-caps text-label-caps text-subtle-gray block mb-6">SOCIALS</span>
-<ul class="space-y-4 font-body-md text-body-md font-label-caps text-label-caps">
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Instagram</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Facebook</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">LinkedIn</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Twitter/X</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Vimeo</a></li>
-</ul>
-</div>
-<div class="col-span-6 md:col-span-4">
-<span class="font-label-caps text-label-caps text-subtle-gray block mb-6">NAVIGATION</span>
-<ul class="space-y-4 font-body-md text-body-md font-label-caps text-label-caps">
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Work</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Services</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">About</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Contact</a></li>
-</ul>
-</div>
-<div class="col-span-12 mt-32">
-<h1 class="font-display-xl text-[12vw] md:text-[22vw] leading-none font-extrabold text-primary tracking-tighter text-center uppercase select-none opacity-90">
-                    OBSCURA®
-                </h1>
-</div>
-<div class="col-span-12 flex flex-col md:flex-row justify-between items-center mt-16 pt-8 border-t border-divider-line gap-4">
-<p class="font-label-caps text-label-caps text-subtle-gray">© 2024 Obscura Studio. All rights reserved.</p>
-<div class="flex gap-8">
-<a class="font-label-caps text-label-caps text-subtle-gray hover:text-primary" href="#">Privacy Policy</a>
-<a class="font-label-caps text-label-caps text-subtle-gray hover:text-primary" href="#">Terms of Service</a>
-</div>
-</div>
-</div>
-</footer>
-<script>
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // Once animated, stop observing
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+a { color: inherit; text-decoration: none; }
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+h1, h2, h3 {
+  font-family: var(--display);
+  margin: 0;
+  font-weight: 900;
+}
 
-        // Smooth scroll implementation for anchors
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+img, svg { display: block; max-width: 100%; }
 
-        // Magnetic effect for primary buttons
-        const magneticButtons = document.querySelectorAll('.magnetic-btn');
-        magneticButtons.forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-            });
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = `translate(0px, 0px)`;
-            });
-        });
-    </script>
-</body></html>
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+:focus-visible {
+  outline: 3px solid var(--cobalt);
+  outline-offset: 3px;
+}
+
+/* ============================================
+   SCROLL REVEAL (fade + rise on enter viewport)
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   MAGNETIC BUTTONS (pull toward cursor on hover)
+   ============================================ */
+.magnetic {
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+/* paper grain overlay -- subtle riso texture */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============================================
+   NAV
+   ============================================ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px var(--gutter);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 2px solid var(--ink);
+}
+
+.nav__mark {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 1.4rem;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__links {
+  display: flex;
+  gap: 32px;
+  font-weight: 500;
+}
+
+.nav__links a { position: relative; }
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0; height: 2px;
+  background: var(--coral);
+  transition: width 0.25s ease;
+}
+.nav__links a:hover::after { width: 100%; }
+
+.nav__cta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-weight: 500;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.nav__cta:hover { background: var(--coral); transform: translateY(-2px); }
+.nav__cta span { transition: transform 0.2s ease; }
+.nav__cta:hover span { transform: translateX(3px); }
+
+@media (max-width: 720px) {
+  .nav__links { display: none; }
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px var(--gutter) 60px;
+  overflow: hidden;
+}
+
+.hero__blobs { position: absolute; inset: 0; z-index: 0; }
+
+.blob {
+  position: absolute;
+  width: clamp(260px, 34vw, 460px);
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+}
+.blob path, .blob circle { fill: currentColor; }
+
+.blob--coral  { color: var(--coral);  top: 8%;  left: 6%;  animation: float-a 14s ease-in-out infinite; }
+.blob--cobalt { color: var(--cobalt); top: 14%; right: 4%; animation: float-b 16s ease-in-out infinite; }
+.blob--yellow { color: var(--yellow); bottom: -6%; left: 32%; width: clamp(200px, 26vw, 360px); animation: float-c 12s ease-in-out infinite; }
+
+@keyframes float-a { 0%,100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(18px,-14px) rotate(6deg); } }
+@keyframes float-b { 0%,100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(-16px,16px) rotate(-5deg); } }
+@keyframes float-c { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(10px,-10px) scale(1.05); } }
+
+.hero__eyebrow {
+  position: relative; z-index: 1;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin: 0 0 16px;
+}
+
+.hero__title {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(3rem, 11vw, 8.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__title { position: relative; }
+
+/* riso mis-registration signature effect: two offset color layers
+   behind the real ink-colored text, like a poorly-registered print run */
+.hero__title::before,
+.hero__title::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  white-space: pre;
+  mix-blend-mode: multiply;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  display: flex;
+  flex-direction: column;
+}
+.hero__title::before { color: var(--coral);  transform: translate(6px, 5px); }
+.hero__title::after  { color: var(--cobalt); transform: translate(-5px, -4px); }
+
+.hero__title span:first-child { color: var(--ink); }
+.hero__title-alt {
+  font-style: italic;
+  font-weight: 300;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--ink);
+}
+
+.hero__tag {
+  position: relative; z-index: 1;
+  max-width: 480px;
+  margin: 28px 0 0;
+  font-size: 1.05rem;
+}
+
+.scribble {
+  position: relative;
+  font-family: var(--hand);
+  font-size: 1.15em;
+  font-weight: 700;
+  color: var(--coral);
+  white-space: nowrap;
+}
+.scribble--cobalt { color: var(--cobalt); }
+
+.hero__scroll {
+  position: relative; z-index: 1;
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.hero__scroll svg { animation: bob 1.8s ease-in-out infinite; }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+/* ============================================
+   MARQUEE
+   ============================================ */
+.marquee {
+  background: var(--ink);
+  color: var(--paper);
+  overflow: hidden;
+  padding: 16px 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.marquee__track {
+  display: flex;
+  gap: 20px;
+  white-space: nowrap;
+  width: max-content;
+  animation: scroll-left 26s linear infinite;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.marquee__track span:nth-child(2n) { color: var(--yellow); font-family: var(--body); font-style: normal; font-weight: 400; }
+@keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ============================================
+   SECTION HEAD (shared)
+   ============================================ */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 90px var(--gutter) 40px;
+}
+.section-num {
+  font-family: var(--hand);
+  font-size: 1.6rem;
+  color: var(--coral);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  width: 46px; height: 46px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.section-head h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+
+/* ============================================
+   WORK GRID
+   ============================================ */
+.work { padding-bottom: 40px; }
+
+.work__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  padding: 0 var(--gutter) 20px;
+}
+
+@media (max-width: 780px) {
+  .work__grid { grid-template-columns: 1fr; }
+}
+
+.card {
+  border: 2.5px solid var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--paper);
+  transform: rotate(var(--rot, 0deg));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.card:hover {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: 10px 10px 0 var(--ink);
+}
+
+.card__img {
+  position: relative;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  border-bottom: 2.5px solid var(--ink);
+  overflow: hidden;
+}
+.card--coral  .card__img { background: color-mix(in srgb, var(--coral) 70%, var(--paper)); }
+.card--cobalt .card__img { background: color-mix(in srgb, var(--cobalt) 65%, var(--paper)); }
+.card--yellow .card__img { background: color-mix(in srgb, var(--yellow) 75%, var(--paper)); }
+.card--mint   .card__img { background: color-mix(in srgb, var(--mint) 55%, var(--paper)); }
+
+.card__img svg {
+  width: 70%;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card:hover .card__img svg { transform: scale(1.08) rotate(-2deg); }
+
+/* hover reveal overlay, riso-ink style */
+.card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--ink) 78%, transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.card:hover .card__overlay { opacity: 1; }
+
+.card__overlay span {
+  font-family: var(--hand);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--paper);
+  border-bottom: 2px solid var(--yellow);
+  padding-bottom: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transform: translateY(10px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+}
+.card:hover .card__overlay span { transform: translateY(0); }
+
+.card__overlay i {
+  font-style: normal;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.card:hover .card__overlay i { transform: translateX(4px); }
+
+.card__body { padding: 22px 24px 26px; }
+
+.card__chip {
+  display: inline-block;
+  font-family: var(--hand);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--coral);
+  margin-bottom: 6px;
+}
+
+.card__body h3 { font-size: 1.35rem; margin-bottom: 8px; line-height: 1.15; }
+.card__body p { margin: 0; opacity: 0.85; font-size: 0.95rem; }
+
+/* ============================================
+   ABOUT
+   ============================================ */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  padding: 0 var(--gutter) 100px;
+  align-items: start;
+}
+@media (max-width: 780px) {
+  .about__grid { grid-template-columns: 1fr; }
+}
+
+.about__lead {
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.about__tools {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+.about__tools li { display: flex; align-items: center; gap: 12px; }
+.dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--ink); flex-shrink: 0; }
+.dot--coral { background: var(--coral); }
+.dot--cobalt { background: var(--cobalt); }
+.dot--yellow { background: var(--yellow); }
+.dot--mint { background: var(--mint); }
+
+/* ============================================
+   CONTACT
+   ============================================ */
+.contact {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 110px var(--gutter);
+  border-top: 2.5px solid var(--ink);
+}
+.contact__inner { max-width: 720px; margin: 0 auto; text-align: center; }
+
+.section-num--light { color: var(--yellow); border-color: var(--paper); margin: 0 auto 24px; }
+
+.contact h2 {
+  font-size: clamp(2rem, 5.5vw, 3.6rem);
+  line-height: 1.1;
+  margin-bottom: 36px;
+}
+
+.contact__email {
+  display: inline-block;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  border-bottom: 2px solid var(--yellow);
+  padding-bottom: 4px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.contact__email:hover { color: var(--yellow); }
+
+.contact__socials {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 40px;
+  font-weight: 500;
+}
+.contact__socials a { opacity: 0.75; transition: opacity 0.2s ease; }
+.contact__socials a:hover { opacity: 1; }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  background: var(--ink);
+  color: var(--paper);
+}
