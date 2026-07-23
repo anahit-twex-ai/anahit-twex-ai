@@ -1,382 +1,402 @@
-<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "tertiary-fixed-dim": "#c6c6c7",
-                        "on-primary-fixed-variant": "#454747",
-                        "on-secondary": "#313030",
-                        "surface-tint": "#c6c6c7",
-                        "surface-container-highest": "#353535",
-                        "on-surface-variant": "#c4c7c8",
-                        "on-primary-container": "#636565",
-                        "surface-container": "#1f1f1f",
-                        "primary-container": "#e2e2e2",
-                        "surface": "#131313",
-                        "outline": "#8e9192",
-                        "surface-container-high": "#2a2a2a",
-                        "on-secondary-fixed-variant": "#474746",
-                        "on-tertiary-container": "#636565",
-                        "on-tertiary-fixed": "#1a1c1c",
-                        "inverse-on-surface": "#303030",
-                        "on-error-container": "#ffdad6",
-                        "background": "#000000",
-                        "surface-bright": "#393939",
-                        "primary": "#ffffff",
-                        "error": "#ffb4ab",
-                        "text-muted": "#A3A3A3",
-                        "on-tertiary-fixed-variant": "#454747",
-                        "surface-variant": "#353535",
-                        "secondary": "#c8c6c5",
-                        "on-surface": "#e2e2e2",
-                        "tertiary": "#ffffff",
-                        "surface-container-lowest": "#0e0e0e",
-                        "on-secondary-fixed": "#1c1b1b",
-                        "on-background": "#e2e2e2",
-                        "border-subtle": "#262626",
-                        "secondary-container": "#474746",
-                        "error-container": "#93000a",
-                        "on-primary": "#2f3131",
-                        "inverse-surface": "#e2e2e2",
-                        "secondary-fixed": "#e5e2e1",
-                        "on-secondary-container": "#b7b5b4",
-                        "outline-variant": "#444748",
-                        "text-dim": "#666666",
-                        "tertiary-fixed": "#e2e2e2",
-                        "on-error": "#690005",
-                        "on-primary-fixed": "#1a1c1c",
-                        "surface-dim": "#131313",
-                        "primary-fixed": "#e2e2e2",
-                        "inverse-primary": "#5d5f5f",
-                        "primary-fixed-dim": "#c6c6c7",
-                        "secondary-fixed-dim": "#c8c6c5",
-                        "status-green": "#00FF41",
-                        "tertiary-container": "#e2e2e2",
-                        "on-tertiary": "#2f3131",
-                        "surface-container-low": "#1b1b1b"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0px",
-                        "lg": "0px",
-                        "xl": "0px",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "grid-margin": "4vw",
-                        "section-gap": "160px",
-                        "element-gap": "24px",
-                        "gutter": "24px"
-                    },
-                    "fontFamily": {
-                        "label-mono": ["JetBrains Mono"],
-                        "meta-index": ["Hanken Grotesk"],
-                        "body-main": ["Hanken Grotesk"],
-                        "section-title": ["Hanken Grotesk"],
-                        "display-hero": ["Anton"],
-                        "headline-lg-mobile": ["Anton"],
-                        "body-large": ["Hanken Grotesk"],
-                        "headline-lg": ["Anton"]
-                    },
-                    "fontSize": {
-                        "label-mono": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
-                        "meta-index": ["14px", {"lineHeight": "1.0", "fontWeight": "500"}],
-                        "body-main": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "section-title": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "display-hero": ["180px", {"lineHeight": "0.9", "letterSpacing": "-0.04em", "fontWeight": "400"}],
-                        "headline-lg-mobile": ["64px", {"lineHeight": "1.0", "fontWeight": "400"}],
-                        "body-large": ["24px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
-                        "headline-lg": ["120px", {"lineHeight": "1.0", "fontWeight": "400"}]
-                    }
-                }
-            }
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+const Cursor = () => {
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const [hovering, setHovering] = useState(false);
+  useEffect(() => {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = window.innerWidth / 2;
+    let ringY = window.innerHeight / 2;
+    const onMouseMove = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+      }
+    };
+    const updateRing = () => {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      if (ringRef.current) {
+        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      }
+      requestAnimationFrame(updateRing);
+    };
+    window.addEventListener('mousemove', onMouseMove);
+    requestAnimationFrame(updateRing);
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest('a') || target.closest('button') || target.closest('.project-card')) {
+        setHovering(true);
+      } else {
+        setHovering(false);
+      }
+    };
+    window.addEventListener('mouseover', handleMouseOver);
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseover', handleMouseOver);
+    };
+  }, []);
+  return <>
+      <div ref={dotRef} className="fixed top-0 left-0 w-2.5 h-2.5 bg-black rounded-full pointer-events-none z-[9999] -ml-[5px] -mt-[5px]" />
+      
+      <div ref={ringRef} className={`fixed top-0 left-0 rounded-full border-[1.5px] border-black bg-white/30 pointer-events-none z-[9998] transition-all duration-300 ease-out ${hovering ? 'w-[60px] h-[60px] -ml-[30px] -mt-[30px] bg-black/8 border-transparent' : 'w-[44px] h-[44px] -ml-[22px] -mt-[22px]'}`} />
+      
+    </>;
+};
+const MagneticElement = ({
+  children,
+  className
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({
+    x: 0,
+    y: 0
+  });
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const {
+      clientX,
+      clientY
+    } = e;
+    const {
+      left,
+      top,
+      width,
+      height
+    } = ref.current.getBoundingClientRect();
+    const centerX = left + width / 2;
+    const centerY = top + height / 2;
+    const distanceX = clientX - centerX;
+    const distanceY = clientY - centerY;
+
+    // Check if within magnetic range
+    if (Math.abs(distanceX) < 80 && Math.abs(distanceY) < 80) {
+      setPosition({
+        x: distanceX * 0.3,
+        y: distanceY * 0.3
+      });
+    } else {
+      setPosition({
+        x: 0,
+        y: 0
+      });
+    }
+  };
+  const handleMouseLeave = () => {
+    setPosition({
+      x: 0,
+      y: 0
+    });
+  };
+  return <div ref={ref} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={className} style={{
+    transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
+    transition: position.x === 0 && position.y === 0 ? 'transform 0.4s ease' : 'none'
+  }}>
+      
+      {children}
+    </div>;
+};
+const useIntersectionObserver = () => {
+  const [elements, setElements] = useState<Element[]>([]);
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-12');
+          observer.unobserve(entry.target);
         }
-    }catch(_e){}</script></head><body class="font-body-main selection:bg-primary selection:text-background">
-<!-- Background Shader -->
-<canvas id="shader-canvas" class=""></canvas>
-<!-- Top Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-background/60 backdrop-blur-md border-b-thin flex justify-between items-center px-grid-margin py-6">
-<div class="font-headline-lg-mobile text-[24px] tracking-tighter text-primary">RUSSELL NUMO</div>
-<div class="flex gap-8">
-<a class="font-label-mono text-label-mono uppercase text-text-muted hover:text-primary transition-colors duration-300" href="#about">01 ABOUT</a>
-<a class="font-label-mono text-label-mono uppercase text-text-muted hover:text-primary transition-colors duration-300" href="#projects">02 PROJECTS</a>
-<a class="font-label-mono text-label-mono uppercase text-text-muted hover:text-primary transition-colors duration-300" href="#contact">03 CONTACT</a>
-</div>
-</nav>
-<!-- Hero Section -->
-<section class="h-screen flex flex-col justify-center overflow-hidden relative">
-<div class="marquee select-none opacity-20 pointer-events-none">
-<div class="marquee-content flex gap-8">
-<span class="font-display-hero text-[12vw] md:text-[18vw] leading-none uppercase">FRONTEND DEVELOPER UX/UI DESIGNER CREATIVE</span>
-<span class="font-display-hero text-[12vw] md:text-[18vw] leading-none uppercase">FRONTEND DEVELOPER UX/UI DESIGNER CREATIVE</span>
-</div>
-</div>
-<div class="marquee select-none pointer-events-none -mt-4 md:-mt-10">
-<div class="marquee-content flex gap-8" style="animation-direction: reverse;">
-<span class="font-display-hero text-[12vw] md:text-[18vw] leading-none uppercase">FRONTEND DEVELOPER UX/UI DESIGNER CREATIVE</span>
-<span class="font-display-hero text-[12vw] md:text-[18vw] leading-none uppercase">FRONTEND DEVELOPER UX/UI DESIGNER CREATIVE</span>
-</div>
-</div>
-<!-- Portrait Image Overlay -->
-<div class="absolute top-1/2 left-1/2 portrait-float z-10 w-[240px] h-[320px] md:w-[350px] md:h-[480px] overflow-hidden border-thin shadow-2xl">
-<img alt="Russell Numo Portrait" class="w-full h-full object-cover grayscale brightness-90 contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeVs7rCvsWw0_xr9F4yQpwgGQKeDFr1ZBXHpRX_BpUW-IO_zUOOPml0Wmu0SWOmSNgX01KhB4AcWpMw2swMNNlYBM26LAqNGSRvfImrqOVBCRh9ZT9ATGT4i7NLlvGsie1v0Y5cmeQNq95cBm7b-xlpp-2xTe_CPXzoqKdPZw4trBaz4vxiigh32Ix42b0iYD1NnCvg2Kj8aht2yjLZpKqB2hM4O9QGUKD9_J4E8IWY4ZKBn9a2b3OmRrbLqT6xbLvfJzFuKLikED0">
-</div>
-<div class="absolute bottom-12 left-grid-margin right-grid-margin flex justify-between font-label-mono text-label-mono uppercase text-text-muted">
-<div class="flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-status-green animate-pulse"></span>
-                OPEN TO WORK
-            </div>
-<div class="">BASED IN AMSTERDAM — 2024</div>
-</div>
-</section>
-<!-- About Section -->
-<section class="py-section-gap px-grid-margin" id="about">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
-<div class="md:col-span-4 reveal">
-<span class="font-label-mono text-label-mono text-text-muted">(01)</span>
-<h2 class="font-section-title text-section-title uppercase mt-4">About</h2>
-</div>
-<div class="md:col-span-8 space-y-12 reveal">
-<p class="font-body-large text-body-large leading-relaxed max-w-3xl">
-                    I design and develop digital experiences with a focus on craft, motion, and interaction — creating interfaces where every detail is intentional.
-                </p>
-<p class="font-body-main text-body-main text-text-muted max-w-2xl">
-                    Based in Amsterdam, I work at the intersection of creativity and technology. From concept to code, I bring ideas to life with meticulous attention to detail.
-                </p>
-</div>
-</div>
-</section>
-<!-- Featured Work Section -->
-<section class="pb-section-gap px-grid-margin" id="projects">
-<div class="flex justify-between items-end mb-20 reveal">
-<div>
-<span class="font-label-mono text-label-mono text-text-muted">(02)</span>
-<h2 class="font-section-title text-section-title uppercase mt-4">Featured Work</h2>
-</div>
-<div class="font-label-mono text-label-mono text-text-muted uppercase">[Scroll to explore more]</div>
-</div>
-<div class="space-y-[200px]">
-<!-- Project 01 -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center group reveal">
-<div class="md:col-span-7 overflow-hidden border-thin">
-<div class="aspect-[16/9] relative overflow-hidden">
-<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" data-alt="A clean, minimalist high-tech laptop sitting on a sterile white surface with sharp geometric shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMsR3UkAUrC1KPZ8U8quaGfLbHpn6KNNKxQIhKJSiyNkA1SiWnmt45D90mxClF71dqAmcQDAl7EKdNcu4Hyd2Kcm8F-mb1Kl7OtpjYGW_wLPhl_qOXv4tURBNyIaCokQzQq6kTEAWqWdZxRztDttpuE5nL4nMG1sA0a8MSskDns4wZRqsQJRpMj9Wy4rQVY1Hy3M1t5eCHpIWS6ETIcPWt4FlKKDqrOufMI6g6JcYOGOYmI_B44huY_he8azOJnraELpksioB6X6sV">
-</div>
-</div>
-<div class="md:col-span-4 md:col-start-9 mt-8 md:mt-0">
-<span class="font-label-mono text-label-mono text-text-muted uppercase">01 / Researcher &amp; Development / 2026</span>
-<h3 class="font-section-title text-[40px] uppercase mt-4 mb-6">Stadsarchief Amsterdam</h3>
-<p class="font-body-main text-text-muted mb-8">A look at how archival content can be experienced through interaction and storytelling, reimagining the Stadsarchief Amsterdam as a living, engaging digital space.</p>
-<a class="inline-flex items-center gap-4 font-label-mono text-label-mono uppercase group/link" href="#">
-                        View Project 
-                        <span class="material-symbols-outlined transition-transform duration-300 group-hover/link:translate-x-2">arrow_forward</span>
-</a>
-</div>
-</div>
-<!-- Project 02 -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center group reveal">
-<div class="md:col-span-4 mt-8 md:mt-0 order-2 md:order-1">
-<span class="font-label-mono text-label-mono text-text-muted uppercase">02 / Design &amp; Development / 2024</span>
-<h3 class="font-section-title text-[40px] uppercase mt-4 mb-6">DEPT® Campus</h3>
-<p class="font-body-main text-text-muted mb-8">Worked on the Dept Campus website from concept to launch, building a streamlined and engaging experience that helps young professionals discover and navigate opportunities.</p>
-<a class="inline-flex items-center gap-4 font-label-mono text-label-mono uppercase group/link" href="#">
-                        View Project 
-                        <span class="material-symbols-outlined transition-transform duration-300 group-hover/link:translate-x-2">arrow_forward</span>
-</a>
-</div>
-<div class="md:col-span-7 md:col-start-6 overflow-hidden border-thin order-1 md:order-2">
-<div class="aspect-[16/9] relative overflow-hidden bg-black">
-<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" data-alt="A vibrant orange-themed branding display for a digital agency named DEPT." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArWuNIwdIZVr7QBkt10zuZl5mJtleIe0VUGCms22-GUi_sn-tEgent7-JvDxkIVROcZ-AQl9vPCSFJM6tge5p04lGPqu8esRBVUXI6J2OVT10KG37KN_JUfTlLb7JCdMsbYQkHD1muiNqv4HAMsJBfRFihl6Tu1o5ZVaBseh7VQKEeIniJVbuqPkz_kibmF85VYQ-gb2DzYpwuRGhHsNxnVSOFahy00Gh5yTOj6t8o-aHMIHLNqXvf1Z8tc8B_UVUnWr-qX2zIIn9q">
-</div>
-</div>
-</div>
-</div>
-<div class="mt-section-gap max-w-4xl mx-auto text-center reveal">
-<p class="font-body-large text-body-large italic leading-relaxed text-text-muted">
-                "The web is loud, and most brands just blend into it. I work across design, development, and branding all at once, building digital experiences that feel as sharp as they look. If your brand deserves to be seen, let's make sure people can't look away."
-            </p>
-</div>
-</section>
-<!-- Services Section -->
-<section class="py-section-gap px-grid-margin border-t-thin relative">
-<div class="mb-16 reveal">
-<span class="font-label-mono text-label-mono text-text-muted">(Services)</span>
-</div>
-<div class="space-y-0 relative">
-<!-- Service Items -->
-<div class="service-item border-b-thin py-12 flex flex-col md:flex-row justify-between items-start md:items-center group transition-colors hover:bg-white/5 cursor-crosshair reveal">
-<div class="flex items-center gap-8">
-<h3 class="font-display-hero text-[64px] md:text-[96px] leading-none uppercase group-hover:translate-x-4 transition-transform duration-500">Art Direction</h3>
-<span class="hidden md:block material-symbols-outlined text-4xl opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
-</div>
-<p class="font-label-mono text-label-mono text-text-muted mt-4 md:mt-0 uppercase tracking-widest text-right max-w-xs">Visual strategy · Creative concept · Art supervision</p>
-</div>
-<div class="service-item border-b-thin py-12 flex flex-col md:flex-row justify-between items-start md:items-center group transition-colors hover:bg-white/5 cursor-crosshair reveal">
-<div class="flex items-center gap-8">
-<h3 class="font-display-hero text-[64px] md:text-[96px] leading-none uppercase group-hover:translate-x-4 transition-transform duration-500">Branding</h3>
-<span class="hidden md:block material-symbols-outlined text-4xl opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
-</div>
-<p class="font-label-mono text-label-mono text-text-muted mt-4 md:mt-0 uppercase tracking-widest text-right max-w-xs">Brand identity · Logo design · Visual language</p>
-</div>
-<div class="service-item border-b-thin py-12 flex flex-col md:flex-row justify-between items-start md:items-center group transition-colors hover:bg-white/5 cursor-crosshair reveal">
-<div class="flex items-center gap-8">
-<h3 class="font-display-hero text-[64px] md:text-[96px] leading-none uppercase group-hover:translate-x-4 transition-transform duration-500">Digital Design</h3>
-<span class="hidden md:block material-symbols-outlined text-4xl opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
-</div>
-<p class="font-label-mono text-label-mono text-text-muted mt-4 md:mt-0 uppercase tracking-widest text-right max-w-xs">UI/UX design · Prototyping · Design systems</p>
-</div>
-<div class="service-item border-b-thin py-12 flex flex-col md:flex-row justify-between items-start md:items-center group transition-colors hover:bg-white/5 cursor-crosshair reveal">
-<div class="flex items-center gap-8">
-<h3 class="font-display-hero text-[64px] md:text-[96px] leading-none uppercase group-hover:translate-x-4 transition-transform duration-500">Development</h3>
-<span class="hidden md:block material-symbols-outlined text-4xl opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
-</div>
-<p class="font-label-mono text-label-mono text-text-muted mt-4 md:mt-0 uppercase tracking-widest text-right max-w-xs">React / Next.js · Motion &amp; interactions · Frontend</p>
-</div>
-</div>
-<!-- Floating Image Container -->
-<div class="cursor-image border-thin bg-black overflow-hidden" id="service-preview">
-<img class="w-full h-full object-cover grayscale" data-alt="A series of abstract, minimalist architectural details in black and white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARzc0pIafHwXmH7V1Jmdz4QL7h4BkbsFMoN3FlhvHbxTXZWlDYlmbmVBpf5hJzfI9bNDtTQJZ09J0yT_8OKTUzKyuDwxq-OgLIoQkAu_eW-nI_5F-XmH-UETuIzNbss4q5nItkwsGIJbI_WT1Wh7m2SMguFxf6S1ISlpy9GPtOy3JoR6eJICgC2J2be0seS3KObidH7UbnPImD1MLyiDAWZUZlPASqKS4zqMF_prfqNQm1j8CnCn3Qj_1NQ34HehWGTv76OzsNPtL2">
-</div>
-</section>
-<!-- Contact Section -->
-<section class="py-section-gap px-grid-margin bg-black/40 backdrop-blur-sm" id="contact">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-end">
-<div class="md:col-span-12 reveal">
-<span class="font-label-mono text-label-mono text-text-muted uppercase block mb-8">For enquiries, collaboration requests or job opportunities, don’t hesitate to reach out!</span>
-<h2 class="font-display-hero text-[80px] md:text-[200px] leading-[0.8] uppercase mb-12">Get in touch</h2>
-</div>
-<div class="md:col-span-6 reveal">
-<a class="font-headline-lg-mobile md:text-section-title uppercase hover:italic transition-all duration-300" href="mailto:hello@russellnumo.nl">hello@russellnumo.nl</a>
-</div>
-<div class="md:col-span-6 text-right reveal">
-<a class="font-headline-lg-mobile md:text-section-title text-text-muted uppercase hover:text-primary transition-all duration-300" href="tel:+31636096943">+31 6 36 09 69 43</a>
-</div>
-</div>
-</section>
-<!-- Footer -->
-<footer class="w-full py-20 px-grid-margin border-t-thin grid grid-cols-1 md:grid-cols-12 gap-gutter items-end">
-<div class="md:col-span-4">
-<div class="font-label-mono text-label-mono uppercase text-text-muted">©2024 NUMO</div>
-</div>
-<div class="md:col-span-4 flex justify-center gap-12">
-<a class="font-label-mono text-label-mono uppercase text-text-muted hover:text-primary hover:translate-x-1 transition-transform duration-300" href="#">GITHUB</a>
-<a class="font-label-mono text-label-mono uppercase text-text-muted hover:text-primary hover:translate-x-1 transition-transform duration-300" href="#">LINKEDIN</a>
-<a class="font-label-mono text-label-mono uppercase text-text-muted hover:text-primary hover:translate-x-1 transition-transform duration-300" href="#">INSTAGRAM</a>
-</div>
-<div class="md:col-span-4 text-right">
-<div class="font-label-mono text-label-mono uppercase text-text-muted">DESIGNED &amp; DEVELOPED BY NUMORO</div>
-</div>
-</footer>
-<!-- Scripts -->
-<script>
-        // Shader logic
-        const canvas = document.getElementById('shader-canvas');
-        const gl = canvas.getContext('webgl');
+      });
+    }, {
+      threshold: 0.1
+    });
+    elements.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, [elements]);
+  const setRef = useCallback((node: Element | null) => {
+    if (node) {
+      setElements(prev => {
+        if (!prev.includes(node)) return [...prev, node];
+        return prev;
+      });
+    }
+  }, []);
+  return setRef;
+};
+export const AgencyLandingPage = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const setAnimRef = useIntersectionObserver();
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 80);
+    };
+    window.addEventListener('scroll', handleScroll);
 
-        if (gl) {
-            const vertexShaderSource = `
-                attribute vec2 position;
-                varying vec2 v_texCoord;
-                void main() {
-                    v_texCoord = position * 0.5 + 0.5;
-                    gl_Position = vec4(position, 0.0, 1.0);
-                }
-            `;
+    // Add custom cursor style to body
+    document.body.style.cursor = 'none';
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.body.style.cursor = 'auto';
+    };
+  }, []);
+  const projects = [{
+    name: "Punto Pago",
+    desc: "The First Super-App in Latin America",
+    bg: "bg-gradient-to-br from-blue-600 to-purple-800"
+  }, {
+    name: "Kelvin Zero",
+    desc: "A digital product for passwordless authentication",
+    bg: "bg-gradient-to-br from-teal-800 to-emerald-950"
+  }, {
+    name: "Sweeping Corp",
+    desc: "Scalable design system for enterprise operations",
+    bg: "bg-gradient-to-b from-gray-800 to-gray-950"
+  }, {
+    name: "DaoWay",
+    desc: "Astrology planner app: plan, achieve, thrive",
+    bg: "bg-gradient-to-tr from-indigo-950 via-purple-900 to-slate-900"
+  }, {
+    name: "Magma",
+    desc: "The ultimate tool for building in the Web3 era",
+    bg: "bg-gradient-to-br from-blue-500 to-cyan-600"
+  }, {
+    name: "FlipaClip",
+    desc: "The best tool for stop-motion animation",
+    bg: "bg-gradient-to-b from-amber-50 to-orange-100"
+  }];
+  return <div className="font-sans text-[#0A0A0A] bg-white min-h-screen overflow-x-hidden">
+      <Cursor />
 
-            const fragmentShaderSource = `
-                precision highp float;
-                uniform float u_time;
-                uniform vec2 u_resolution;
-                uniform vec2 u_mouse;
-                varying vec2 v_texCoord;
-
-                void main() {
-                    vec2 uv = v_texCoord;
-                    vec2 mouse = u_mouse / u_resolution;
-                    
-                    // Smooth grain/noise background
-                    float noise = fract(sin(dot(uv + u_time * 0.01, vec2(12.9898, 78.233))) * 43758.5453);
-                    
-                    // Subtle gradient shift
-                    vec3 color1 = vec3(0.005, 0.005, 0.005);
-                    vec3 color2 = vec3(0.02, 0.02, 0.02);
-                    vec3 finalColor = mix(color1, color2, uv.y + sin(u_time * 0.5) * 0.1);
-                    
-                    // Interaction glow
-                    float dist = distance(uv, vec2(mouse.x, 1.0 - mouse.y));
-                    float glow = smoothstep(0.4, 0.0, dist) * 0.03;
-                    
-                    gl_FragColor = vec4(finalColor + glow + noise * 0.015, 1.0);
-                }
-            `;
-
-            function createShader(gl, type, source) {
-                const shader = gl.createShader(type);
-                gl.shaderSource(shader, source);
-                gl.compileShader(shader);
-                return shader;
-            }
-
-            const program = gl.createProgram();
-            gl.attachShader(program, createShader(gl, gl.VERTEX_SHADER, vertexShaderSource));
-            gl.attachShader(program, createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource));
-            gl.linkProgram(program);
-            gl.useProgram(program);
-
-            const positionBuffer = gl.createBuffer();
-            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
-
-            const positionLocation = gl.getAttribLocation(program, 'position');
-            gl.enableVertexAttribArray(positionLocation);
-            gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-
-            const timeLoc = gl.getUniformLocation(program, 'u_time');
-            const resLoc = gl.getUniformLocation(program, 'u_resolution');
-            const mouseLoc = gl.getUniformLocation(program, 'u_mouse');
-
-            let mouseX = 0, mouseY = 0;
-            window.addEventListener('mousemove', e => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-
-            function render(time) {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                gl.viewport(0, 0, canvas.width, canvas.height);
-
-                gl.uniform1f(timeLoc, time * 0.001);
-                gl.uniform2f(resLoc, canvas.width, canvas.height);
-                gl.uniform2f(mouseLoc, mouseX, mouseY);
-
-                gl.drawArrays(gl.TRIANGLES, 0, 6);
-                requestAnimationFrame(render);
-            }
-            requestAnimationFrame(render);
-        }
-
-        // Reveal on Scroll Script
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Hover image follow effect
-        const preview = document.getElementById('service-preview');
-        const items = document.querySelectorAll('.service-item');
+      {/* STICKY HEADER */}
+      <header className={`fixed top-0 left-0 w-full z-50 px-10 py-6 flex justify-between items-center transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-xl border-b border-black/5' : 'bg-transparent'}`}>
+        <div className="text-2xl font-bold tracking-tighter flex items-end">
+          studio<span className="w-1.5 h-1.5 bg-[#ADFF2F] rounded-full ml-0.5 mb-1.5"></span>
+        </div>
         
-        items.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                preview.style.transform = 'translate(-50%, -50%) scale(1)';
-            });</script></body></html>
+        <nav className="hidden md:flex gap-8 text-sm font-normal tracking-[0.01em]">
+          {['Services', 'Projects', 'Company', 'Blog', 'Contacts'].map(link => <a key={link} href="#" className="group relative overflow-hidden">
+              {link}
+              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#ADFF2F] -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-300 ease-out" />
+            </a>)}
+        </nav>
+        
+        <MagneticElement>
+          <button className="bg-black text-white text-sm px-5 py-2 rounded-full border border-black hover:bg-white hover:text-black transition-colors duration-300">
+            Get in touch
+          </button>
+        </MagneticElement>
+      </header>
+
+      {/* HERO SECTION */}
+      <section className="min-h-screen flex flex-col justify-center px-10 md:px-20 pt-32 pb-16">
+        <h1 className="text-[72px] md:text-[96px] lg:text-[120px] font-bold leading-[0.95] tracking-[-0.04em] mb-8">
+          <div className="overflow-hidden">
+            <div className="animate-[fadeUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.1s_both]">Digital design &</div>
+          </div>
+          <div className="overflow-hidden">
+            <div className="animate-[fadeUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.2s_both]">development agency</div>
+          </div>
+        </h1>
+        
+        <p className="text-lg text-[#666] font-light max-w-[480px] mb-8 animate-[fadeUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.3s_both]">
+          We help companies build scalable digital products with thoughtful design systems and carefully crafted development.
+        </p>
+        
+        <div className="animate-[fadeUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.4s_both]">
+          <MagneticElement className="inline-block">
+            <button className="border-[1.5px] border-black text-black text-sm px-7 py-3 rounded-full hover:bg-black hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+              What we do
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+          </MagneticElement>
+        </div>
+        
+        <div className="mt-16 w-full max-w-[76%] mx-auto h-[480px] rounded-[24px] relative overflow-hidden animate-[fadeUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.5s_both]">
+          <div className="absolute inset-0">
+            <video className="absolute inset-0 h-full w-full object-cover object-center" src="https://cdn.shopify.com/videos/c/o/v/a39dda436def4240b48dc2aafb1d52e8.mp4" autoPlay muted loop playsInline preload="auto" aria-label="Studio work in motion" />
+            <div className="absolute inset-0 z-[1] bg-black/15 pointer-events-none" aria-hidden="true" />
+          </div>
+          <div className="absolute bottom-4 left-6 z-[2] text-[11px] text-[#999]">
+            © 2010 – Present
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED PROJECTS */}
+      <section className="py-[140px] px-10 md:px-20 bg-white">
+        <div className="flex justify-between items-center mb-12">
+          <div className="flex items-center gap-3">
+            <span className="text-[11px] uppercase tracking-[0.2em] text-[#999]">Featured projects</span>
+            <span className="bg-black text-white text-[10px] px-2 py-0.5 rounded-full">12</span>
+          </div>
+          <a href="#" className="text-sm hover:opacity-70 transition-opacity">View all projects →</a>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project, i) => <div key={project.name} ref={setAnimRef as any} className="project-card group cursor-none opacity-0 translate-y-12 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)]" style={{
+          transitionDelay: `${i * 100}ms`
+        }}>
+            
+              <div className="w-full aspect-[4/3] rounded-[20px] overflow-hidden">
+                <div className={`w-full h-full ${project.bg} transform group-hover:scale-[1.04] transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]`} />
+              </div>
+              <h3 className="text-xl font-bold mt-4">{project.name}</h3>
+              <p className="text-sm text-[#888] mt-1">{project.desc}</p>
+            </div>)}
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="py-[140px] px-10 md:px-20 bg-white">
+        <div className="text-[11px] uppercase tracking-[0.2em] text-[#999] mb-4">Our services</div>
+        <p className="text-lg text-[#666] max-w-[560px] mb-16">
+          From motion design to AI-powered products — we design and build interfaces for the future.
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {[{
+          title: "Brand Identity",
+          desc: "Strategic design that positions AI products for trust and clarity."
+        }, {
+          title: "AI-Enhanced UX/UI Design",
+          desc: "Interfaces that adapt, predict, and respond intelligently."
+        }, {
+          title: "Custom Development",
+          desc: "Frontend + backend + AI integrations — built for performance and scalability."
+        }].map((service, i) => <div key={service.title} className={`group p-10 hover:bg-black/[0.02] transition-colors duration-300 ${i !== 2 ? 'md:border-r border-[#E8E8E8]' : ''} ${i === 0 ? 'pl-0' : ''} ${i === 2 ? 'pr-0' : ''}`}>
+            
+              <div className="w-[72px] h-[72px] bg-[#F5F5F5] rounded-2xl flex items-center justify-center">
+                <div className="w-8 h-8 border-2 border-black/20 rounded" />
+              </div>
+              <h3 className="text-2xl font-bold mt-8 relative inline-flex items-center">
+                <span className="w-0 overflow-hidden group-hover:w-2 group-hover:mr-2 h-2 bg-[#ADFF2F] rounded-full transition-all duration-300" />
+                {service.title}
+              </h3>
+              <p className="text-[15px] text-[#666] mt-3 leading-relaxed">{service.desc}</p>
+            </div>)}
+        </div>
+      </section>
+
+      {/* BLOG */}
+      <section className="py-[140px] px-10 md:px-20 bg-white">
+        <div className="text-[11px] uppercase tracking-[0.2em] text-[#999] mb-12">Blog</div>
+        
+        <div className="flex flex-col">
+          {[{
+          tag: "Design Course",
+          title: "How to Make UI/UX website // Frontend development",
+          date: "Oct 23, 2024"
+        }, {
+          tag: "Design Course",
+          title: "How to Cook an Emotional Site // Web Development",
+          date: "Oct 21, 2024"
+        }, {
+          tag: "Dev Source",
+          title: "Cuberto Mouse Follower",
+          date: "Apr 11, 2022"
+        }].map((post, i) => <a key={i} href="#" className="group flex flex-col md:flex-row md:items-center py-8 border-t border-[#E8E8E8] hover:bg-black/[0.02] transition-colors duration-300 -mx-10 px-10 md:mx-0 md:px-4">
+            
+              <div className="w-32 mb-4 md:mb-0">
+                <span className="text-[11px] border border-[#ddd] rounded-full px-2.5 py-1 text-[#666]">
+                  {post.tag}
+                </span>
+              </div>
+              <h3 className="text-[22px] font-bold flex-1 md:px-8 flex items-center gap-4">
+                {post.title}
+                <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">→</span>
+              </h3>
+              <div className="text-[13px] text-[#999] mt-4 md:mt-0">{post.date}</div>
+            </a>)}
+          <div className="border-t border-[#E8E8E8]" />
+        </div>
+        
+        <div className="flex justify-center mt-12">
+          <MagneticElement>
+            <button className="border-[1.5px] border-[#E8E8E8] text-black text-sm px-7 py-3 rounded-full hover:border-black transition-colors duration-300 flex items-center gap-2 group">
+              Visit our blog
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+          </MagneticElement>
+        </div>
+      </section>
+
+      {/* FOOTER CTA */}
+      <section className="bg-[#0A0A0A] text-white py-[160px] px-10 md:px-20 text-center relative overflow-hidden">
+        <div className="text-[12px] uppercase tracking-[0.2em] text-[#666] mb-8">Ready to start?</div>
+        
+        <h2 className="text-[80px] md:text-[120px] font-bold leading-[0.95] tracking-[-0.04em] mb-12">
+          Have an<br />idea<span className="text-[#ADFF2F]">.</span>
+        </h2>
+        
+        <a href="#" className="group inline-flex items-center text-[28px] font-semibold hover:text-[#ADFF2F] transition-colors relative">
+          Tell us <span className="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#ADFF2F] group-hover:w-full transition-all duration-300" />
+        </a>
+        
+        <div className="mt-[120px] max-w-4xl mx-auto flex flex-col md:flex-row justify-between text-left gap-12">
+          <div className="flex flex-col gap-6 items-start">
+            <MagneticElement>
+              <a href="mailto:info@studio.com" className="border border-[#333] rounded-full px-6 py-3 text-[13px] hover:bg-white hover:text-black transition-colors">
+                info@studio.com
+              </a>
+            </MagneticElement>
+            <div>
+              <div className="text-[10px] tracking-[0.2em] text-[#666] mb-2 uppercase">Main Office</div>
+              <div className="text-[14px] text-[#aaa]">901 N Pitt Street<br />Alexandria VA, 22314</div>
+            </div>
+          </div>
+          
+          <div className="flex flex-col gap-6 items-start md:items-end md:text-right">
+            <MagneticElement>
+              <a href="tel:+13015499309" className="border border-[#333] rounded-full px-6 py-3 text-[13px] hover:bg-white hover:text-black transition-colors">
+                +1 301 549 9309
+              </a>
+            </MagneticElement>
+            <div>
+              <div className="text-[10px] tracking-[0.2em] text-[#666] mb-2 uppercase">Second Office</div>
+              <div className="text-[14px] text-[#aaa]">Na Perstyne 342/1<br />11000 Prague</div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="mt-20 flex justify-center gap-6">
+          {['Instagram', 'YouTube', 'GitHub', 'Facebook', 'Dribbble', 'Behance'].map(social => <a key={social} href="#" className="w-5 h-5 text-white hover:text-[#ADFF2F] transition-colors" aria-label={social}>
+              <div className="w-full h-full border border-current rounded-full" />
+            </a>)}
+        </div>
+        
+        <div className="mt-20 flex justify-between items-center text-[12px] text-[#444] border-t border-[#222] pt-8">
+          <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+          <div>2026, Studio</div>
+          <div className="w-20"></div>
+        </div>
+      </section>
+
+      <style dangerouslySetInnerHTML={{
+      __html: `
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        body {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        body::-webkit-scrollbar {
+          display: none;
+        }
+      `
+    }} />
+    </div>;
+};
