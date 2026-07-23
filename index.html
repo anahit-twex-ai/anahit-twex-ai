@@ -1,434 +1,452 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
+<html class="scroll-smooth" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>OBSCURA® | Creative Studio</title>
+<title>Symmetry | Portfolio &amp; AI Infrastructure</title>
+<meta content="Expert UI/UX and Graphic Design Portfolio and AI Infrastructure Solutions" name="description"/>
+<!-- BEGIN: External Resources -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "error-container": "#93000a",
-                        "surface-container-low": "#1c1b1b",
-                        "outline": "#8e9192",
-                        "glass-surface": "rgba(255, 255, 255, 0.05)",
-                        "on-tertiary-container": "#636565",
-                        "surface-dim": "#131313",
-                        "tertiary-fixed-dim": "#c6c6c7",
-                        "secondary-fixed-dim": "#c6c6c6",
-                        "divider-line": "#262626",
-                        "primary-fixed": "#e2e2e2",
-                        "on-surface": "#e5e2e1",
-                        "on-error-container": "#ffdad6",
-                        "surface": "#131313",
-                        "outline-variant": "#444748",
-                        "subtle-gray": "#808080",
-                        "surface-container-lowest": "#0e0e0e",
-                        "tertiary-fixed": "#e2e2e2",
-                        "surface-container": "#20201f",
-                        "background": "#131313",
-                        "on-tertiary": "#2f3131",
-                        "on-secondary-container": "#b5b5b5",
-                        "inverse-on-surface": "#313030",
-                        "on-secondary-fixed": "#1b1b1b",
-                        "on-tertiary-fixed": "#1a1c1c",
-                        "inverse-primary": "#5d5f5f",
-                        "surface-container-high": "#2a2a2a",
-                        "on-secondary": "#303030",
-                        "secondary": "#c6c6c6",
-                        "on-primary-fixed-variant": "#454747",
-                        "tertiary": "#ffffff",
-                        "secondary-fixed": "#e2e2e2",
-                        "on-primary": "#2f3131",
-                        "error": "#ffb4ab",
-                        "tertiary-container": "#e2e2e2",
-                        "on-error": "#690005",
-                        "on-background": "#e5e2e1",
-                        "primary-container": "#e2e2e2",
-                        "inverse-surface": "#e5e2e1",
-                        "secondary-container": "#474747",
-                        "surface-tint": "#c6c6c7",
-                        "surface-container-highest": "#353535",
-                        "on-surface-variant": "#c4c7c8",
-                        "on-primary-fixed": "#1a1c1c",
-                        "on-secondary-fixed-variant": "#474747",
-                        "surface-bright": "#393939",
-                        "on-primary-container": "#636565",
-                        "on-tertiary-fixed-variant": "#454747",
-                        "surface-variant": "#353535",
-                        "primary-fixed-dim": "#c6c6c7",
-                        "primary": "#ffffff"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "section-gap": "160px",
-                        "margin-lg": "80px",
-                        "container-padding": "64px",
-                        "margin-sm": "16px",
-                        "gutter": "32px",
-                        "margin-md": "32px"
-                    },
-                    "fontFamily": {
-                        "display-xl": ["Hanken Grotesk"],
-                        "display-xl-mobile": ["Hanken Grotesk"],
-                        "label-caps": ["JetBrains Mono"],
-                        "body-lg": ["Hanken Grotesk"],
-                        "headline-lg": ["Hanken Grotesk"],
-                        "headline-lg-mobile": ["Hanken Grotesk"],
-                        "body-md": ["Hanken Grotesk"],
-                        "headline-md": ["Hanken Grotesk"]
-                    },
-                    "fontSize": {
-                        "display-xl": ["120px", { "lineHeight": "110px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
-                        "display-xl-mobile": ["64px", { "lineHeight": "60px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
-                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500" }],
-                        "body-lg": ["20px", { "lineHeight": "32px", "fontWeight": "400" }],
-                        "headline-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "headline-lg-mobile": ["40px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
-                    }
-                },
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- END: External Resources -->
+<!-- BEGIN: Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: '#000000',
+            surface: '#f9f9f9',
+            'surface-dim': '#dadada',
+            'border-low': '#eeeeee',
+            'on-surface-variant': '#666666',
+          },
+          maxWidth: {
+            'container-max': '1440px',
+          },
+          padding: {
+            'margin-desktop': '80px',
+            'margin-mobile': '20px',
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 1s ease-out forwards',
+            'slide-up': 'slideUp 0.8s ease-out forwards',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
             },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
         }
-    </script>
-<style>
-        body {
-            background-color: #131313;
-            color: #ffffff;
-            font-family: 'Hanken Grotesk', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .horizontal-reveal {
-            width: 0;
-            transition: width 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
-        .horizontal-reveal.visible {
-            width: 100%;
-        }
-
-        .magnetic-btn {
-            display: inline-block;
-            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-    </style>
+      }
+    }
+  </script>
+<!-- END: Tailwind Configuration -->
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="custom-utilities">
+    body {
+      cursor: none; /* Custom cursor implementation */
+    }
+    .custom-cursor {
+      width: 20px;
+      height: 20px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s ease-out;
+      backdrop-filter: invert(1);
+    }
+    .perspective-text {
+      line-height: 0.85;
+    }
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+    }
+  </style>
+<!-- END: Custom Styles -->
 </head>
-<body class="dark bg-background text-on-background">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full bg-glass-surface backdrop-blur-xl border-b border-divider-line z-50 flex justify-between items-center px-margin-lg py-6 w-full max-w-full">
-<a class="font-headline-md text-headline-md font-extrabold tracking-tighter text-primary" href="/">OBSCURA</a>
-<div class="hidden md:flex gap-margin-md items-center font-body-md text-body-md font-label-caps text-label-caps">
-<a class="text-primary border-b border-primary pb-1 hover:text-primary transition-colors duration-300" href="#work">Work</a>
-<a class="text-subtle-gray hover:text-primary transition-colors duration-300" href="#services">Services</a>
-<a class="text-subtle-gray hover:text-primary transition-colors duration-300" href="#about">About</a>
+<body class="bg-surface text-primary antialiased font-sans overflow-x-hidden">
+<!-- BEGIN: Custom Cursor -->
+<div class="custom-cursor hidden md:block" id="cursor"></div>
+<!-- END: Custom Cursor -->
+<!-- BEGIN: Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 backdrop-blur-xl border-b border-border-low transition-all duration-300" data-purpose="main-nav">
+<div class="flex items-center gap-8">
+<a class="text-headline-md font-bold tracking-tighter text-primary text-2xl" href="#">Symmetry</a>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium" href="#platform">Platform</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium" href="#projects">Case Studies</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium" href="#pricing">Pricing</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium" href="#about">About</a>
 </div>
-<button class="font-body-md text-body-md font-label-caps text-label-caps text-primary border border-divider-line px-6 py-2 hover:bg-primary hover:text-on-primary transition-all duration-300">
-            Get in touch
-        </button>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block text-sm font-medium text-on-surface-variant hover:text-primary px-4 py-2">Sign In</button>
+<button class="bg-primary text-white px-6 py-2 rounded-md text-sm font-medium hover:opacity-80 transition-opacity active:scale-95">Get Started</button>
+</div>
 </nav>
-<!-- Hero Section -->
-<section class="min-h-screen flex flex-col justify-center px-margin-lg pt-32">
-<div class="max-w-6xl">
-<h1 class="font-display-xl text-display-xl-mobile md:text-display-xl mb-12 fade-in">
-                We are a creative studio building identity and visual systems for brands that want to be seen for what they are.
-            </h1>
-<div class="flex flex-col md:flex-row justify-between items-end gap-margin-md fade-in" style="transition-delay: 0.2s;">
-<button class="group flex items-center gap-4 border-b border-primary pb-2 hover:gap-8 transition-all duration-500">
-<span class="font-label-caps text-label-caps uppercase tracking-widest">Get in touch</span>
-<span class="material-symbols-outlined">arrow_forward</span>
+<!-- END: Navigation -->
+<main class="pt-20">
+<!-- BEGIN: Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col justify-end px-margin-mobile md:px-margin-desktop pb-20 overflow-hidden bg-white" data-purpose="hero">
+<!-- Background Abstract Image -->
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+<img alt="Background Texture" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida/AP1WRLs50b4CR867TVSonLHaE_oNLMzYshMBlmcj5WS0Iwj2Nvk5Sc4T7HvlQHfPDF9AIqwhbvQkEScr_oHWitAAB0TsbrnYZFlEdkTxPIdGkGsMhZGuCzrJnEpXAO2UKyB-EEbR5BG5bXPSxVH5CSezV_CS9i8ywK4p8ig2wc-obvHqHeBWfzF4-BbPmWti7kxIA2HYNZ-iqsEW1euids27WbPQTrbe440BqaXbw_kL2fnUkM0uaaORs6tnPFZH"/>
+</div>
+<!-- Top Text Metadata -->
+<div class="mb-auto pt-20 max-w-2xl animate-fade-in">
+<h2 class="text-xl font-bold mb-2">Creative Presentation</h2>
+<p class="text-on-surface-variant border-t border-primary/10 pt-4 w-64">Presented by: Anahit Petrosyan</p>
+</div>
+<!-- Main Headline Component -->
+<div class="relative z-10">
+<div class="flex flex-col md:flex-row items-baseline gap-4 mb-4">
+<span class="text-lg md:text-xl font-medium">UI/UX Designer</span>
+<span class="hidden md:block text-xl text-on-surface-variant">/</span>
+<span class="text-lg md:text-xl font-medium">Graphic Designer</span>
+</div>
+<div class="relative">
+<h1 class="text-[15vw] md:text-[22vw] font-black tracking-tighter leading-none m-0 p-0 select-none animate-slide-up">
+            Portfolio
+          </h1>
+<!-- Floating 3D Element (Star) -->
+<div class="absolute -top-12 md:-top-40 right-[10%] md:right-[20%] w-32 md:w-80 animate-float">
+<img alt="3D Star Element" class="w-full h-auto drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida/AP1WRLuNTNRtIOfgthpQzwXqww6n8dLMGQQJ6vrdxJmU8eyR1mx_sT-oAzdU_CgkP-937nNgpsRVeKK8qaIQ7_D2PZDRUExhA2KoYzs7YzxxSDdEhXKc15CPWEHemgZncv-mK7KJW91Z9i4IPUmAK3G3FbdxWM_H6LFttaK5yqonOiGfQ7_h_mX62a2CACAw9EwD4ZGrp9yjRyoxgYcTwOJ5ncR8-DEK0uKWOF0Yz5bmBaPF9Bib3tZWpG49PCU"/>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Hero Section -->
+<!-- BEGIN: AI Infrastructure Showcase -->
+<section class="py-24 bg-black text-white px-margin-mobile md:px-margin-desktop" data-purpose="ai-infrastructure" id="platform">
+<div class="max-w-container-max mx-auto">
+<div class="mb-16">
+<p class="text-blue-400 font-mono mb-4 text-sm tracking-widest uppercase">Infrastructure v4.0</p>
+<h2 class="text-4xl md:text-6xl font-bold leading-tight max-w-4xl">
+            Infrastructure Built for AI at Scale
+          </h2>
+<p class="mt-8 text-on-surface-variant max-w-xl text-lg">
+            Access 40,000+ NVIDIA Blackwell GPUs across purpose-built AI factories. Train, fine-tune, and serve models at peak efficiency.
+          </p>
+</div>
+<!-- Infrastructure Image Preview -->
+<div class="relative rounded-3xl overflow-hidden mb-24 border border-white/10 group">
+<img alt="AI Data Center Facility" class="w-full aspect-[21/9] object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLvG7HOkVAamSZ6Of4s4gOwucAArrN0hV36expqaH9ko6eVqdKy-2LDNBjoeH_hNvemJzwDH6vwk3_hsV0N_7inI6WZcD7JOiRL3sdcAP-JwALMldiNbaaSSn4vsXpspEm4uqJgw8tL1GUEykmLZIIgIBjX54vF9o17lxs7fUKmd574UoBcRaPxTATDhhbedpqKhK0GiA8emhwAJvIDgHcdqwTTC5L8aG97MzwN8VC8pLJN3JQBo3wZS8czA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<!-- Stats Overlay -->
+<div class="absolute bottom-10 left-10 right-10 flex flex-wrap justify-between items-end gap-8">
+<div class="flex gap-12">
+<div>
+<p class="text-4xl font-bold">40k</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest mt-1">NVIDIA GPUs</p>
+</div>
+<div>
+<p class="text-4xl font-bold">100%</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest mt-1">Uptime SLA</p>
+</div>
+<div>
+<p class="text-4xl font-bold">900k</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest mt-1">Compute Units</p>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 border border-white/20 rounded-lg hover:bg-white/10 transition-colors">Request Bare Metal</button>
+<button class="px-6 py-3 bg-[#FF5F1F] text-white rounded-lg hover:opacity-90 transition-opacity">Launch Instance</button>
+</div>
+</div>
+</div>
+<!-- Bento Features Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-zinc-900/50 p-10 rounded-3xl border border-white/5 hover:border-white/20 transition-all group">
+<h3 class="text-2xl font-bold mb-4">Industrial-Scale AI</h3>
+<p class="text-on-surface-variant mb-8">Firebird 1 debuts in 2026, anchoring a globally connected AI platform built to scale across emerging markets.</p>
+<img alt="Milestones" class="rounded-xl w-full grayscale group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida/AP1WRLv2RQlpD3Pm7pxs24WWDKcW0C1WGDVUNc8e-T8fnkOy1q5UWuQ9ARvPA75yjwZpMD_be78n2A9olo81u0cS-vHt8Bs1BVbCNiHZxYd_C5lFz0jxOdPQPXwHPPRbzONekPB6L4Tfw2L4vsYRZ6pPpCi5HNObTJNDHLuheARMVtRCNSE-7P3Vd99NfUJW-f9SG3Ilm-HO0BJEFLHu9AwcWyj86tX6eYsg8Zo9JmfrGZupIBFtfiN99uonyW3n"/>
+</div>
+<div class="bg-zinc-900/50 p-10 rounded-3xl border border-white/5 col-span-1 md:col-span-2">
+<div class="flex flex-col md:flex-row gap-12">
+<div class="flex-1">
+<h3 class="text-2xl font-bold mb-4">NVIDIA Blackwell Architecture</h3>
+<p class="text-on-surface-variant mb-6">Optimized for state-of-the-art AI performance, efficiency, and scalability.</p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-sm border-b border-white/5 pb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Global AI Connectivity
+                  </li>
+<li class="flex items-center gap-3 text-sm border-b border-white/5 pb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Resilient Facility Design
+                  </li>
+<li class="flex items-center gap-3 text-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> 24/7 Security Operations
+                  </li>
+</ul>
+</div>
+<div class="flex-1 bg-black/40 rounded-2xl p-4 border border-white/10">
+<img alt="Resource Quotas Dashboard" class="w-full h-auto rounded-lg" src="https://lh3.googleusercontent.com/aida/AP1WRLuR0B--559jlVfXfLG4GQcL1_v8f87v0FNaRH3GuKaRGI_zMfNnvRRLYm_Ml9igAYySn90LMkYoOXnJkpBEpyQTQZ59XKnl6ZedNpl6ZAZemEFo92Cv5v8b6_lwNdwvH00yn3mcVzzFWxkMF9ZNIJqN2oALydoV6ZJ5qiHjepRuVscC7ta1Kj1UdRmRKydB-NiLsvcChh0mLcXbNq_xqRxupWpU07aAstxPTvyZ2TU-rA0Pja222fng4a0T"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AI Infrastructure Showcase -->
+<!-- BEGIN: Mobile App Previews -->
+<section class="py-24 bg-white px-margin-mobile md:px-margin-desktop overflow-hidden" data-purpose="app-showcase">
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="text-5xl font-bold tracking-tight mb-8">Personal AI Workspace</h2>
+<p class="text-xl text-on-surface-variant mb-12">Tailored specifically for your profession. Explore 3,346 total tools curated by our expert team.</p>
+<div class="grid grid-cols-2 gap-4 mb-12">
+<div class="p-6 bg-surface rounded-2xl">
+<p class="text-3xl font-bold mb-2">3k+</p>
+<p class="text-sm text-on-surface-variant">Validated AI Tools</p>
+</div>
+<div class="p-6 bg-surface rounded-2xl">
+<p class="text-3xl font-bold mb-2">24/7</p>
+<p class="text-sm text-on-surface-variant">Active Monitoring</p>
+</div>
+</div>
+<button class="bg-primary text-white px-8 py-4 rounded-full text-lg font-bold hover:scale-105 transition-transform">Explore App Store</button>
+</div>
+<div class="relative">
+<!-- Floating Phones Mockup -->
+<div class="relative z-10 transform -rotate-6 scale-110">
+<img alt="App Interaction Mockup" class="w-full drop-shadow-[-50px_50px_100px_rgba(0,0,0,0.1)]" src="https://lh3.googleusercontent.com/aida/AP1WRLsc1GnDWc0RQYp-JHb96SzDXeVsR4jWHQSrGHyNtTll_IWNmiezaa5Ct-DDrRE_ozQafcuGvfyrrH77AgLhTHrf5oL148JsorwbadH3RpVuNHDg-4UER2DX5IYYuV6_r9x9Og2Cu3r2WhCMm2IuS5y4XdjvUlmVSvlHdAwvFyQ0h7s8ak9-A_OddhsE22uN4XgPlJTj5_rlZ1XjOzmngHuZWVdwtUW1czsetC_pHC1GDb5XZR6hcDJtUFQ"/>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-50 rounded-full blur-[120px] -z-10"></div>
+</div>
+</div>
+</section>
+<!-- END: Mobile App Previews -->
+<!-- BEGIN: Design Portfolio Grid -->
+<section class="py-24 bg-surface px-margin-mobile md:px-margin-desktop" data-purpose="portfolio-grid" id="projects">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="text-4xl font-bold mb-4">Selected Works</h2>
+<p class="text-on-surface-variant">A collection of graphic design, branding, and UI experiments.</p>
+</div>
+<div class="flex gap-2">
+<button class="p-4 rounded-full border border-primary/10 hover:bg-white transition-colors">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </button>
-<div class="flex items-center gap-4 text-subtle-gray font-label-caps text-label-caps">
-<span>scroll</span>
-<span class="material-symbols-outlined animate-bounce">arrow_downward</span>
+<button class="p-4 rounded-full border border-primary/10 hover:bg-white transition-colors">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project Card 1: Branding -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden rounded-3xl mb-6 bg-white shadow-sm border border-border-low">
+<img alt="Milk Packaging Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AP1WRLvvOiEX4-bBFPrsBGC9mLvMnpNYNdlnVsR2UoAUNseMu3oVkQKISykkM_r_4MuzLntGhSeVxxhXvZ32i9yoymGkQug40V8Sydn0A88-Ht7-P5SNM9IyG4VxbA0KteVLgyTl-Hi5HFiHR38HepYphLz4AwI7pGFvyQ4BE0nHnBMwdaOl0Y-Ddf4v7w2LNsAMXtp8hlrUbit_Ci8dDu7oXSqu1RnWNdhizkt0gXkzzsNbu5TK1e7cRI8IN74u"/>
+</div>
+<h3 class="text-xl font-bold">Ilkinit Milk Branding</h3>
+<p class="text-on-surface-variant">Packaging &amp; Identity</p>
+</div>
+<!-- Project Card 2: Poster -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden rounded-3xl mb-6 bg-white shadow-sm border border-border-low">
+<img alt="Aznavour Poster Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AP1WRLsB4zZ6rPu5mBQuLZ_qiu77aR14aiTEYRACrLmhejOoRrrtb7L7AcUHE90ka0a2_jyVp89pXlYknJBpy-zm2piXCHS8_hTJp0rmvWYMsqKJjya5RejJl7xiLoIRn__cYrCzBcVkeEoUEc-BLB8uz6fETeTknaUJN4B7vkrUvrTtvcDG8uVPPfitOSxj4xDQHNHkLJjZG75zWSvl3pzP_4JFi9kmS5M7mSyHKR6EiIMLohzjp5hatD1WAiyB"/>
+</div>
+<h3 class="text-xl font-bold">Aznavour 100</h3>
+<p class="text-on-surface-variant">Limited Edition Poster</p>
+</div>
+<!-- Project Card 3: UI Design -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden rounded-3xl mb-6 bg-white shadow-sm border border-border-low">
+<img alt="Medical UI Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AP1WRLsPbmT6Rzx63gxvKW_nHZfyLpxBPTuClUNjMgmFVbON5MI_8HHiJdydZMR0FXqAbNAPFrj4bvStYlgEG_TotxE9Uj-UrXLs6QWojNdsdyby82TEW301cUKE6LKpdAEVyeFBcU1IuDM97fLiJFkgG2FMMjtCSwhSfDgRBlpCsSwLKNaiX8zZmm6VU6xvxDNI0adMag7jFJtTLN2COod_Bo95TXyoVZkNpf2pOAVOtn0sBOhmTf3lJpznyQn4"/>
+</div>
+<h3 class="text-xl font-bold">Bone Implant Platform</h3>
+<p class="text-on-surface-variant">Healthcare UI/UX</p>
+</div>
+<!-- Project Card 4: Packaging -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden rounded-3xl mb-6 bg-white shadow-sm border border-border-low">
+<img alt="Gentleman Yogurt Packaging" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AP1WRLvMD8waKntbYxate1irDpoWwJjHjwn7sQ_hrdiyqyqV4W3WPILztNGoeTbjOFq9bezysnOO6-RLh7vpcOE4UD6ZTfMYM-chD4PujGAP2PHV-au1z1CDrtruZ0OfT4pKvDH0H-n0isCf3xpVSgsvd7alu5c3EAX_YhTISmS3psAG7xFPO2lKCBLEt5gH-KxrJxQigxx3dJTk1B8jJAmxPjoQEhYckgFJT5QS2joqsgNnR_L8GdfLJHaN-AVF"/>
+</div>
+<h3 class="text-xl font-bold">Gentleman's Yogurt</h3>
+<p class="text-on-surface-variant">Brand Concept</p>
+</div>
+<!-- Project Card 5: Social Campaign -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden rounded-3xl mb-6 bg-white shadow-sm border border-border-low">
+<img alt="Social Poster Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AP1WRLuoHeBP8FPuQHZe9_tef2KMpLqaUZmpqrF9-E1vmLRpv0v2vwRX0gpNRo4FrlEJXLpBpxsMHQhrdZBpXFUAtFCSBByiazmrxxXrYxXS9lcfw7sWyutKltEjeyKHLnR-guGwauJnsocBaOMaOq8I3iYkNrCMsH-dHL2x8hwhiRUDh8AweFnpP5uS6i03WlHQgfMOHXkbjo3u6AgINPfDlmtSHjx4tIQ5vwSxdfRj8tvlMd98y6MD-x8Y38Vs"/>
+</div>
+<h3 class="text-xl font-bold">No Drink / No Smoking</h3>
+<p class="text-on-surface-variant">Social Awareness Campaign</p>
+</div>
+<!-- Project Card 6: Mobile Interface -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden rounded-3xl mb-6 bg-white shadow-sm border border-border-low">
+<img alt="Mobile Vibes UI" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AP1WRLuDASQ0YvzXKdYrdo1DMXkYNTzPjEPW6PxIi2esFnzboQYc25G6X2dDfhpWQr3M-8Xk5AoyZDRBHsDXoC4tLi1MWffyEz41fQSZ3PTQ6Pxdr3QJ2b_zUBSArNtvrcU-2ooVrKwa4Au2CuDK8FiYgw3_RVy3HqyH_dcK25tJaAsNs6hu_zsN8qdi2zL2_wiHGOlLUYrC5o54Cjsk0dx_tAEK1Qkj1kRZ_ipcbN-j1UCxU5LYVZINWkImYxc"/>
+</div>
+<h3 class="text-xl font-bold">Vibes Music App</h3>
+<p class="text-on-surface-variant">Mobile Interaction Design</p>
 </div>
 </div>
 </div>
 </section>
-<!-- Meet Obscura (Intro) -->
-<section class="px-margin-lg py-section-gap border-t border-divider-line">
-<div class="grid grid-cols-12 gap-gutter">
-<div class="col-span-12 md:col-span-8">
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-24 fade-in">
-                    A small studio with a clear point of view on what identity should be.
-                </h2>
+<!-- END: Design Portfolio Grid -->
+<!-- BEGIN: Billing/Admin Preview -->
+<section class="py-24 bg-white px-margin-mobile md:px-margin-desktop" data-purpose="dashboard-preview">
+<div class="max-w-container-max mx-auto bg-black rounded-[48px] p-8 md:p-20 text-white overflow-hidden relative">
+<div class="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-600/20 blur-[150px]"></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="relative z-10">
+<span class="inline-block px-4 py-1 bg-white/10 rounded-full text-xs font-medium mb-6 uppercase tracking-widest">Enterprise Billing</span>
+<h2 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">Total Visibility into your AI Spend</h2>
+<p class="text-zinc-400 text-lg mb-10">Real-time usage analytics, resource quotas, and predictive billing forecasts for large-scale GPU clusters.</p>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+<svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
 </div>
-<div class="col-span-12 md:col-start-10 md:col-span-3 text-right">
-<span class="font-label-caps text-label-caps text-subtle-gray">01 — MEET OBSCURA®</span>
-</div>
-<div class="col-span-12 md:col-span-5 fade-in">
-<img alt="Abstract architectural shadows and sharp geometric lines representative of minimalist design studio aesthetics." class="w-full aspect-[4/5] object-cover grayscale" src="https://lh3.googleusercontent.com/aida/AP1WRLtvY62r6hH3xwRi0dWLwKmiLZZIH-HwSkKbbnzcab5xWkjfOxuwWsbN_SYuzx2wsdd63C_reTcn_efcHkYkhoD4smXqeE6LWr_0KCfi1DuGSkJ_hmjf2Wzwqm2ANIvlm_9211m0rtRgguKyBTj-EuKQRoLMe9Rk6q40lKeZGwhcoEFQRjRL3PtfVsnpcL_wI0_K5Q_Rj4_bMZ-b5_aKUNCxlV9j7Se3m7a3NmKRKrxvNTHu28KJ7h68RiCN"/>
-</div>
-<div class="col-span-12 md:col-start-7 md:col-span-5 flex flex-col justify-center space-y-8 fade-in" style="transition-delay: 0.3s;">
-<p class="font-body-lg text-body-lg text-on-surface">
-                    Most brands don't struggle with what they want to say — they struggle with how to make it land. Without a strong visual foundation, even the best thinking gets lost somewhere along the way.
-                </p>
-<p class="font-body-md text-body-md text-subtle-gray">
-                    OBSCURA® builds the identity and systems that give a brand its shape — so what you stand for is legible at every touchpoint, in every context, without needing to be explained or repeated.
-                </p>
-<a class="inline-flex items-center gap-2 group font-label-caps text-label-caps hover:pl-4 transition-all duration-300" href="#about">
-                    Get to know us <span class="material-symbols-outlined">arrow_forward</span>
-</a>
-</div>
-</div>
-</section>
-<!-- Featured Projects -->
-<section class="px-margin-lg py-section-gap bg-surface-container-lowest" id="work">
-<div class="flex justify-between items-end mb-24 fade-in">
 <div>
-<span class="font-label-caps text-label-caps text-subtle-gray block mb-4">02 — FEATURED PROJECTS</span>
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg">Selected Work</h2>
-</div>
-<p class="max-w-xs font-body-md text-body-md text-subtle-gray hidden md:block">
-                Each project begins with a different question and ends in the same place.
-            </p>
-</div>
-<div class="grid grid-cols-12 gap-gutter">
-<!-- Project 1 -->
-<div class="col-span-12 md:col-span-6 mb-24 fade-in">
-<div class="group relative overflow-hidden bg-surface-container mb-6 cursor-pointer">
-<img alt="Clean minimal product photography showcasing the LUMEN brand identity with high contrast lighting and sharp typography elements." class="w-full aspect-video md:aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLvFYChunKMkRLcmzIa0-Gq2mdAX23mkHOqh2RErTOYCHp7bAHOYYNMfyYTOjBh8TQJZ_DEU15pKC8k1w5BgU30g8VqwGuEdWFqZ6YChAG6k9NJJ5AdRddFFQ3TwS6CjKlmBGtiTnwBnjU_PJ5d-l97GrqBMfvUU6CTP2ugnqMFZIZYFpETmIkE5GQfxMHOAKpQ4pTHDJDqQ-1cmQobrig1CDbWAV6ucmRur4KeSalu2EWOGuOgzjNp3VA6Q"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
-<span class="font-label-caps text-label-caps border border-white px-8 py-3 bg-white text-black">VIEW CASE STUDY</span>
+<h4 class="font-bold">Usage Analytics</h4>
+<p class="text-zinc-500 text-sm">Breakdown by GPU Compute, Storage, and Network.</p>
 </div>
 </div>
-<div class="flex justify-between items-start">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+<svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+</div>
 <div>
-<h3 class="font-headline-md text-headline-md mb-2">LUMEN</h3>
-<p class="font-label-caps text-label-caps text-subtle-gray uppercase tracking-widest">Brand Identity / Digital</p>
-</div>
-<span class="font-label-caps text-label-caps">2026</span>
-</div>
-</div>
-<!-- Project 2 -->
-<div class="col-span-12 md:col-span-6 mt-24 md:mt-48 mb-24 fade-in" style="transition-delay: 0.2s;">
-<div class="group relative overflow-hidden bg-surface-container mb-6 cursor-pointer">
-<img alt="A sophisticated brand identity system applied to physical print collateral with premium paper textures and minimalist layout design." class="w-full aspect-video md:aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLvZxNaYt_ogx-aqmnhVooDCoOm7uySnhkhig60DjbzOigRpflX4B7j-vcJNue2GNZt9LpEtNXXF5-Tt9EuVOES8zYhAvRnpyAy1WJm9WtVXpDRmXgzwGYtQn0Jy6x9mcaLjrdT2Z2mWAF6BpfVxAUrwc_N1JThoNOc8IXAmMf1Lk7d7SpS8OTWo_q6p35i-CitUWCsdCcXMGeKAEqXoqxkvSTWB9SD0y-6dG5YcACP3ifJdM_tHUdH8kyiV"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
-<span class="font-label-caps text-label-caps border border-white px-8 py-3 bg-white text-black">VIEW CASE STUDY</span>
-</div>
-</div>
-<div class="flex justify-between items-start">
-<div>
-<h3 class="font-headline-md text-headline-md mb-2">CGROUND</h3>
-<p class="font-label-caps text-label-caps text-subtle-gray uppercase tracking-widest">Art Direction / Identity</p>
-</div>
-<span class="font-label-caps text-label-caps">2026</span>
-</div>
-</div>
-<!-- Project 3 -->
-<div class="col-span-12 md:col-start-4 md:col-span-6 fade-in">
-<div class="group relative overflow-hidden bg-surface-container mb-6 cursor-pointer">
-<img alt="Experimental UI design interface for a flexible workspace system featuring a grid-based layout and monochromatic color scheme." class="w-full aspect-video md:aspect-square object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLs3utKUAt-Fk7SNUDE0DO4i0FAugzVhBaw-OV5v2ZpEPADAosJ1eqXKCQ0VQsYH0mIx6U5vPVBk5mw10kSVd-tX9CPA1ZyXBvSXacyQbi6ug3vdj-M_pmjtNSWc13iQw9q8QQ80rmfYJ_Cl8fvs-ndK2XO8LY08teWMdMLZRwY16W36pQQ5ZSum22xydQk-qx9ypkoNMrYZ6dRwtvk8KLbUNNbF_bIPI7f_S8oRycNndbJKtRX6noyOJVTY"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
-<span class="font-label-caps text-label-caps border border-white px-8 py-3 bg-white text-black">VIEW CASE STUDY</span>
-</div>
-</div>
-<div class="flex justify-between items-start">
-<div>
-<h3 class="font-headline-md text-headline-md mb-2">MODULAR</h3>
-<p class="font-label-caps text-label-caps text-subtle-gray uppercase tracking-widest">Digital Systems / Workspace</p>
-</div>
-<span class="font-label-caps text-label-caps">2026</span>
+<h4 class="font-bold">Real-time Alerts</h4>
+<p class="text-zinc-500 text-sm">Instant notifications when you hit 80% of your monthly budget.</p>
 </div>
 </div>
 </div>
-<div class="mt-32 text-center fade-in">
-<a class="inline-flex items-center gap-4 group font-headline-md text-headline-md hover:gap-8 transition-all duration-300" href="#work">
-                See more work <span class="material-symbols-outlined text-4xl">arrow_forward</span>
-</a>
 </div>
-</section>
-<!-- Services Section -->
-<section class="px-margin-lg py-section-gap border-t border-divider-line" id="services">
-<div class="grid grid-cols-12 gap-gutter mb-32">
-<div class="col-span-12 md:col-span-3">
-<span class="font-label-caps text-label-caps text-subtle-gray">03 — SERVICES</span>
+<div class="relative group">
+<div class="bg-white rounded-3xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:-translate-y-4">
+<img alt="Billing Dashboard Preview" class="w-full h-auto" src="https://lh3.googleusercontent.com/aida/AP1WRLsntg3unxWhA4RVPefSU6tMd0B4Kqi8WbKjf2cB3dcJwORSjP4wbgwLTt63WaXtKc184APrX-GXb5naxWBuz1o0zJULbbi3bZfRAkjyuuXI4TprPxra6aUDQoH-MCkgntH-sqJaZHpybUNPZ4jZzIUk4JrBG6ny0fivGr9Lp33yii0cUgCZylM81mKhB3gvXJyKjbuA03ew3teiLdsGnpeu2cNoaE3tT5qc7wbb4sleVQcxNwHiRZSCnDj_"/>
 </div>
-<div class="col-span-12 md:col-span-7">
-<h3 class="font-body-lg text-body-lg text-on-surface">
-                    From identity to execution, we build the visual systems that give brands their shape and keep them coherent.
-                </h3>
+<!-- Decorative "card" behind -->
+<div class="absolute -bottom-10 -right-10 w-full h-full bg-white/5 rounded-3xl -z-10 translate-x-4 translate-y-4"></div>
 </div>
-</div>
-<div class="border-t border-divider-line">
-<div class="group py-12 flex flex-col md:flex-row justify-between items-center border-b border-divider-line hover:pl-8 transition-all duration-500 cursor-default">
-<div class="flex items-center gap-8 w-full">
-<span class="font-label-caps text-label-caps text-subtle-gray">(01)</span>
-<h4 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase flex-grow">Brand Strategy</h4>
-</div>
-<span class="material-symbols-outlined text-4xl transform group-hover:rotate-45 transition-transform">arrow_outward</span>
-</div>
-<div class="group py-12 flex flex-col md:flex-row justify-between items-center border-b border-divider-line hover:pl-8 transition-all duration-500 cursor-default">
-<div class="flex items-center gap-8 w-full">
-<span class="font-label-caps text-label-caps text-subtle-gray">(02)</span>
-<h4 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase flex-grow">Art Direction</h4>
-</div>
-<span class="material-symbols-outlined text-4xl transform group-hover:rotate-45 transition-transform">arrow_outward</span>
-</div>
-<div class="group py-12 flex flex-col md:flex-row justify-between items-center border-b border-divider-line hover:pl-8 transition-all duration-500 cursor-default">
-<div class="flex items-center gap-8 w-full">
-<span class="font-label-caps text-label-caps text-subtle-gray">(03)</span>
-<h4 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase flex-grow">Editorial &amp; Print</h4>
-</div>
-<span class="material-symbols-outlined text-4xl transform group-hover:rotate-45 transition-transform">arrow_outward</span>
-</div>
-<div class="group py-12 flex flex-col md:flex-row justify-between items-center border-b border-divider-line hover:pl-8 transition-all duration-500 cursor-default">
-<div class="flex items-center gap-8 w-full">
-<span class="font-label-caps text-label-caps text-subtle-gray">(04)</span>
-<h4 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase flex-grow">Digital Design</h4>
-</div>
-<span class="material-symbols-outlined text-4xl transform group-hover:rotate-45 transition-transform">arrow_outward</span>
 </div>
 </div>
 </section>
-<!-- About Section -->
-<section class="px-margin-lg py-section-gap bg-surface-container-low" id="about">
-<div class="grid grid-cols-12 gap-gutter">
-<div class="col-span-12 mb-24">
-<h2 class="font-display-xl text-display-xl-mobile md:text-display-xl uppercase leading-none fade-in">
-                    FROM VISION<br/>TO REALITY
-                    <span class="material-symbols-outlined text-8xl md:text-[160px] inline-block align-middle ml-4">arrow_downward</span>
-</h2>
+<!-- END: Billing/Admin Preview -->
+</main>
+<!-- BEGIN: Footer -->
+<footer class="w-full py-16 px-margin-mobile md:px-margin-desktop border-t border-border-low bg-white" data-purpose="site-footer">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+<div class="max-w-sm">
+<a class="text-2xl font-bold tracking-tighter text-primary mb-6 block" href="#">Symmetry</a>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+            Leading the evolution of AI infrastructure and creative design systems for the next generation of digital excellence.
+          </p>
 </div>
-<div class="col-span-12 md:col-span-5 fade-in">
-<img alt="Artistic black and white photography emphasizing architectural form and dramatic shadow play, embodying the studio's design philosophy." class="w-full aspect-[4/5] object-cover filter brightness-75 contrast-125" src="https://lh3.googleusercontent.com/aida/AP1WRLtvY62r6hH3xwRi0dWLwKmiLZZIH-HwSkKbbnzcab5xWkjfOxuwWsbN_SYuzx2wsdd63C_reTcn_efcHkYkhoD4smXqeE6LWr_0KCfi1DuGSkJ_hmjf2Wzwqm2ANIvlm_9211m0rtRgguKyBTj-EuKQRoLMe9Rk6q40lKeZGwhcoEFQRjRL3PtfVsnpcL_wI0_K5Q_Rj4_bMZ-b5_aKUNCxlV9j7Se3m7a3NmKRKrxvNTHu28KJ7h68RiCN"/>
-</div>
-<div class="col-span-12 md:col-start-7 md:col-span-5 flex flex-col justify-center gap-12 fade-in" style="transition-delay: 0.3s;">
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12">
 <div>
-<span class="font-label-caps text-label-caps text-subtle-gray block mb-4">04 — ABOUT US</span>
-<h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-8">We make things that mean something.</h3>
-<p class="font-body-md text-body-md text-on-surface mb-6">
-                        OBSCURA® is a small creative studio built on the belief that visual identity is never superficial — it's the first and most persistent thing a brand communicates.
-                    </p>
-<p class="font-body-md text-body-md text-subtle-gray">
-                        We work slowly and selectively. We ask difficult questions before we make anything, and we build visual systems that hold their conviction after the project end.
-                    </p>
-</div>
-<a class="inline-flex items-center gap-4 border border-divider-line px-12 py-6 font-label-caps text-label-caps hover:bg-primary hover:text-on-primary transition-all duration-500" href="mailto:hello@obscurastudio.com">
-                    LEARN MORE ABOUT US <span class="material-symbols-outlined">arrow_forward</span>
-</a>
-</div>
-</div>
-</section>
-<!-- Final CTA -->
-<section class="px-margin-lg py-section-gap flex flex-col md:flex-row justify-between items-end border-t border-divider-line">
-<div class="max-w-xl">
-<h2 class="font-display-xl text-display-xl-mobile md:text-display-xl uppercase mb-8">LET'S BUILD SOMETING.</h2>
-<p class="font-body-lg text-body-lg text-subtle-gray">If what you've seen here makes sense for what you're doing — let's talk.</p>
-</div>
-<a class="group flex items-center gap-4 text-4xl md:text-6xl font-extrabold border-b-2 border-primary pb-4 hover:gap-12 transition-all duration-700" href="mailto:hello@obscurastudio.com">
-            Reach out to us <span class="material-symbols-outlined text-6xl">arrow_forward</span>
-</a>
-</section>
-<!-- Footer -->
-<footer class="bg-surface border-t border-divider-line w-full pt-section-gap pb-margin-lg">
-<div class="grid grid-cols-12 gap-gutter px-margin-lg mx-auto w-full">
-<div class="col-span-12 md:col-span-5 mb-16 md:mb-0">
-<p class="font-body-md text-body-md text-on-surface max-w-sm mb-8">
-                    OBSCURA® is a creative studio for brands that treat visual language as seriously as the work behind it.
-                </p>
-<span class="font-label-caps text-label-caps text-subtle-gray block mb-2">CONTACT US</span>
-<a class="font-headline-md text-headline-md border-b border-divider-line hover:border-primary transition-colors pb-2" href="mailto:hello@obscurastudio.com">hello@obscurastudio.com</a>
-</div>
-<div class="col-span-6 md:col-span-3">
-<span class="font-label-caps text-label-caps text-subtle-gray block mb-6">SOCIALS</span>
-<ul class="space-y-4 font-body-md text-body-md font-label-caps text-label-caps">
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Instagram</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Facebook</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">LinkedIn</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Twitter/X</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Vimeo</a></li>
+<h4 class="font-bold text-sm mb-6 uppercase tracking-widest">Platform</h4>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Infrastructure</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">GPU Clusters</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Edge Computing</a></li>
 </ul>
 </div>
-<div class="col-span-6 md:col-span-4">
-<span class="font-label-caps text-label-caps text-subtle-gray block mb-6">NAVIGATION</span>
-<ul class="space-y-4 font-body-md text-body-md font-label-caps text-label-caps">
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Work</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Services</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">About</a></li>
-<li><a class="text-subtle-gray hover:text-primary transition-all duration-300 hover:pl-2 block" href="#">Contact</a></li>
+<div>
+<h4 class="font-bold text-sm mb-6 uppercase tracking-widest">Company</h4>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
 </ul>
 </div>
-<div class="col-span-12 mt-32">
-<h1 class="font-display-xl text-[12vw] md:text-[22vw] leading-none font-extrabold text-primary tracking-tighter text-center uppercase select-none opacity-90">
-                    OBSCURA®
-                </h1>
+<div>
+<h4 class="font-bold text-sm mb-6 uppercase tracking-widest">Social</h4>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Twitter</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">LinkedIn</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Instagram</a></li>
+</ul>
 </div>
-<div class="col-span-12 flex flex-col md:flex-row justify-between items-center mt-16 pt-8 border-t border-divider-line gap-4">
-<p class="font-label-caps text-label-caps text-subtle-gray">© 2024 Obscura Studio. All rights reserved.</p>
-<div class="flex gap-8">
-<a class="font-label-caps text-label-caps text-subtle-gray hover:text-primary" href="#">Privacy Policy</a>
-<a class="font-label-caps text-label-caps text-subtle-gray hover:text-primary" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="pt-8 border-t border-border-low flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-on-surface-variant text-xs">© 2024 Symmetry Labs. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
 </div>
 </div>
 </div>
 </footer>
-<script>
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+<!-- END: Footer -->
+<!-- BEGIN: Scripts -->
+<script data-purpose="cursor-animation">
+    const cursor = document.getElementById('cursor');
+    
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // Once animated, stop observing
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'scale(2.5)';
+        cursor.style.background = 'rgba(0,0,0,0.1)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'scale(1)';
+        cursor.style.background = 'rgba(0,0,0,0.3)';
+      });
+    });
+  </script>
+<script data-purpose="scroll-interactions">
+    // Simple intersection observer for reveal animations
+    const observerOptions = {
+      threshold: 0.1
+    };
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-slide-up');
+          entry.target.style.opacity = '1';
+        }
+      });
+    }, observerOptions);
 
-        // Smooth scroll implementation for anchors
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Magnetic effect for primary buttons
-        const magneticButtons = document.querySelectorAll('.magnetic-btn');
-        magneticButtons.forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-            });
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = `translate(0px, 0px)`;
-            });
-        });
-    </script>
+    document.querySelectorAll('section > div').forEach(el => {
+      el.style.opacity = '0';
+      observer.observe(el);
+    });
+  </script>
+<!-- END: Scripts -->
 </body></html>
