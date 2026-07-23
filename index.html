@@ -1,20 +1,24 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
+
 const Cursor = () => {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef(null);
+  const ringRef = useRef(null);
   const [hovering, setHovering] = useState(false);
+
   useEffect(() => {
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
     let ringX = window.innerWidth / 2;
     let ringY = window.innerHeight / 2;
-    const onMouseMove = (e: MouseEvent) => {
+
+    const onMouseMove = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       if (dotRef.current) {
         dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
       }
     };
+
     const updateRing = () => {
       ringX += (mouseX - ringX) * 0.12;
       ringY += (mouseY - ringY) * 0.12;
@@ -23,154 +27,134 @@ const Cursor = () => {
       }
       requestAnimationFrame(updateRing);
     };
+
     window.addEventListener('mousemove', onMouseMove);
     requestAnimationFrame(updateRing);
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
+
+    const handleMouseOver = (e) => {
+      const target = e.target;
       if (target.closest('a') || target.closest('button') || target.closest('.project-card')) {
         setHovering(true);
       } else {
         setHovering(false);
       }
     };
+
     window.addEventListener('mouseover', handleMouseOver);
+
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseover', handleMouseOver);
     };
   }, []);
-  return <>
+
+  return (
+    <>
       <div ref={dotRef} className="fixed top-0 left-0 w-2.5 h-2.5 bg-black rounded-full pointer-events-none z-[9999] -ml-[5px] -mt-[5px]" />
-      
-      <div ref={ringRef} className={`fixed top-0 left-0 rounded-full border-[1.5px] border-black bg-white/30 pointer-events-none z-[9998] transition-all duration-300 ease-out ${hovering ? 'w-[60px] h-[60px] -ml-[30px] -mt-[30px] bg-black/8 border-transparent' : 'w-[44px] h-[44px] -ml-[22px] -mt-[22px]'}`} />
-      
-    </>;
+      <div ref={ringRef} className={`fixed top-0 left-0 rounded-full border-[1.5px] border-black bg-white/30 pointer-events-none z-[9998] transition-all duration-300 ease-out ${hovering ? 'w-[60px] h-[60px] -ml-[30px] -mt-[30px] bg-black/80 border-transparent' : 'w-[44px] h-[44px] -ml-[22px] -mt-[22px]'}`} />
+    </>
+  );
 };
-const MagneticElement = ({
-  children,
-  className
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({
-    x: 0,
-    y: 0
-  });
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+
+const MagneticElement = ({ children, className }) => {
+  const ref = useRef(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
     if (!ref.current) return;
-    const {
-      clientX,
-      clientY
-    } = e;
-    const {
-      left,
-      top,
-      width,
-      height
-    } = ref.current.getBoundingClientRect();
+    const { clientX, clientY } = e;
+    const { left, top, width, height } = ref.current.getBoundingClientRect();
     const centerX = left + width / 2;
     const centerY = top + height / 2;
     const distanceX = clientX - centerX;
     const distanceY = clientY - centerY;
 
-    // Check if within magnetic range
     if (Math.abs(distanceX) < 80 && Math.abs(distanceY) < 80) {
-      setPosition({
-        x: distanceX * 0.3,
-        y: distanceY * 0.3
-      });
+      setPosition({ x: distanceX * 0.3, y: distanceY * 0.3 });
     } else {
-      setPosition({
-        x: 0,
-        y: 0
-      });
+      setPosition({ x: 0, y: 0 });
     }
   };
+
   const handleMouseLeave = () => {
-    setPosition({
-      x: 0,
-      y: 0
-    });
+    setPosition({ x: 0, y: 0 });
   };
-  return <div ref={ref} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={className} style={{
-    transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
-    transition: position.x === 0 && position.y === 0 ? 'transform 0.4s ease' : 'none'
-  }}>
-      
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={className}
+      style={{
+        transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
+        transition: position.x === 0 && position.y === 0 ? 'transform 0.4s ease' : 'none'
+      }}
+    >
       {children}
-    </div>;
+    </div>
+  );
 };
+
 const useIntersectionObserver = () => {
-  const [elements, setElements] = useState<Element[]>([]);
+  const [elements, setElements] = useState([]);
+
   useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100', 'translate-y-0');
-          entry.target.classList.remove('opacity-0', 'translate-y-12');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-    elements.forEach(el => observer.observe(el));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            entry.target.classList.remove('opacity-0', 'translate-y-12');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
     return () => observer.disconnect();
   }, [elements]);
-  const setRef = useCallback((node: Element | null) => {
+
+  const setRef = useCallback((node) => {
     if (node) {
-      setElements(prev => {
-        if (!prev.includes(node)) return [...prev, node];
-        return prev;
-      });
+      setElements((prev) => (prev.includes(node) ? prev : [...prev, node]));
     }
   }, []);
+
   return setRef;
 };
+
 export const AgencyLandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const setAnimRef = useIntersectionObserver();
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 80);
     };
     window.addEventListener('scroll', handleScroll);
-
-    // Add custom cursor style to body
     document.body.style.cursor = 'none';
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       document.body.style.cursor = 'auto';
     };
   }, []);
-  const projects = [{
-    name: "Punto Pago",
-    desc: "The First Super-App in Latin America",
-    bg: "bg-gradient-to-br from-blue-600 to-purple-800"
-  }, {
-    name: "Kelvin Zero",
-    desc: "A digital product for passwordless authentication",
-    bg: "bg-gradient-to-br from-teal-800 to-emerald-950"
-  }, {
-    name: "Sweeping Corp",
-    desc: "Scalable design system for enterprise operations",
-    bg: "bg-gradient-to-b from-gray-800 to-gray-950"
-  }, {
-    name: "DaoWay",
-    desc: "Astrology planner app: plan, achieve, thrive",
-    bg: "bg-gradient-to-tr from-indigo-950 via-purple-900 to-slate-900"
-  }, {
-    name: "Magma",
-    desc: "The ultimate tool for building in the Web3 era",
-    bg: "bg-gradient-to-br from-blue-500 to-cyan-600"
-  }, {
-    name: "FlipaClip",
-    desc: "The best tool for stop-motion animation",
-    bg: "bg-gradient-to-b from-amber-50 to-orange-100"
-  }];
-  return <div className="font-sans text-[#0A0A0A] bg-white min-h-screen overflow-x-hidden">
+
+  const projects = [
+    { name: "Punto Pago", desc: "The First Super-App in Latin America", bg: "bg-gradient-to-br from-blue-600 to-purple-800" },
+    { name: "Kelvin Zero", desc: "A digital product for passwordless authentication", bg: "bg-gradient-to-br from-teal-800 to-emerald-950" },
+    { name: "Sweeping Corp", desc: "Scalable design system for enterprise operations", bg: "bg-gradient-to-b from-gray-800 to-gray-950" },
+    { name: "DaoWay", desc: "Astrology planner app: plan, achieve, thrive", bg: "bg-gradient-to-tr from-indigo-950 via-purple-900 to-slate-900" },
+    { name: "Magma", desc: "The ultimate tool for building in the Web3 era", bg: "bg-gradient-to-br from-blue-500 to-cyan-600" },
+    { name: "FlipaClip", desc: "The best tool for stop-motion animation", bg: "bg-gradient-to-b from-amber-50 to-orange-100" }
+  ];
+
+  return (
+    <div className="font-sans text-[#0A0A0A] bg-white min-h-screen overflow-x-hidden">
       <Cursor />
 
       {/* STICKY HEADER */}
@@ -180,10 +164,12 @@ export const AgencyLandingPage = () => {
         </div>
         
         <nav className="hidden md:flex gap-8 text-sm font-normal tracking-[0.01em]">
-          {['Services', 'Projects', 'Company', 'Blog', 'Contacts'].map(link => <a key={link} href="#" className="group relative overflow-hidden">
+          {['Services', 'Projects', 'Company', 'Blog', 'Contacts'].map(link => (
+            <a key={link} href="#" className="group relative overflow-hidden">
               {link}
               <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#ADFF2F] -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-300 ease-out" />
-            </a>)}
+            </a>
+          ))}
         </nav>
         
         <MagneticElement>
@@ -239,16 +225,20 @@ export const AgencyLandingPage = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, i) => <div key={project.name} ref={setAnimRef as any} className="project-card group cursor-none opacity-0 translate-y-12 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)]" style={{
-          transitionDelay: `${i * 100}ms`
-        }}>
-            
+          {projects.map((project, i) => (
+            <div 
+              key={project.name} 
+              ref={setAnimRef} 
+              className="project-card group cursor-none opacity-0 translate-y-12 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)]" 
+              style={{ transitionDelay: `${i * 100}ms` }}
+            >
               <div className="w-full aspect-[4/3] rounded-[20px] overflow-hidden">
                 <div className={`w-full h-full ${project.bg} transform group-hover:scale-[1.04] transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]`} />
               </div>
               <h3 className="text-xl font-bold mt-4">{project.name}</h3>
               <p className="text-sm text-[#888] mt-1">{project.desc}</p>
-            </div>)}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -260,17 +250,15 @@ export const AgencyLandingPage = () => {
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3">
-          {[{
-          title: "Brand Identity",
-          desc: "Strategic design that positions AI products for trust and clarity."
-        }, {
-          title: "AI-Enhanced UX/UI Design",
-          desc: "Interfaces that adapt, predict, and respond intelligently."
-        }, {
-          title: "Custom Development",
-          desc: "Frontend + backend + AI integrations — built for performance and scalability."
-        }].map((service, i) => <div key={service.title} className={`group p-10 hover:bg-black/[0.02] transition-colors duration-300 ${i !== 2 ? 'md:border-r border-[#E8E8E8]' : ''} ${i === 0 ? 'pl-0' : ''} ${i === 2 ? 'pr-0' : ''}`}>
-            
+          {[
+            { title: "Brand Identity", desc: "Strategic design that positions AI products for trust and clarity." },
+            { title: "AI-Enhanced UX/UI Design", desc: "Interfaces that adapt, predict, and respond intelligently." },
+            { title: "Custom Development", desc: "Frontend + backend + AI integrations — built for performance and scalability." }
+          ].map((service, i) => (
+            <div 
+              key={service.title} 
+              className={`group p-10 hover:bg-black/[0.02] transition-colors duration-300 ${i !== 2 ? 'md:border-r border-[#E8E8E8]' : ''} ${i === 0 ? 'pl-0' : ''} ${i === 2 ? 'pr-0' : ''}`}
+            >
               <div className="w-[72px] h-[72px] bg-[#F5F5F5] rounded-2xl flex items-center justify-center">
                 <div className="w-8 h-8 border-2 border-black/20 rounded" />
               </div>
@@ -279,7 +267,8 @@ export const AgencyLandingPage = () => {
                 {service.title}
               </h3>
               <p className="text-[15px] text-[#666] mt-3 leading-relaxed">{service.desc}</p>
-            </div>)}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -288,20 +277,16 @@ export const AgencyLandingPage = () => {
         <div className="text-[11px] uppercase tracking-[0.2em] text-[#999] mb-12">Blog</div>
         
         <div className="flex flex-col">
-          {[{
-          tag: "Design Course",
-          title: "How to Make UI/UX website // Frontend development",
-          date: "Oct 23, 2024"
-        }, {
-          tag: "Design Course",
-          title: "How to Cook an Emotional Site // Web Development",
-          date: "Oct 21, 2024"
-        }, {
-          tag: "Dev Source",
-          title: "Cuberto Mouse Follower",
-          date: "Apr 11, 2022"
-        }].map((post, i) => <a key={i} href="#" className="group flex flex-col md:flex-row md:items-center py-8 border-t border-[#E8E8E8] hover:bg-black/[0.02] transition-colors duration-300 -mx-10 px-10 md:mx-0 md:px-4">
-            
+          {[
+            { tag: "Design Course", title: "How to Make UI/UX website // Frontend development", date: "Oct 23, 2024" },
+            { tag: "Design Course", title: "How to Cook an Emotional Site // Web Development", date: "Oct 21, 2024" },
+            { tag: "Dev Source", title: "Cuberto Mouse Follower", date: "Apr 11, 2022" }
+          ].map((post, i) => (
+            <a 
+              key={i} 
+              href="#" 
+              className="group flex flex-col md:flex-row md:items-center py-8 border-t border-[#E8E8E8] hover:bg-black/[0.02] transition-colors duration-300 -mx-10 px-10 md:mx-0 md:px-4"
+            >
               <div className="w-32 mb-4 md:mb-0">
                 <span className="text-[11px] border border-[#ddd] rounded-full px-2.5 py-1 text-[#666]">
                   {post.tag}
@@ -312,7 +297,8 @@ export const AgencyLandingPage = () => {
                 <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">→</span>
               </h3>
               <div className="text-[13px] text-[#999] mt-4 md:mt-0">{post.date}</div>
-            </a>)}
+            </a>
+          ))}
           <div className="border-t border-[#E8E8E8]" />
         </div>
         
@@ -366,9 +352,11 @@ export const AgencyLandingPage = () => {
         </div>
         
         <div className="mt-20 flex justify-center gap-6">
-          {['Instagram', 'YouTube', 'GitHub', 'Facebook', 'Dribbble', 'Behance'].map(social => <a key={social} href="#" className="w-5 h-5 text-white hover:text-[#ADFF2F] transition-colors" aria-label={social}>
+          {['Instagram', 'YouTube', 'GitHub', 'Facebook', 'Dribbble', 'Behance'].map(social => (
+            <a key={social} href="#" className="w-5 h-5 text-white hover:text-[#ADFF2F] transition-colors" aria-label={social}>
               <div className="w-full h-full border border-current rounded-full" />
-            </a>)}
+            </a>
+          ))}
         </div>
         
         <div className="mt-20 flex justify-between items-center text-[12px] text-[#444] border-t border-[#222] pt-8">
@@ -379,24 +367,25 @@ export const AgencyLandingPage = () => {
       </section>
 
       <style dangerouslySetInnerHTML={{
-      __html: `
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        body {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        body::-webkit-scrollbar {
-          display: none;
-        }
-      `
-    }} />
-    </div>;
+        __html: `
+          @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+          body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+          body::-webkit-scrollbar {
+            display: none;
+          }
+        `
+      }} />
+    </div>
+  );
 };
