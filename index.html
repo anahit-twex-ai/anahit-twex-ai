@@ -1,501 +1,382 @@
-import React from 'react';
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-secondary": "#313030",
+                        "surface-tint": "#c6c6c7",
+                        "surface-container-highest": "#353535",
+                        "on-surface-variant": "#c4c7c8",
+                        "on-primary-container": "#636565",
+                        "surface-container": "#1f1f1f",
+                        "primary-container": "#e2e2e2",
+                        "surface": "#131313",
+                        "outline": "#8e9192",
+                        "surface-container-high": "#2a2a2a",
+                        "on-secondary-fixed-variant": "#474746",
+                        "on-tertiary-container": "#636565",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "inverse-on-surface": "#303030",
+                        "on-error-container": "#ffdad6",
+                        "background": "#000000",
+                        "surface-bright": "#393939",
+                        "primary": "#ffffff",
+                        "error": "#ffb4ab",
+                        "text-muted": "#A3A3A3",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "surface-variant": "#353535",
+                        "secondary": "#c8c6c5",
+                        "on-surface": "#e2e2e2",
+                        "tertiary": "#ffffff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-background": "#e2e2e2",
+                        "border-subtle": "#262626",
+                        "secondary-container": "#474746",
+                        "error-container": "#93000a",
+                        "on-primary": "#2f3131",
+                        "inverse-surface": "#e2e2e2",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-secondary-container": "#b7b5b4",
+                        "outline-variant": "#444748",
+                        "text-dim": "#666666",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#1a1c1c",
+                        "surface-dim": "#131313",
+                        "primary-fixed": "#e2e2e2",
+                        "inverse-primary": "#5d5f5f",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "status-green": "#00FF41",
+                        "tertiary-container": "#e2e2e2",
+                        "on-tertiary": "#2f3131",
+                        "surface-container-low": "#1b1b1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-margin": "4vw",
+                        "section-gap": "160px",
+                        "element-gap": "24px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-mono": ["JetBrains Mono"],
+                        "meta-index": ["Hanken Grotesk"],
+                        "body-main": ["Hanken Grotesk"],
+                        "section-title": ["Hanken Grotesk"],
+                        "display-hero": ["Anton"],
+                        "headline-lg-mobile": ["Anton"],
+                        "body-large": ["Hanken Grotesk"],
+                        "headline-lg": ["Anton"]
+                    },
+                    "fontSize": {
+                        "label-mono": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "meta-index": ["14px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "body-main": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "section-title": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-hero": ["180px", {"lineHeight": "0.9", "letterSpacing": "-0.04em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["64px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                        "body-large": ["24px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                        "headline-lg": ["120px", {"lineHeight": "1.0", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    }catch(_e){}</script></head><body class="font-body-main selection:bg-primary selection:text-background">
+<!-- Background Shader -->
+<canvas id="shader-canvas" class=""></canvas>
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-background/60 backdrop-blur-md border-b-thin flex justify-between items-center px-grid-margin py-6">
+<div class="font-headline-lg-mobile text-[24px] tracking-tighter text-primary">RUSSELL NUMO</div>
+<div class="flex gap-8">
+<a class="font-label-mono text-label-mono uppercase text-text-muted hover:text-primary transition-colors duration-300" href="#about">01 ABOUT</a>
+<a class="font-label-mono text-label-mono uppercase text-text-muted hover:text-primary transition-colors duration-300" href="#projects">02 PROJECTS</a>
+<a class="font-label-mono text-label-mono uppercase text-text-muted hover:text-primary transition-colors duration-300" href="#contact">03 CONTACT</a>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="h-screen flex flex-col justify-center overflow-hidden relative">
+<div class="marquee select-none opacity-20 pointer-events-none">
+<div class="marquee-content flex gap-8">
+<span class="font-display-hero text-[12vw] md:text-[18vw] leading-none uppercase">FRONTEND DEVELOPER UX/UI DESIGNER CREATIVE</span>
+<span class="font-display-hero text-[12vw] md:text-[18vw] leading-none uppercase">FRONTEND DEVELOPER UX/UI DESIGNER CREATIVE</span>
+</div>
+</div>
+<div class="marquee select-none pointer-events-none -mt-4 md:-mt-10">
+<div class="marquee-content flex gap-8" style="animation-direction: reverse;">
+<span class="font-display-hero text-[12vw] md:text-[18vw] leading-none uppercase">FRONTEND DEVELOPER UX/UI DESIGNER CREATIVE</span>
+<span class="font-display-hero text-[12vw] md:text-[18vw] leading-none uppercase">FRONTEND DEVELOPER UX/UI DESIGNER CREATIVE</span>
+</div>
+</div>
+<!-- Portrait Image Overlay -->
+<div class="absolute top-1/2 left-1/2 portrait-float z-10 w-[240px] h-[320px] md:w-[350px] md:h-[480px] overflow-hidden border-thin shadow-2xl">
+<img alt="Russell Numo Portrait" class="w-full h-full object-cover grayscale brightness-90 contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeVs7rCvsWw0_xr9F4yQpwgGQKeDFr1ZBXHpRX_BpUW-IO_zUOOPml0Wmu0SWOmSNgX01KhB4AcWpMw2swMNNlYBM26LAqNGSRvfImrqOVBCRh9ZT9ATGT4i7NLlvGsie1v0Y5cmeQNq95cBm7b-xlpp-2xTe_CPXzoqKdPZw4trBaz4vxiigh32Ix42b0iYD1NnCvg2Kj8aht2yjLZpKqB2hM4O9QGUKD9_J4E8IWY4ZKBn9a2b3OmRrbLqT6xbLvfJzFuKLikED0">
+</div>
+<div class="absolute bottom-12 left-grid-margin right-grid-margin flex justify-between font-label-mono text-label-mono uppercase text-text-muted">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-green animate-pulse"></span>
+                OPEN TO WORK
+            </div>
+<div class="">BASED IN AMSTERDAM — 2024</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-section-gap px-grid-margin" id="about">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
+<div class="md:col-span-4 reveal">
+<span class="font-label-mono text-label-mono text-text-muted">(01)</span>
+<h2 class="font-section-title text-section-title uppercase mt-4">About</h2>
+</div>
+<div class="md:col-span-8 space-y-12 reveal">
+<p class="font-body-large text-body-large leading-relaxed max-w-3xl">
+                    I design and develop digital experiences with a focus on craft, motion, and interaction — creating interfaces where every detail is intentional.
+                </p>
+<p class="font-body-main text-body-main text-text-muted max-w-2xl">
+                    Based in Amsterdam, I work at the intersection of creativity and technology. From concept to code, I bring ideas to life with meticulous attention to detail.
+                </p>
+</div>
+</div>
+</section>
+<!-- Featured Work Section -->
+<section class="pb-section-gap px-grid-margin" id="projects">
+<div class="flex justify-between items-end mb-20 reveal">
+<div>
+<span class="font-label-mono text-label-mono text-text-muted">(02)</span>
+<h2 class="font-section-title text-section-title uppercase mt-4">Featured Work</h2>
+</div>
+<div class="font-label-mono text-label-mono text-text-muted uppercase">[Scroll to explore more]</div>
+</div>
+<div class="space-y-[200px]">
+<!-- Project 01 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center group reveal">
+<div class="md:col-span-7 overflow-hidden border-thin">
+<div class="aspect-[16/9] relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" data-alt="A clean, minimalist high-tech laptop sitting on a sterile white surface with sharp geometric shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMsR3UkAUrC1KPZ8U8quaGfLbHpn6KNNKxQIhKJSiyNkA1SiWnmt45D90mxClF71dqAmcQDAl7EKdNcu4Hyd2Kcm8F-mb1Kl7OtpjYGW_wLPhl_qOXv4tURBNyIaCokQzQq6kTEAWqWdZxRztDttpuE5nL4nMG1sA0a8MSskDns4wZRqsQJRpMj9Wy4rQVY1Hy3M1t5eCHpIWS6ETIcPWt4FlKKDqrOufMI6g6JcYOGOYmI_B44huY_he8azOJnraELpksioB6X6sV">
+</div>
+</div>
+<div class="md:col-span-4 md:col-start-9 mt-8 md:mt-0">
+<span class="font-label-mono text-label-mono text-text-muted uppercase">01 / Researcher &amp; Development / 2026</span>
+<h3 class="font-section-title text-[40px] uppercase mt-4 mb-6">Stadsarchief Amsterdam</h3>
+<p class="font-body-main text-text-muted mb-8">A look at how archival content can be experienced through interaction and storytelling, reimagining the Stadsarchief Amsterdam as a living, engaging digital space.</p>
+<a class="inline-flex items-center gap-4 font-label-mono text-label-mono uppercase group/link" href="#">
+                        View Project 
+                        <span class="material-symbols-outlined transition-transform duration-300 group-hover/link:translate-x-2">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Project 02 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center group reveal">
+<div class="md:col-span-4 mt-8 md:mt-0 order-2 md:order-1">
+<span class="font-label-mono text-label-mono text-text-muted uppercase">02 / Design &amp; Development / 2024</span>
+<h3 class="font-section-title text-[40px] uppercase mt-4 mb-6">DEPT® Campus</h3>
+<p class="font-body-main text-text-muted mb-8">Worked on the Dept Campus website from concept to launch, building a streamlined and engaging experience that helps young professionals discover and navigate opportunities.</p>
+<a class="inline-flex items-center gap-4 font-label-mono text-label-mono uppercase group/link" href="#">
+                        View Project 
+                        <span class="material-symbols-outlined transition-transform duration-300 group-hover/link:translate-x-2">arrow_forward</span>
+</a>
+</div>
+<div class="md:col-span-7 md:col-start-6 overflow-hidden border-thin order-1 md:order-2">
+<div class="aspect-[16/9] relative overflow-hidden bg-black">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" data-alt="A vibrant orange-themed branding display for a digital agency named DEPT." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArWuNIwdIZVr7QBkt10zuZl5mJtleIe0VUGCms22-GUi_sn-tEgent7-JvDxkIVROcZ-AQl9vPCSFJM6tge5p04lGPqu8esRBVUXI6J2OVT10KG37KN_JUfTlLb7JCdMsbYQkHD1muiNqv4HAMsJBfRFihl6Tu1o5ZVaBseh7VQKEeIniJVbuqPkz_kibmF85VYQ-gb2DzYpwuRGhHsNxnVSOFahy00Gh5yTOj6t8o-aHMIHLNqXvf1Z8tc8B_UVUnWr-qX2zIIn9q">
+</div>
+</div>
+</div>
+</div>
+<div class="mt-section-gap max-w-4xl mx-auto text-center reveal">
+<p class="font-body-large text-body-large italic leading-relaxed text-text-muted">
+                "The web is loud, and most brands just blend into it. I work across design, development, and branding all at once, building digital experiences that feel as sharp as they look. If your brand deserves to be seen, let's make sure people can't look away."
+            </p>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-section-gap px-grid-margin border-t-thin relative">
+<div class="mb-16 reveal">
+<span class="font-label-mono text-label-mono text-text-muted">(Services)</span>
+</div>
+<div class="space-y-0 relative">
+<!-- Service Items -->
+<div class="service-item border-b-thin py-12 flex flex-col md:flex-row justify-between items-start md:items-center group transition-colors hover:bg-white/5 cursor-crosshair reveal">
+<div class="flex items-center gap-8">
+<h3 class="font-display-hero text-[64px] md:text-[96px] leading-none uppercase group-hover:translate-x-4 transition-transform duration-500">Art Direction</h3>
+<span class="hidden md:block material-symbols-outlined text-4xl opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
+</div>
+<p class="font-label-mono text-label-mono text-text-muted mt-4 md:mt-0 uppercase tracking-widest text-right max-w-xs">Visual strategy · Creative concept · Art supervision</p>
+</div>
+<div class="service-item border-b-thin py-12 flex flex-col md:flex-row justify-between items-start md:items-center group transition-colors hover:bg-white/5 cursor-crosshair reveal">
+<div class="flex items-center gap-8">
+<h3 class="font-display-hero text-[64px] md:text-[96px] leading-none uppercase group-hover:translate-x-4 transition-transform duration-500">Branding</h3>
+<span class="hidden md:block material-symbols-outlined text-4xl opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
+</div>
+<p class="font-label-mono text-label-mono text-text-muted mt-4 md:mt-0 uppercase tracking-widest text-right max-w-xs">Brand identity · Logo design · Visual language</p>
+</div>
+<div class="service-item border-b-thin py-12 flex flex-col md:flex-row justify-between items-start md:items-center group transition-colors hover:bg-white/5 cursor-crosshair reveal">
+<div class="flex items-center gap-8">
+<h3 class="font-display-hero text-[64px] md:text-[96px] leading-none uppercase group-hover:translate-x-4 transition-transform duration-500">Digital Design</h3>
+<span class="hidden md:block material-symbols-outlined text-4xl opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
+</div>
+<p class="font-label-mono text-label-mono text-text-muted mt-4 md:mt-0 uppercase tracking-widest text-right max-w-xs">UI/UX design · Prototyping · Design systems</p>
+</div>
+<div class="service-item border-b-thin py-12 flex flex-col md:flex-row justify-between items-start md:items-center group transition-colors hover:bg-white/5 cursor-crosshair reveal">
+<div class="flex items-center gap-8">
+<h3 class="font-display-hero text-[64px] md:text-[96px] leading-none uppercase group-hover:translate-x-4 transition-transform duration-500">Development</h3>
+<span class="hidden md:block material-symbols-outlined text-4xl opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
+</div>
+<p class="font-label-mono text-label-mono text-text-muted mt-4 md:mt-0 uppercase tracking-widest text-right max-w-xs">React / Next.js · Motion &amp; interactions · Frontend</p>
+</div>
+</div>
+<!-- Floating Image Container -->
+<div class="cursor-image border-thin bg-black overflow-hidden" id="service-preview">
+<img class="w-full h-full object-cover grayscale" data-alt="A series of abstract, minimalist architectural details in black and white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARzc0pIafHwXmH7V1Jmdz4QL7h4BkbsFMoN3FlhvHbxTXZWlDYlmbmVBpf5hJzfI9bNDtTQJZ09J0yT_8OKTUzKyuDwxq-OgLIoQkAu_eW-nI_5F-XmH-UETuIzNbss4q5nItkwsGIJbI_WT1Wh7m2SMguFxf6S1ISlpy9GPtOy3JoR6eJICgC2J2be0seS3KObidH7UbnPImD1MLyiDAWZUZlPASqKS4zqMF_prfqNQm1j8CnCn3Qj_1NQ34HehWGTv76OzsNPtL2">
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-section-gap px-grid-margin bg-black/40 backdrop-blur-sm" id="contact">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-end">
+<div class="md:col-span-12 reveal">
+<span class="font-label-mono text-label-mono text-text-muted uppercase block mb-8">For enquiries, collaboration requests or job opportunities, don’t hesitate to reach out!</span>
+<h2 class="font-display-hero text-[80px] md:text-[200px] leading-[0.8] uppercase mb-12">Get in touch</h2>
+</div>
+<div class="md:col-span-6 reveal">
+<a class="font-headline-lg-mobile md:text-section-title uppercase hover:italic transition-all duration-300" href="mailto:hello@russellnumo.nl">hello@russellnumo.nl</a>
+</div>
+<div class="md:col-span-6 text-right reveal">
+<a class="font-headline-lg-mobile md:text-section-title text-text-muted uppercase hover:text-primary transition-all duration-300" href="tel:+31636096943">+31 6 36 09 69 43</a>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-20 px-grid-margin border-t-thin grid grid-cols-1 md:grid-cols-12 gap-gutter items-end">
+<div class="md:col-span-4">
+<div class="font-label-mono text-label-mono uppercase text-text-muted">©2024 NUMO</div>
+</div>
+<div class="md:col-span-4 flex justify-center gap-12">
+<a class="font-label-mono text-label-mono uppercase text-text-muted hover:text-primary hover:translate-x-1 transition-transform duration-300" href="#">GITHUB</a>
+<a class="font-label-mono text-label-mono uppercase text-text-muted hover:text-primary hover:translate-x-1 transition-transform duration-300" href="#">LINKEDIN</a>
+<a class="font-label-mono text-label-mono uppercase text-text-muted hover:text-primary hover:translate-x-1 transition-transform duration-300" href="#">INSTAGRAM</a>
+</div>
+<div class="md:col-span-4 text-right">
+<div class="font-label-mono text-label-mono uppercase text-text-muted">DESIGNED &amp; DEVELOPED BY NUMORO</div>
+</div>
+</footer>
+<!-- Scripts -->
+<script>
+        // Shader logic
+        const canvas = document.getElementById('shader-canvas');
+        const gl = canvas.getContext('webgl');
 
-interface BaseComponentProps {
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+        if (gl) {
+            const vertexShaderSource = `
+                attribute vec2 position;
+                varying vec2 v_texCoord;
+                void main() {
+                    v_texCoord = position * 0.5 + 0.5;
+                    gl_Position = vec4(position, 0.0, 1.0);
+                }
+            `;
 
-interface BrandingPortfolioProps extends BaseComponentProps {}
+            const fragmentShaderSource = `
+                precision highp float;
+                uniform float u_time;
+                uniform vec2 u_resolution;
+                uniform vec2 u_mouse;
+                varying vec2 v_texCoord;
 
-interface H1Props {
-  color?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+                void main() {
+                    vec2 uv = v_texCoord;
+                    vec2 mouse = u_mouse / u_resolution;
+                    
+                    // Smooth grain/noise background
+                    float noise = fract(sin(dot(uv + u_time * 0.01, vec2(12.9898, 78.233))) * 43758.5453);
+                    
+                    // Subtle gradient shift
+                    vec3 color1 = vec3(0.005, 0.005, 0.005);
+                    vec3 color2 = vec3(0.02, 0.02, 0.02);
+                    vec3 finalColor = mix(color1, color2, uv.y + sin(u_time * 0.5) * 0.1);
+                    
+                    // Interaction glow
+                    float dist = distance(uv, vec2(mouse.x, 1.0 - mouse.y));
+                    float glow = smoothstep(0.4, 0.0, dist) * 0.03;
+                    
+                    gl_FragColor = vec4(finalColor + glow + noise * 0.015, 1.0);
+                }
+            `;
 
-/**
- * H1
- * Reusable component extracted from 3 similar instances
- */
-function H1(props: H1Props) {
-  return (
-    <h1 className={`h1 ${props.className || ''}`.trim()} style={{
-      width: '4px',
-      height: '28px',
-      color: props.color || 'rgba(0, 0, 0, 1)',
-      boxSizing: 'content-box',
-      fontSize: '20px',
-      fontFamily: '"Inter", sans-serif',
-      fontWeight: 400,
-      lineHeight: '28px',
-      letterSpacing: '-0.2px',
-      textAlign: 'center',
-      position: 'relative',
-      ...props.style
-    }}>{props.children || '/'}</h1>
-  );
-}
+            function createShader(gl, type, source) {
+                const shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                return shader;
+            }
 
-interface H11Props {
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+            const program = gl.createProgram();
+            gl.attachShader(program, createShader(gl, gl.VERTEX_SHADER, vertexShaderSource));
+            gl.attachShader(program, createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource));
+            gl.linkProgram(program);
+            gl.useProgram(program);
 
-/**
- * H11
- * Reusable component extracted from 2 similar instances
- */
-function H11(props: H11Props) {
-  return (
-    <h1 className={`h1 ${props.className || ''}`.trim()} style={{
-      width: '170px',
-      height: '28px',
-      color: 'rgba(0, 0, 0, 1)',
-      boxSizing: 'content-box',
-      fontSize: '20px',
-      fontFamily: '"Inter", sans-serif',
-      fontWeight: 400,
-      lineHeight: '28px',
-      letterSpacing: '-0.2px',
-      textAlign: 'left',
-      position: 'relative',
-      ...props.style
-    }}>{props.children || '+374 94 66 94 14'}</h1>
-  );
-}
+            const positionBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
 
-interface H12Props {
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+            const positionLocation = gl.getAttribLocation(program, 'position');
+            gl.enableVertexAttribArray(positionLocation);
+            gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
 
-/**
- * H12
- * Reusable component extracted from 2 similar instances
- */
-function H12(props: H12Props) {
-  return (
-    <h1 className={`h1 ${props.className || ''}`.trim()} style={{
-      width: '591px',
-      height: '44px',
-      color: 'rgba(0, 0, 0, 1)',
-      boxSizing: 'content-box',
-      fontSize: '32px',
-      fontFamily: '"Inter", sans-serif',
-      fontWeight: 400,
-      lineHeight: '38.4px',
-      letterSpacing: '-0.64px',
-      textAlign: 'left',
-      position: 'relative',
-      ...props.style
-    }}>{props.children || 'Branding \u0026 Visual identity'}</h1>
-  );
-}
+            const timeLoc = gl.getUniformLocation(program, 'u_time');
+            const resLoc = gl.getUniformLocation(program, 'u_resolution');
+            const mouseLoc = gl.getUniformLocation(program, 'u_mouse');
 
-interface H13Props {
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+            let mouseX = 0, mouseY = 0;
+            window.addEventListener('mousemove', e => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
 
-/**
- * H13
- * Reusable component extracted from 2 similar instances
- */
-function H13(props: H13Props) {
-  return (
-    <h1 className={`h1 ${props.className || ''}`.trim()} style={{
-      width: '540px',
-      height: '76px',
-      color: 'rgba(0, 0, 0, 1)',
-      boxSizing: 'content-box',
-      fontSize: '64px',
-      fontFamily: '"Inter", sans-serif',
-      fontWeight: 700,
-      lineHeight: '76.8px',
-      letterSpacing: '-1.28px',
-      textAlign: 'left',
-      position: 'relative',
-      ...props.style
-    }}>{props.children || 'Cloudrix'}</h1>
-  );
-}
+            function render(time) {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                gl.viewport(0, 0, canvas.width, canvas.height);
 
-interface H14Props {
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+                gl.uniform1f(timeLoc, time * 0.001);
+                gl.uniform2f(resLoc, canvas.width, canvas.height);
+                gl.uniform2f(mouseLoc, mouseX, mouseY);
 
-/**
- * H14
- * Reusable component extracted from 4 similar instances
- */
-function H14(props: H14Props) {
-  return (
-    <h1 className={`h1 ${props.className || ''}`.trim()} style={{
-      width: '620px',
-      height: '50px',
-      color: 'rgba(0, 0, 0, 1)',
-      boxSizing: 'content-box',
-      fontSize: '36px',
-      fontFamily: '"Inter", sans-serif',
-      fontWeight: 400,
-      lineHeight: '43.2px',
-      letterSpacing: '-0.72px',
-      textAlign: 'left',
-      position: 'relative',
-      ...props.style
-    }}>{props.children || 'Web Design'}</h1>
-  );
-}
+                gl.drawArrays(gl.TRIANGLES, 0, 6);
+                requestAnimationFrame(render);
+            }
+            requestAnimationFrame(render);
+        }
 
-interface Rectangle2159Props {
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+        // Reveal on Scroll Script
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-/**
- * Rectangle2159
- * Reusable component extracted from 5 similar instances
- */
-function Rectangle2159(props: Rectangle2159Props) {
-  return <div className={`rectangle-2159 ${props.className || ''}`.trim()} style={{
-    width: '720px',
-    height: '440px',
-    backgroundColor: 'rgba(0, 0, 0, 1)',
-    boxSizing: 'border-box',
-    borderRadius: '36px',
-    position: 'relative',
-    ...props.style,
-    display: "none"
-  }} />;
-}
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
 
-interface H15Props {
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-/**
- * H15
- * Reusable component extracted from 3 similar instances
- */
-function H15(props: H15Props) {
-  return (
-    <h1 className={`h1 ${props.className || ''}`.trim()} style={{
-      width: '620px',
-      height: '50px',
-      color: 'rgba(0, 0, 0, 1)',
-      boxSizing: 'content-box',
-      fontSize: '36px',
-      fontFamily: '"Inter", sans-serif',
-      fontWeight: 400,
-      lineHeight: '43.2px',
-      letterSpacing: '-0.72px',
-      textAlign: 'left',
-      position: 'relative',
-      ...props.style
-    }}>{props.children || 'Mobile App Design'}</h1>
-  );
-}
-
-interface Rectangle2160Props {
-  backgroundColor?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-}
-
-/**
- * Rectangle2160
- * Reusable component extracted from 2 similar instances
- */
-function Rectangle2160(props: Rectangle2160Props) {
-  return <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/assets/5bc71844-dbb6-47b8-af8f-48329b9d22a9.png" alt="Rectangle 2160" className={`rectangle-2160 ${props.className || ''}`.trim()} style={{
-    height: '428px',
-    boxSizing: 'border-box',
-    borderRadius: '32px',
-    position: 'relative',
-    ...props.style,
-    translate: "",
-    objectFit: "cover",
-    objectPosition: "50% 50%",
-    opacity: "1",
-    width: "710px",
-    maxWidth: "710px",
-    display: "none"
-  }} />;
-}
-
-/**
- * Version8
- * Generated from Figma: version 8 (FRAME)
- */
-function BrandingPortfolio(props: BrandingPortfolioProps) {
-  return (
-    <div className={`version-8 ${props.className || ''}`.trim()} style={{
-      width: '1440px',
-      height: '18539px',
-      backgroundColor: 'rgba(255, 255, 255, 1)',
-      boxSizing: 'border-box',
-      overflow: 'hidden',
-      position: 'relative',
-      ...props.style
-    }}>
-      <div className="rectangle-2154" style={{ width: '1440px', height: '8531px', backgroundColor: 'rgba(0, 0, 0, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '7832px' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/assets/c455e36f-800f-483e-8717-f1cd9ed88220.png" alt="photo 2023-12-09 22-18-12 copy 1" className="photo-2023-12-09-22-18-12-copy-1" style={{ height: '800px', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '0px', width: "600px", maxWidth: "600px", objectFit: "cover", objectPosition: "50% 50%", opacity: "1" }} />
-      <h1 className="h1" style={{ width: '1343px', height: '396px', color: 'rgba(15, 15, 15, 1)', boxSizing: 'content-box', fontSize: '330px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '396px', letterSpacing: '-6.6000000000000005px', textAlign: 'left', position: 'absolute', left: '48px', top: '482px' }}>{'Portfolio'}</h1>
-      <h1 className="h1" style={{ width: '259px', height: '34px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '24px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '33.6px', letterSpacing: '-0.24px', textAlign: 'left', position: 'absolute', left: '78px', top: '90px' }}>{'Creative Presentation'}</h1>
-      
-      <div className="group-1" style={{ width: '356px', height: '28px', boxSizing: 'border-box', position: 'absolute', left: '255px', top: '571px', translate: "-15px 0px" }}>
-        <h1 className="h1" style={{ width: '162px', height: '28px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '28px', letterSpacing: '-0.2px', textAlign: 'left', position: 'absolute', left: '0px', top: '0px' }}>{'UI/UX Designer '}</h1>
-        <h1 className="h1" style={{ width: '162px', height: '28px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '28px', letterSpacing: '-0.2px', textAlign: 'left', position: 'absolute', left: '194px', top: '0px' }}>{'Graphic Designer'}</h1>
-        <H1 color="rgba(0, 0, 0, 1)" style={{ position: 'absolute', left: '176px', top: '0px' }} />
-      </div>
-
-      <h1 className="h1" style={{ width: '302px', height: '28px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '28px', letterSpacing: '-0.2px', textAlign: 'left', position: 'absolute', left: '78px', top: '132px' }}>{'Presented by: Anahit Petrosyan'}</h1>
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/18dfee80-888a-4794-81f1-38e857cda65f.png" alt="futerals-29-Photoroom 1" className="futerals-29-photoroom-1" style={{ width: '256px', height: '256px', boxSizing: 'border-box', position: 'absolute', left: '811px', top: '354px', objectFit: 'cover', objectPosition: 'center' }} />
-      
-      <div className="group-21" style={{ width: '620px', height: '338px', boxSizing: 'border-box', position: 'absolute', left: '608px', top: '1038px' }}>
-        <h1 className="h1" style={{ width: '620px', height: '116px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '96px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '115.2px', letterSpacing: '-1.92px', textAlign: 'left', position: 'absolute', left: '0px', top: '0px' }}>{'Hello!'}</h1>
-        <h1 className="h1" style={{ width: '620px', height: '80px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '64px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '76.8px', letterSpacing: '-1.28px', textAlign: 'left', position: 'absolute', left: '0px', top: '124px' }}>{'I’m Pterosyan Anahit'}</h1>
-        <div className="headline" style={{ width: '620px', height: '110px', display: 'flex', flexDirection: 'column', gap: '8px', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '228px' }}>
-          <span style={{ width: '620px', height: '110px', color: 'rgba(136, 136, 136, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '20px', letterSpacing: '0px', textAlign: 'left' }}>{'focus on creating clean, functional, and visually engaging design solutions. My work is driven by user experience, attention to detail, and a strong understanding of modern design principles. I aim to deliver designs that are not only aesthetically pleasing but also effective and purposeful.'}</span>
-        </div>
-      </div>
-
-      <div className="group-20" style={{ width: '525px', height: '28px', boxSizing: 'border-box', position: 'absolute', left: '88px', top: '840px' }}>
-        <H11 style={{ position: 'absolute', left: '0px', top: '0px' }} />
-        <h1 className="h1" style={{ width: '303px', height: '28px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '28px', letterSpacing: '-0.2px', textAlign: 'left', position: 'absolute', left: '222px', top: '0px' }}>{'anahit-petrosyan-2022@mail.ru'}</h1>
-        <H1 color="rgba(0, 0, 0, 1)" style={{ position: 'absolute', left: '194px', top: '0px' }} />
-      </div>
-
-      <div className="rectangle-2091" style={{ width: '399px', height: '1px', backgroundColor: 'rgba(145, 145, 145, 1)', boxSizing: 'border-box', position: 'absolute', left: '78px', top: '176px' }} />
-      <div className="rectangle-2092" style={{ width: '1px', height: '399px', backgroundColor: 'rgba(145, 145, 145, 1)', boxSizing: 'border-box', position: 'absolute', left: '567px', top: '1007px' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/3c0adddc-ead0-4e4b-9d2a-da988398115e.jpg" alt="future abstract-02hhfgc-01 1" className="future-abstract-02hhfgc-01-1" style={{ width: '1446px', height: '2867px', boxSizing: 'border-box', position: 'absolute', left: '-4384px', top: '1446px', objectFit: 'cover', objectPosition: 'center' }} />
-      
-      <H12 style={{ position: 'absolute', left: '100px', top: '2851px' }} />
-      <H12 style={{ position: 'absolute', left: '104px', top: '4038px' }} />
-      <h1 className="h1" style={{ width: '591px', height: '44px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '32px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '38.4px', letterSpacing: '-0.64px', textAlign: 'left', position: 'absolute', left: '110px', top: '6242px' }}>{'Awareness Posters'}</h1>
-      <h1 className="h1" style={{ width: '591px', height: '44px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '32px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '38.4px', letterSpacing: '-0.64px', textAlign: 'left', position: 'absolute', left: '100px', top: '7722px' }}>{'Web \u0026 Mobile App Design'}</h1>
-
-      <div className="rectangle-2097" style={{ width: '720px', height: '1px', backgroundColor: 'rgba(0, 0, 0, 0.5)', boxSizing: 'border-box', position: 'absolute', left: '-10px', top: '2915px' }} />
-      <div className="rectangle-2171" style={{ width: '720px', height: '1px', backgroundColor: 'rgba(0, 0, 0, 0.5)', boxSizing: 'border-box', position: 'absolute', left: '-6px', top: '4102px' }} />
-      <div className="rectangle-2176" style={{ width: '720px', height: '1px', backgroundColor: 'rgba(0, 0, 0, 0.5)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '6306px' }} />
-      <div className="rectangle-2152" style={{ width: '720px', height: '1px', backgroundColor: 'rgba(0, 0, 0, 0.5)', boxSizing: 'border-box', position: 'absolute', left: '-10px', top: '7786px' }} />
-
-      <h1 className="h1" style={{ width: '1438px', height: '396px', color: 'rgba(15, 15, 15, 1)', boxSizing: 'content-box', fontSize: '330px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '396px', letterSpacing: '-6.6000000000000005px', textAlign: 'left', position: 'absolute', left: '1px', top: '2410px' }}>{'Brending'}</h1>
-      <h1 className="h1" style={{ width: '1438px', height: '396px', color: 'rgba(15, 15, 15, 1)', boxSizing: 'content-box', fontSize: '330px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '396px', letterSpacing: '-6.6000000000000005px', textAlign: 'left', position: 'absolute', left: '5px', top: '3597px' }}>{'Posters'}</h1>
-      <h1 className="h1" style={{ width: '1447px', height: '276px', color: 'rgba(15, 15, 15, 1)', boxSizing: 'content-box', fontSize: '230px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '276px', letterSpacing: '-4.6000000000000005px', textAlign: 'center', position: 'absolute', left: '-4px', top: '7346px' }}>{'UI/UX Design'}</h1>
-
-      <div className="rectangle-2100" style={{ width: '408px', height: '468px', borderColor: 'rgba(0, 0, 0, 1)', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', position: 'absolute', left: '516px', top: '2961px' }} />
-      
-      <div className="group-686" style={{ width: '408px', height: '468px', boxSizing: 'border-box', position: 'absolute', left: '88px', top: '2961px' }}>
-        <div className="rectangle-2101" style={{ width: '408px', height: '468px', backgroundColor: 'rgba(0, 0, 0, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '0px' }} />
-        <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/0c49793c-0cf0-4bbf-9003-d04cb9d2b99d.png" alt="envato-labs-image-edit  6  2" className="envato-labs-image-edit-6-2" style={{ width: '300px', height: '420px', boxSizing: 'border-box', position: 'absolute', left: '60px', top: '48px', objectFit: 'cover', objectPosition: 'center' }} />
-        <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/a2798636-8c8d-4f2e-a9d7-3a10a7b18472.png" alt="twes rrrwgef-01 1" className="twes-rrrwgef-01-1" style={{ width: '250px', height: '74px', boxSizing: 'border-box', position: 'absolute', left: '85px', top: '357px', objectFit: 'cover', objectPosition: 'center', translate: "0px 23px" }} />
-      </div>
-
-      <div className="group-161" style={{ width: '408px', height: '468px', boxSizing: 'border-box', position: 'absolute', left: '944px', top: '2961px' }}>
-        <div className="frame-20" style={{ width: '408px', height: '468px', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '0px' }}>
-          <div className="rectangle-2102" style={{ width: '408px', height: '468px', backgroundColor: 'rgba(0, 0, 0, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '0px' }} />
-          <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/44ee2c90-2cc7-4626-b6b7-4c855483c99e.png" alt="Untitled-sxcx-01 2" className="untitled-sxcx-01-2" style={{ width: '329px', height: '77px', boxSizing: 'border-box', position: 'absolute', left: '40px', top: '40px', objectFit: 'cover', objectPosition: 'center' }} />
-        </div>
-        <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/assets/ca94d8b4-990b-4e59-9636-63916fbf6348.png" alt="futerals-50-Photoroom 1" className="futerals-50-photoroom-1" style={{ width: '348px', height: '346px', boxSizing: 'border-box', position: 'absolute', left: '60px', top: '122px', objectFit: "cover", objectPosition: "50% 50%", opacity: "1" }} />
-      </div>
-
-      <h1 className="h1" style={{ width: '319px', height: '44px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '24px', letterSpacing: '-0.4px', textAlign: 'left', position: 'absolute', left: '88px', top: '3451px', whiteSpace: 'pre-line' }}>{'FutureTools-Branding \n\u0026 Visual identity'}</h1>
-      <h1 className="h1" style={{ width: '319px', height: '44px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '24px', letterSpacing: '-0.4px', textAlign: 'left', position: 'absolute', left: '516px', top: '3450px', whiteSpace: 'pre-line' }}>{'Croissant-Branding \n\u0026 Visual identity'}</h1>
-      <h1 className="h1" style={{ width: '319px', height: '44px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '24px', letterSpacing: '-0.4px', textAlign: 'left', position: 'absolute', left: '944px', top: '3449px' }}>{'FutureTools-Branding \u0026 Visual identity'}</h1>
-      
-      <div className="rectangle-2105" style={{ width: '408px', height: '1px', backgroundColor: 'rgba(0, 0, 0, 0.5)', boxSizing: 'border-box', position: 'absolute', left: '88px', top: '3507px' }} />
-      <div className="rectangle-2106" style={{ width: '408px', height: '1px', backgroundColor: 'rgba(0, 0, 0, 0.5)', boxSizing: 'border-box', position: 'absolute', left: '516px', top: '3507px' }} />
-      <div className="rectangle-2107" style={{ width: '408px', height: '1px', backgroundColor: 'rgba(0, 0, 0, 0.5)', boxSizing: 'border-box', position: 'absolute', left: '944px', top: '3507px' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/assets/883b59b4-7e48-4659-9d07-d24ff74a7b25.png" alt="kruasan logo  Recovered 11-01 1" className="kruasan-logo-recovered-11-01-1" style={{ width: '329px', height: '342px', boxSizing: 'border-box', position: 'absolute', left: '556px', top: '3024px', objectFit: "cover", objectPosition: "50% 50%", opacity: "1" }} />
-
-      <div className="rectangle-2155" style={{ width: '1440px', height: '1586px', backgroundColor: 'rgba(240, 240, 240, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '7846px' }} />
-      <div className="rectangle-2156" style={{ width: '1440px', height: '800px', backgroundColor: 'rgba(240, 240, 240, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '10466px' }} />
-      
-      <div className="group-1000011868" style={{ width: '621px', height: '264px', boxSizing: 'border-box', position: 'absolute', left: '100px', top: '8485px' }}>
-        <H13 style={{ position: 'absolute', left: '0px', top: '0px' }} />
-        <H14 style={{ position: 'absolute', left: '1px', top: '84px' }} />
-        <div className="headline" style={{ width: '488px', height: '110px', display: 'flex', flexDirection: 'column', gap: '8px', boxSizing: 'border-box', position: 'absolute', left: '1px', top: '154px' }}>
-          <span style={{ width: '488px', height: '94px', color: 'rgba(136, 136, 136, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '20px', letterSpacing: '0px', textAlign: 'left' }}>{'This project showcases the design of Cloudrix, including web and mobile experiences, visual identity, and a structured approach to simplifying complex AI infrastructure into a clean and user-friendly interface.'}</span>
-        </div>
-      </div>
-
-      <div className="group-1000011867" style={{ width: '720px', height: '1037px', boxSizing: 'border-box', position: 'absolute', left: '670px', top: '7907px' }}>
-        <div className="rectangle-2157" style={{ width: '720px', height: '1037px', backgroundColor: 'rgba(0, 0, 0, 1)', boxSizing: 'border-box', borderRadius: '36px', position: 'absolute', left: '0px', top: '0px' }} />
-        <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/assets/89feb99b-6d32-44b0-9d6c-bf7a29b7849d.png" alt="Rectangle 2158" className="rectangle-2158" style={{ height: '1009px', boxSizing: 'border-box', borderRadius: '32px', position: 'absolute', left: '12px', top: '14px', objectFit: "cover", objectPosition: "50% 50%", opacity: "1", translate: "-12px 0px", width: "720px", maxWidth: "720px" }} />
-      </div>
-
-      <div className="group-1000011866" style={{ width: '720px', height: '440px', boxSizing: 'border-box', position: 'absolute', left: '670px', top: '8967px' }}>
-        <Rectangle2159 style={{ position: 'absolute', left: '0px', top: '0px' }} />
-        <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/assets/34803651-d72a-467d-aafb-072d8f3224ea.png" alt="Rectangle 2160" className="rectangle-2160" style={{ width: '708px', height: '428px', boxSizing: 'border-box', borderRadius: '32px', position: 'absolute', left: '6px', top: '6px', objectFit: "cover", objectPosition: "50% 50%", opacity: "1" }} />
-      </div>
-
-      <div className="group-1000011869" style={{ width: '621px', height: '268px', boxSizing: 'border-box', position: 'absolute', left: '100px', top: '10701px' }}>
-        <h1 className="h1" style={{ width: '540px', height: '76px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '64px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '76.8px', letterSpacing: '-1.28px', textAlign: 'left', position: 'absolute', left: '0px', top: '0px' }}>{'Mind Tools AI'}</h1>
-        <H15 style={{ position: 'absolute', left: '1px', top: '84px' }} />
-        <div className="headline" style={{ width: '488px', height: '114px', display: 'flex', flexDirection: 'column', gap: '8px', boxSizing: 'border-box', position: 'absolute', left: '1px', top: '154px' }}>
-          <span style={{ width: '488px', height: '114px', color: 'rgba(136, 136, 136, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '20px', letterSpacing: '0px', textAlign: 'left' }}>{'Designed a mobile platform for discovering and exploring AI tools, focusing on intuitive navigation, personalized recommendations, and a clean, modern interface optimized for seamless user experience.'}</span>
-        </div>
-      </div>
-
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/1a084aad-0a76-4b7b-b352-34c8f0ac2f4a.png" alt="Free Transparent iPhone 17e Mockup  Mockuuups Studio" className="free-transparent-iphone-17e-mockup-mockuuups-studio" style={{ width: '321px', height: '653px', boxSizing: 'border-box', position: 'absolute', left: '720px', top: '10513px', objectFit: 'cover', objectPosition: 'center' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/e9836394-e67b-44e2-b232-c953465e27ec.png" alt="Free Transparent iPhone 17e Mockup  Mockuuups Studio" className="free-transparent-iphone-17e-mockup-mockuuups-studio" style={{ width: '321px', height: '652px', boxSizing: 'border-box', position: 'absolute', left: '1069px', top: '10684px', objectFit: 'cover', objectPosition: 'center' }} />
-      
-      <div className="rectangle-2157" style={{ width: '1440px', height: '1006px', backgroundColor: 'rgba(240, 240, 240, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '9446px' }} />
-      <div className="rectangle-2161" style={{ width: '1440px', height: '14px', backgroundColor: 'rgba(0, 0, 0, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '11266px' }} />
-      
-      <div className="group-1000011870" style={{ width: '720px', height: '440px', boxSizing: 'border-box', position: 'absolute', left: '670px', top: '9499px' }}>
-        <Rectangle2159 style={{ position: 'absolute', left: '0px', top: '0px' }} />
-        <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/assets/6b879762-c32e-459e-ad5e-11448dd84d6b.png" alt="Rectangle 2160" className="rectangle-2160" style={{ height: '428px', boxSizing: 'border-box', borderRadius: '32px', position: 'absolute', left: '6px', top: '6px', objectFit: "cover", objectPosition: "50% 50%", opacity: "1", width: "700px", maxWidth: "700px" }} />
-      </div>
-
-      <div className="group-1000011871" style={{ width: '720px', height: '440px', boxSizing: 'border-box', position: 'absolute', left: '670px', top: '9959px' }}>
-        <Rectangle2159 style={{ position: 'absolute', left: '0px', top: '0px' }} />
-        <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/assets/90ad5438-cf78-4bed-b173-3bb19cafd37a.png" alt="Rectangle 2160" className="rectangle-2160" style={{ height: '428px', boxSizing: 'border-box', borderRadius: '32px', position: 'absolute', left: '6px', top: '6px', objectFit: "cover", objectPosition: "50% 50%", opacity: "1", width: "700px", maxWidth: "700px" }} />
-      </div>
-
-      <div className="group-1000011872" style={{ width: '621px', height: '134px', boxSizing: 'border-box', position: 'absolute', left: '100px', top: '9882px' }}>
-        <H13 style={{ position: 'absolute', left: '0px', top: '0px' }} />
-        <h1 className="h1" style={{ width: '620px', height: '50px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '36px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '43.2px', letterSpacing: '-0.72px', textAlign: 'left', position: 'absolute', left: '1px', top: '84px' }}>{'Cloud UI'}</h1>
-      </div>
-
-      <div className="rectangle-2162" style={{ width: '1440px', height: '1006px', backgroundColor: 'rgba(240, 240, 240, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '13008px' }} />
-      <div className="rectangle-2163" style={{ width: '1440px', height: '800px', backgroundColor: 'rgba(240, 240, 240, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '11280px' }} />
-      <div className="rectangle-2165" style={{ width: '1440px', height: '900px', backgroundColor: 'rgba(240, 240, 240, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '12094px' }} />
-      <div className="rectangle-2166" style={{ width: '1440px', height: '900px', backgroundColor: 'rgba(240, 240, 240, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '14028px' }} />
-      <div className="rectangle-2167" style={{ width: '1440px', height: '1421px', backgroundColor: 'rgba(240, 240, 240, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '14942px' }} />
-      
-      <div className="group-1000011874" style={{ width: '720px', height: '440px', boxSizing: 'border-box', position: 'absolute', left: '670px', top: '13061px', display: "none" }}>
-        <Rectangle2159 style={{ position: 'absolute', left: '0px', top: '0px' }} />
-        <Rectangle2160 style={{ position: 'absolute', left: '6px', top: '6px' }} />
-      </div>
-      
-      <div className="group-1000011875" style={{ width: '720px', height: '440px', boxSizing: 'border-box', position: 'absolute', left: '670px', top: '13521px', display: "none" }}>
-        <Rectangle2159 style={{ position: 'absolute', left: '0px', top: '0px' }} />
-        <Rectangle2160 style={{ position: 'absolute', left: '6px', top: '6px' }} />
-      </div>
-
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/bc79420c-4ea3-40bc-a91f-8e0471c0ba29.png" alt="phone mockup 2 1" className="phone-mockup-2-1" style={{ width: '768px', height: '770px', boxSizing: 'border-box', position: 'absolute', left: '622px', top: '14093px', objectFit: 'cover', objectPosition: 'center' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/d5f4b79b-b8f4-4c6a-839c-1cd271551e35.png" alt="transparent-Photoroom  3  1" className="transparent-photoroom-3-1" style={{ width: '756px', height: '758px', boxSizing: 'border-box', position: 'absolute', left: '634px', top: '12165px', objectFit: 'cover', objectPosition: 'center' }} />
-      
-      <div className="group-1000011877" style={{ width: '621px', height: '248px', boxSizing: 'border-box', position: 'absolute', left: '100px', top: '14354px' }}>
-        <h1 className="h1" style={{ width: '540px', height: '76px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '64px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '76.8px', letterSpacing: '-1.28px', textAlign: 'left', position: 'absolute', left: '0px', top: '0px' }}>{'FutureTools'}</h1>
-        <H15 style={{ position: 'absolute', left: '1px', top: '84px' }} />
-        <div className="headline" style={{ width: '488px', height: '94px', display: 'flex', flexDirection: 'column', gap: '8px', boxSizing: 'border-box', position: 'absolute', left: '1px', top: '154px' }}>
-          <span style={{ width: '488px', height: '94px', color: 'rgba(136, 136, 136, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '20px', letterSpacing: '0px', textAlign: 'left' }}>{'Designed a mobile experience for FutureTools, focusing on intuitive navigation, personalized tool discovery, and a clean, accessible interface optimized for smaller screens.'}</span>
-        </div>
-      </div>
-
-      <div className="group-1000011882" style={{ width: '621px', height: '248px', boxSizing: 'border-box', position: 'absolute', left: '100px', top: '15529px' }}>
-        <h1 className="h1" style={{ width: '540px', height: '76px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '64px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '76.8px', letterSpacing: '-1.28px', textAlign: 'left', position: 'absolute', left: '0px', top: '0px' }}>{'Bone Implant'}</h1>
-        <H14 style={{ position: 'absolute', left: '1px', top: '84px' }} />
-        <div className="headline" style={{ width: '488px', height: '94px', display: 'flex', flexDirection: 'column', gap: '8px', boxSizing: 'border-box', position: 'absolute', left: '1px', top: '154px' }}>
-          <span style={{ width: '488px', height: '94px', color: 'rgba(136, 136, 136, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '20px', letterSpacing: '0px', textAlign: 'left' }}>{'Designed a modern website for BoneImplant, focused on bone implant procedures, ensuring clarity, trust, and a professional user experience for patients seeking specialized care.'}</span>
-        </div>
-      </div>
-
-      <div className="group-1000011878" style={{ width: '720px', height: '517px', boxSizing: 'border-box', position: 'absolute', left: '670px', top: '11419px' }}>
-        <div className="rectangle-2159" style={{ width: '720px', height: '517px', backgroundColor: 'rgba(0, 0, 0, 1)', boxSizing: 'border-box', borderRadius: '36px', position: 'absolute', left: '0px', top: '0px' }} />
-        <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/74a79172-cee1-4db9-a680-68cc1743cf75.png" alt="Rectangle 2160" className="rectangle-2160" style={{ width: '708px', height: '503px', boxSizing: 'border-box', borderRadius: '32px', position: 'absolute', left: '6px', top: '6px', objectFit: 'cover', objectPosition: 'center' }} />
-      </div>
-
-      <div className="group-1000011879" style={{ width: '621px', height: '268px', boxSizing: 'border-box', position: 'absolute', left: '100px', top: '11546px' }}>
-        <h1 className="h1" style={{ width: '540px', height: '76px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '64px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '76.8px', letterSpacing: '-1.28px', textAlign: 'left', position: 'absolute', left: '0px', top: '0px' }}>{'Polysure'}</h1>
-        <H14 style={{ position: 'absolute', left: '1px', top: '84px' }} />
-        <div className="headline" style={{ width: '488px', height: '114px', display: 'flex', flexDirection: 'column', gap: '8px', boxSizing: 'border-box', position: 'absolute', left: '1px', top: '154px' }}>
-          <span style={{ width: '488px', height: '114px', color: 'rgba(136, 136, 136, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '20px', letterSpacing: '0px', textAlign: 'left' }}>{'Clean and modern dashboard design focused on data clarity, strong visual hierarchy, and smooth user experience, using dark UI with bold accent colors.'}</span>
-        </div>
-      </div>
-
-      <div className="group-1000011880" style={{ width: '621px', height: '292px', boxSizing: 'border-box', position: 'absolute', left: '100px', top: '12398px' }}>
-        <h1 className="h1" style={{ width: '540px', height: '76px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '64px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '76.8px', letterSpacing: '-1.28px', textAlign: 'left', position: 'absolute', left: '0px', top: '0px' }}>{'Soundcloud'}</h1>
-        <H15 style={{ position: 'absolute', left: '1px', top: '84px' }} />
-        <div className="headline" style={{ width: '488px', height: '138px', display: 'flex', flexDirection: 'column', gap: '8px', boxSizing: 'border-box', position: 'absolute', left: '1px', top: '154px' }}>
-          <span style={{ width: '488px', height: '138px', color: 'rgba(136, 136, 136, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '20px', letterSpacing: '0px', textAlign: 'left' }}>{'Reimagined the SoundCloud experience by focusing on usability, visual clarity, and seamless music discovery. The redesigned interface enhances navigation, improves content structure, and delivers a more engaging and modern user experience.'}</span>
-        </div>
-      </div>
-
-      <div className="group-1000011881" style={{ width: '621px', height: '292px', boxSizing: 'border-box', position: 'absolute', left: '100px', top: '13365px' }}>
-        <h1 className="h1" style={{ width: '540px', height: '76px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '64px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '76.8px', letterSpacing: '-1.28px', textAlign: 'left', position: 'absolute', left: '0px', top: '0px' }}>Xnamq.am</h1>
-        <H14 style={{ position: 'absolute', left: '1px', top: '84px' }} />
-        <div className="headline" style={{ width: '488px', height: '138px', display: 'flex', flexDirection: 'column', gap: '8px', boxSizing: 'border-box', position: 'absolute', left: '1px', top: '154px' }}>
-          <span style={{ width: '488px', height: '138px', color: 'rgba(136, 136, 136, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '20px', letterSpacing: '0px', textAlign: 'left' }}>
-            Designed a user-friendly website for an elderly care service, focusing on accessibility, clarity, and a calm visual experience. The interface prioritizes easy navigation and clear communication of services.<br />
-          </span>
-        </div>
-      </div>
-
-      <div className="group-1000011874" style={{ width: '720px', height: '1221px', boxSizing: 'border-box', position: 'absolute', left: '670px', top: '15042px' }}>
-        <div className="rectangle-2159" style={{ width: '720px', height: '1221px', backgroundColor: 'rgba(0, 0, 0, 1)', boxSizing: 'border-box', borderRadius: '36px', position: 'absolute', left: '0px', top: '0px' }} />
-        <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/assets/4e577b0b-35a6-4411-b284-145ba2f39d46.png" alt="Rectangle 2160" className="rectangle-2160" style={{ width: '708px', height: '1187.699951171875px', boxSizing: 'border-box', borderRadius: '32px', position: 'absolute', left: '6px', top: '16.6513671875px', objectFit: "cover", objectPosition: "50% 50%", opacity: "1", translate: "0px -16.64px" }} />
-      </div>
-
-      <h1 className="h1" style={{ width: '1440px', height: '192px', color: 'rgba(15, 15, 15, 1)', boxSizing: 'content-box', fontSize: '160px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '192px', letterSpacing: '-3.2px', textAlign: 'center', position: 'absolute', left: '0px', top: '16403px' }}>{'Packaging Design'}</h1>
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/661469ed-94f9-4e13-901e-0469ab8e4721.jpg" alt="Rectangle 2168" className="rectangle-2168" style={{ width: '720px', height: '839px', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '16805px', objectFit: 'cover', objectPosition: 'center' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/b2370196-fbbf-48a3-9e9e-2199c1939b7a.jpg" alt="Rectangle 2169" className="rectangle-2169" style={{ width: '720px', height: '839px', boxSizing: 'border-box', position: 'absolute', left: '720px', top: '16805px', objectFit: 'cover', objectPosition: 'center' }} />
-      <h1 className="h1" style={{ width: '591px', height: '44px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '32px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '38.4px', letterSpacing: '-0.64px', textAlign: 'left', position: 'absolute', left: '110px', top: '16695px' }}>{'Packaging \u0026 Brand Design'}</h1>
-      
-      <div className="rectangle-2170" style={{ width: '720px', height: '1px', backgroundColor: 'rgba(0, 0, 0, 0.5)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '16759px' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/5029b07d-e8f4-4c72-87cf-81e766d683d1.jpg" alt="Rectangle 2173" className="rectangle-2173" style={{ width: '720px', height: '960px', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '4212px', objectFit: 'cover', objectPosition: 'center' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/23d2782a-c365-49f6-a9e2-5a5ab75857e8.jpg" alt="Rectangle 2174" className="rectangle-2174" style={{ width: '720px', height: '960px', boxSizing: 'border-box', position: 'absolute', left: '720px', top: '4212px', objectFit: 'cover', objectPosition: 'center' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/49cdb631-1e20-433e-a781-deeff70655a2.jpg" alt="Rectangle 2175" className="rectangle-2175" style={{ width: '720px', height: '960px', boxSizing: 'border-box', position: 'absolute', left: '720px', top: '5172px', objectFit: 'cover', objectPosition: 'center' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/c09efced-d529-447b-b6ab-2ec30d1d9354.jpg" alt="piano poster-01 1" className="piano-poster-01-1" style={{ width: '720px', height: '961px', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '5172px', objectFit: 'cover', objectPosition: 'center' }} />
-      
-      <div className="rectangle-2180" style={{ width: '1440px', height: '829px', backgroundColor: 'rgba(0, 0, 0, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '6407px' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/db47ea71-1535-428f-bc7d-c0077f8caa20.jpg" alt="Rectangle 2177" className="rectangle-2177" style={{ width: '466px', height: '598px', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '6523px', objectFit: 'cover', objectPosition: 'center' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/7ef4b019-d120-4275-a174-a838b0be06e6.jpg" alt="Rectangle 2178" className="rectangle-2178" style={{ width: '466px', height: '598px', boxSizing: 'border-box', position: 'absolute', left: '487px', top: '6523px', objectFit: 'cover', objectPosition: 'center' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/f54b9067-e089-451e-a9e8-748a6815b4c7.jpg" alt="Rectangle 2179" className="rectangle-2179" style={{ width: '466px', height: '598px', boxSizing: 'border-box', position: 'absolute', left: '974px', top: '6523px', objectFit: 'cover', objectPosition: 'center' }} />
-      
-      <h1 className="h1" style={{ width: '1429px', height: '162px', color: 'rgba(15, 15, 15, 1)', boxSizing: 'content-box', fontSize: '135px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '162px', letterSpacing: '-2.7px', textAlign: 'left', position: 'absolute', left: '5px', top: '17671px' }}>{'Thank you for viewing'}</h1>
-      
-      <div className="rectangle-17" style={{ width: '562px', height: '138px', backgroundColor: 'rgba(235, 234, 234, 1)', boxSizing: 'border-box', position: 'absolute', left: '899px', top: '18173px' }} />
-      <div className="rectangle-16" style={{ width: '713px', height: '1px', backgroundColor: 'rgba(0, 0, 0, 1)', boxSizing: 'border-box', position: 'absolute', left: '720px', top: '18242px' }} />
-      <img src="https://storage.googleapis.com/storage.magicpath.ai/user/375162299763294208/figma-assets/763765a7-e2fc-4df0-ba39-216fa384b380.png" alt="IMG 20231220 142837 233 copy 1" className="img-20231220-142837-233-copy-1" style={{ width: '644px', height: '688px', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '17851px', objectFit: "cover", objectPosition: "50% 50%", opacity: "0.18" }} />
-      
-      <div className="group-1000011883" style={{ width: '360px', height: '28px', boxSizing: 'border-box', position: 'absolute', left: '1016px', top: '18341px' }}>
-        <H11 style={{ position: 'absolute', left: '0px', top: '0px' }} />
-        <h1 className="h1" style={{ width: '138px', height: '28px', color: 'rgba(0, 0, 0, 1)', boxSizing: 'content-box', fontSize: '20px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '28px', letterSpacing: '-0.2px', textAlign: 'left', position: 'absolute', left: '222px', top: '0px' }}>{'@twex.design'}</h1>
-        <H1 color="rgba(0, 0, 0, 1)" style={{ position: 'absolute', left: '194px', top: '0px' }} />
-      </div>
-
-      <div className="group-1000011884" style={{ width: '1440px', height: '800px', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '1600px' }}>
-        <div className="rectangle-2181" style={{ width: '1440px', height: '800px', backgroundColor: 'rgba(0, 0, 0, 1)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '0px' }} />
-        <h1 className="h1" style={{ width: '620px', height: '230px', color: 'rgba(255, 255, 255, 1)', boxSizing: 'content-box', fontSize: '96px', fontFamily: '"Inter", sans-serif', fontWeight: 700, lineHeight: '115.2px', letterSpacing: '-1.92px', textAlign: 'left', position: 'absolute', left: '88px', top: '60px' }}>{'What you will find inside?'}</h1>
+        // Hover image follow effect
+        const preview = document.getElementById('service-preview');
+        const items = document.querySelectorAll('.service-item');
         
-        <div className="group-157" style={{ width: '720px', height: '419px', boxSizing: 'border-box', position: 'absolute', left: '650px', top: '306px' }}>
-          <h1 className="h1" style={{ width: '171px', height: '44px', color: 'rgba(255, 255, 255, 1)', boxSizing: 'content-box', fontSize: '32px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '38.4px', letterSpacing: '-0.64px', textAlign: 'right', position: 'absolute', left: '548px', top: '0px' }}>{'Branding.'}</h1>
-          <h1 className="h1" style={{ width: '60px', height: '44px', color: 'rgba(255, 255, 255, 1)', boxSizing: 'content-box', fontSize: '32px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '38.4px', letterSpacing: '-0.64px', textAlign: 'center', position: 'absolute', left: '30px', top: '0px' }}>{'1'}</h1>
-          <h1 className="h1" style={{ width: '60px', height: '44px', color: 'rgba(255, 255, 255, 1)', boxSizing: 'content-box', fontSize: '32px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '38.4px', letterSpacing: '-0.64px', textAlign: 'center', position: 'absolute', left: '30px', top: '91px' }}>{'2'}</h1>
-          <h1 className="h1" style={{ width: '60px', height: '44px', color: 'rgba(255, 255, 255, 1)', boxSizing: 'content-box', fontSize: '32px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '38.4px', letterSpacing: '-0.64px', textAlign: 'center', position: 'absolute', left: '30px', top: '182px' }}>{'3'}</h1>
-          <h1 className="h1" style={{ width: '60px', height: '44px', color: 'rgba(255, 255, 255, 1)', boxSizing: 'content-box', fontSize: '32px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '38.4px', letterSpacing: '-0.64px', textAlign: 'center', position: 'absolute', left: '30px', top: '273px' }}>{'4'}</h1>
-          <h1 className="h1" style={{ width: '60px', height: '44px', color: 'rgba(255, 255, 255, 1)', boxSizing: 'content-box', fontSize: '32px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '38.4px', letterSpacing: '-0.64px', textAlign: 'center', position: 'absolute', left: '30px', top: '364px' }}>{'5'}</h1>
-          
-          <h1 className="h1" style={{ width: '232px', height: '44px', color: 'rgba(255, 255, 255, 1)', boxSizing: 'content-box', fontSize: '32px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '38.4px', letterSpacing: '-0.64px', textAlign: 'right', position: 'absolute', left: '488px', top: '182px' }}>{'UI/UX Design.'}</h1>
-          <h1 className="h1" style={{ width: '229px', height: '44px', color: 'rgba(255, 255, 255, 1)', boxSizing: 'content-box', fontSize: '32px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '38.4px', letterSpacing: '-0.64px', textAlign: 'right', position: 'absolute', left: '490px', top: '273px' }}>{'Poster.'}</h1>
-          <h1 className="h1" style={{ width: '301px', height: '44px', color: 'rgba(255, 255, 255, 1)', boxSizing: 'content-box', fontSize: '32px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '38.4px', letterSpacing: '-0.64px', textAlign: 'right', position: 'absolute', left: '418px', top: '364px' }}>{'Packaging Design.'}</h1>
-          <h1 className="h1" style={{ width: '232px', height: '44px', color: 'rgba(255, 255, 255, 1)', boxSizing: 'content-box', fontSize: '32px', fontFamily: '"Inter", sans-serif', fontWeight: 400, lineHeight: '38.4px', letterSpacing: '-0.64px', textAlign: 'right', position: 'absolute', left: '487px', top: '91px' }}>{'Logo Design.'}</h1>
-          
-          <div className="rectangle-2094" style={{ width: '720px', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.5)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '54px' }} />
-          <div className="rectangle-2095" style={{ width: '720px', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.5)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '145px' }} />
-          <div className="rectangle-2096" style={{ width: '720px', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.5)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '236px' }} />
-          <div className="rectangle-2097" style={{ width: '720px', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.5)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '327px' }} />
-          <div className="rectangle-2098" style={{ width: '720px', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.5)', boxSizing: 'border-box', position: 'absolute', left: '0px', top: '418px' }} />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// Export all components
-export default BrandingPortfolio;
+        items.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                preview.style.transform = 'translate(-50%, -50%) scale(1)';
+            });</script></body></html>
