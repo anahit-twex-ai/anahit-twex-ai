@@ -1,22 +1,16 @@
 <!DOCTYPE html>
-
 <html class="scroll-smooth" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Symmetry | Portfolio &amp; AI Infrastructure</title>
 <meta content="Expert UI/UX and Graphic Design Portfolio and AI Infrastructure Solutions" name="description"/>
-<!-- BEGIN: External Resources -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<!-- END: External Resources -->
-<!-- BEGIN: Tailwind Configuration -->
 <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
           colors: {
             primary: '#000000',
             surface: '#f9f9f9',
@@ -24,84 +18,40 @@
             'border-low': '#eeeeee',
             'on-surface-variant': '#666666',
           },
-          maxWidth: {
-            'container-max': '1440px',
-          },
-          padding: {
-            'margin-desktop': '80px',
-            'margin-mobile': '20px',
-          },
+          maxWidth: { 'container-max': '1440px' },
+          padding: { 'margin-desktop': '80px', 'margin-mobile': '20px' },
           animation: {
             'float': 'float 6s ease-in-out infinite',
             'fade-in': 'fadeIn 1s ease-out forwards',
             'slide-up': 'slideUp 0.8s ease-out forwards',
           },
           keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-20px)' },
-            },
-            fadeIn: {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' },
-            },
-            slideUp: {
-              '0%': { opacity: '0', transform: 'translateY(30px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            }
+            float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } },
+            fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+            slideUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }
           }
         }
       }
     }
   </script>
-<!-- END: Tailwind Configuration -->
-<!-- BEGIN: Custom Styles -->
 <style data-purpose="custom-utilities">
-    body {
-      cursor: none; /* Custom cursor implementation */
-    }
+    body { cursor: none; }
     .custom-cursor {
-      width: 20px;
-      height: 20px;
-      background: rgba(0,0,0,0.3);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.1s ease-out;
+      width: 20px; height: 20px; background: rgba(0,0,0,0.3); border-radius: 50%;
+      position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s ease-out;
       backdrop-filter: invert(1);
     }
-    .perspective-text {
-      line-height: 0.85;
-    }
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 24px;
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #888;
-      border-radius: 4px;
-    }
+    .perspective-text { line-height: 0.85; }
+    .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+    .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
   </style>
-<!-- END: Custom Styles -->
 </head>
 <body class="bg-surface text-primary antialiased font-sans overflow-x-hidden">
-<!-- BEGIN: Custom Cursor -->
 <div class="custom-cursor hidden md:block" id="cursor"></div>
-<!-- END: Custom Cursor -->
-<!-- BEGIN: Navigation -->
+
 <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 backdrop-blur-xl border-b border-border-low transition-all duration-300" data-purpose="main-nav">
 <div class="flex items-center gap-8">
 <a class="text-headline-md font-bold tracking-tighter text-primary text-2xl" href="#">Symmetry</a>
@@ -117,20 +67,18 @@
 <button class="bg-primary text-white px-6 py-2 rounded-md text-sm font-medium hover:opacity-80 transition-opacity active:scale-95">Get Started</button>
 </div>
 </nav>
-<!-- END: Navigation -->
+
 <main class="pt-20">
+
 <!-- BEGIN: Hero Section -->
 <section class="relative min-h-[90vh] flex flex-col justify-end px-margin-mobile md:px-margin-desktop pb-20 overflow-hidden bg-white" data-purpose="hero">
-<!-- Background Abstract Image -->
 <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
 <img alt="Background Texture" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida/AP1WRLs50b4CR867TVSonLHaE_oNLMzYshMBlmcj5WS0Iwj2Nvk5Sc4T7HvlQHfPDF9AIqwhbvQkEScr_oHWitAAB0TsbrnYZFlEdkTxPIdGkGsMhZGuCzrJnEpXAO2UKyB-EEbR5BG5bXPSxVH5CSezV_CS9i8ywK4p8ig2wc-obvHqHeBWfzF4-BbPmWti7kxIA2HYNZ-iqsEW1euids27WbPQTrbe440BqaXbw_kL2fnUkM0uaaORs6tnPFZH"/>
 </div>
-<!-- Top Text Metadata -->
 <div class="mb-auto pt-20 max-w-2xl animate-fade-in">
 <h2 class="text-xl font-bold mb-2">Creative Presentation</h2>
 <p class="text-on-surface-variant border-t border-primary/10 pt-4 w-64">Presented by: Anahit Petrosyan</p>
 </div>
-<!-- Main Headline Component -->
 <div class="relative z-10">
 <div class="flex flex-col md:flex-row items-baseline gap-4 mb-4">
 <span class="text-lg md:text-xl font-medium">UI/UX Designer</span>
@@ -141,7 +89,6 @@
 <h1 class="text-[15vw] md:text-[22vw] font-black tracking-tighter leading-none m-0 p-0 select-none animate-slide-up">
             Portfolio
           </h1>
-<!-- Floating 3D Element (Star) -->
 <div class="absolute -top-12 md:-top-40 right-[10%] md:right-[20%] w-32 md:w-80 animate-float">
 <img alt="3D Star Element" class="w-full h-auto drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida/AP1WRLuNTNRtIOfgthpQzwXqww6n8dLMGQQJ6vrdxJmU8eyR1mx_sT-oAzdU_CgkP-937nNgpsRVeKK8qaIQ7_D2PZDRUExhA2KoYzs7YzxxSDdEhXKc15CPWEHemgZncv-mK7KJW91Z9i4IPUmAK3G3FbdxWM_H6LFttaK5yqonOiGfQ7_h_mX62a2CACAw9EwD4ZGrp9yjRyoxgYcTwOJ5ncR8-DEK0uKWOF0Yz5bmBaPF9Bib3tZWpG49PCU"/>
 </div>
@@ -149,6 +96,47 @@
 </div>
 </section>
 <!-- END: Hero Section -->
+
+<!-- BEGIN: Intro / What's Inside Slide -->
+<section class="relative min-h-screen bg-black text-white px-margin-mobile md:px-margin-desktop py-24 overflow-hidden" data-purpose="whats-inside">
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center h-full">
+<!-- Left: Image -->
+<div class="relative order-2 lg:order-1 animate-fade-in">
+<div class="rounded-3xl overflow-hidden border border-white/10 aspect-[4/5]">
+<img alt="Design process preview" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLsB4zZ6rPu5mBQuLZ_qiu77aR14aiTEYRACrLmhejOoRrrtb7L7AcUHE90ka0a2_jyVp89pXlYknJBpy-zm2piXCHS8_hTJp0rmvWYMsqKJjya5RejJl7xiLoIRn__cYrCzBcVkeEoUEc-BLB8uz6fETeTknaUJN4B7vkrUvrTtvcDG8uVPPfitOSxj4xDQHNHkLJjZG75zWSvl3pzP_4JFi9kmS5M7mSyHKR6EiIMLohzjp5hatD1WAiyB"/>
+</div>
+<div class="absolute -bottom-8 -right-8 w-40 h-40 bg-blue-600/20 blur-[80px] -z-10"></div>
+</div>
+<!-- Right: Heading + List -->
+<div class="order-1 lg:order-2">
+<h1 class="text-5xl md:text-7xl font-black tracking-tighter leading-[0.95] mb-16 animate-slide-up">What you will find inside?</h1>
+<ul class="divide-y divide-white/10">
+<li class="flex items-center justify-between py-6">
+<span class="text-xl text-zinc-500 font-medium">1</span>
+<span class="text-2xl md:text-3xl font-semibold">Branding.</span>
+</li>
+<li class="flex items-center justify-between py-6">
+<span class="text-xl text-zinc-500 font-medium">2</span>
+<span class="text-2xl md:text-3xl font-semibold">Logo Design.</span>
+</li>
+<li class="flex items-center justify-between py-6">
+<span class="text-xl text-zinc-500 font-medium">3</span>
+<span class="text-2xl md:text-3xl font-semibold">UI/UX Design.</span>
+</li>
+<li class="flex items-center justify-between py-6">
+<span class="text-xl text-zinc-500 font-medium">4</span>
+<span class="text-2xl md:text-3xl font-semibold">Poster.</span>
+</li>
+<li class="flex items-center justify-between py-6">
+<span class="text-xl text-zinc-500 font-medium">5</span>
+<span class="text-2xl md:text-3xl font-semibold">Packaging Design.</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- END: Intro / What's Inside Slide -->
+
 <!-- BEGIN: AI Infrastructure Showcase -->
 <section class="py-24 bg-black text-white px-margin-mobile md:px-margin-desktop" data-purpose="ai-infrastructure" id="platform">
 <div class="max-w-container-max mx-auto">
@@ -161,11 +149,9 @@
             Access 40,000+ NVIDIA Blackwell GPUs across purpose-built AI factories. Train, fine-tune, and serve models at peak efficiency.
           </p>
 </div>
-<!-- Infrastructure Image Preview -->
 <div class="relative rounded-3xl overflow-hidden mb-24 border border-white/10 group">
 <img alt="AI Data Center Facility" class="w-full aspect-[21/9] object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLvG7HOkVAamSZ6Of4s4gOwucAArrN0hV36expqaH9ko6eVqdKy-2LDNBjoeH_hNvemJzwDH6vwk3_hsV0N_7inI6WZcD7JOiRL3sdcAP-JwALMldiNbaaSSn4vsXpspEm4uqJgw8tL1GUEykmLZIIgIBjX54vF9o17lxs7fUKmd574UoBcRaPxTATDhhbedpqKhK0GiA8emhwAJvIDgHcdqwTTC5L8aG97MzwN8VC8pLJN3JQBo3wZS8czA"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-<!-- Stats Overlay -->
 <div class="absolute bottom-10 left-10 right-10 flex flex-wrap justify-between items-end gap-8">
 <div class="flex gap-12">
 <div>
@@ -187,7 +173,6 @@
 </div>
 </div>
 </div>
-<!-- Bento Features Grid -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 <div class="bg-zinc-900/50 p-10 rounded-3xl border border-white/5 hover:border-white/20 transition-all group">
 <h3 class="text-2xl font-bold mb-4">Industrial-Scale AI</h3>
@@ -220,6 +205,7 @@
 </div>
 </section>
 <!-- END: AI Infrastructure Showcase -->
+
 <!-- BEGIN: Mobile App Previews -->
 <section class="py-24 bg-white px-margin-mobile md:px-margin-desktop overflow-hidden" data-purpose="app-showcase">
 <div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -239,16 +225,15 @@
 <button class="bg-primary text-white px-8 py-4 rounded-full text-lg font-bold hover:scale-105 transition-transform">Explore App Store</button>
 </div>
 <div class="relative">
-<!-- Floating Phones Mockup -->
 <div class="relative z-10 transform -rotate-6 scale-110">
 <img alt="App Interaction Mockup" class="w-full drop-shadow-[-50px_50px_100px_rgba(0,0,0,0.1)]" src="https://lh3.googleusercontent.com/aida/AP1WRLsc1GnDWc0RQYp-JHb96SzDXeVsR4jWHQSrGHyNtTll_IWNmiezaa5Ct-DDrRE_ozQafcuGvfyrrH77AgLhTHrf5oL148JsorwbadH3RpVuNHDg-4UER2DX5IYYuV6_r9x9Og2Cu3r2WhCMm2IuS5y4XdjvUlmVSvlHdAwvFyQ0h7s8ak9-A_OddhsE22uN4XgPlJTj5_rlZ1XjOzmngHuZWVdwtUW1czsetC_pHC1GDb5XZR6hcDJtUFQ"/>
 </div>
-<!-- Decorative Background Element -->
 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-50 rounded-full blur-[120px] -z-10"></div>
 </div>
 </div>
 </section>
 <!-- END: Mobile App Previews -->
+
 <!-- BEGIN: Design Portfolio Grid -->
 <section class="py-24 bg-surface px-margin-mobile md:px-margin-desktop" data-purpose="portfolio-grid" id="projects">
 <div class="max-w-container-max mx-auto">
@@ -267,7 +252,6 @@
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- Project Card 1: Branding -->
 <div class="group cursor-pointer">
 <div class="aspect-[3/4] overflow-hidden rounded-3xl mb-6 bg-white shadow-sm border border-border-low">
 <img alt="Milk Packaging Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AP1WRLvvOiEX4-bBFPrsBGC9mLvMnpNYNdlnVsR2UoAUNseMu3oVkQKISykkM_r_4MuzLntGhSeVxxhXvZ32i9yoymGkQug40V8Sydn0A88-Ht7-P5SNM9IyG4VxbA0KteVLgyTl-Hi5HFiHR38HepYphLz4AwI7pGFvyQ4BE0nHnBMwdaOl0Y-Ddf4v7w2LNsAMXtp8hlrUbit_Ci8dDu7oXSqu1RnWNdhizkt0gXkzzsNbu5TK1e7cRI8IN74u"/>
@@ -275,7 +259,6 @@
 <h3 class="text-xl font-bold">Ilkinit Milk Branding</h3>
 <p class="text-on-surface-variant">Packaging &amp; Identity</p>
 </div>
-<!-- Project Card 2: Poster -->
 <div class="group cursor-pointer">
 <div class="aspect-[3/4] overflow-hidden rounded-3xl mb-6 bg-white shadow-sm border border-border-low">
 <img alt="Aznavour Poster Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AP1WRLsB4zZ6rPu5mBQuLZ_qiu77aR14aiTEYRACrLmhejOoRrrtb7L7AcUHE90ka0a2_jyVp89pXlYknJBpy-zm2piXCHS8_hTJp0rmvWYMsqKJjya5RejJl7xiLoIRn__cYrCzBcVkeEoUEc-BLB8uz6fETeTknaUJN4B7vkrUvrTtvcDG8uVPPfitOSxj4xDQHNHkLJjZG75zWSvl3pzP_4JFi9kmS5M7mSyHKR6EiIMLohzjp5hatD1WAiyB"/>
@@ -283,7 +266,6 @@
 <h3 class="text-xl font-bold">Aznavour 100</h3>
 <p class="text-on-surface-variant">Limited Edition Poster</p>
 </div>
-<!-- Project Card 3: UI Design -->
 <div class="group cursor-pointer">
 <div class="aspect-[3/4] overflow-hidden rounded-3xl mb-6 bg-white shadow-sm border border-border-low">
 <img alt="Medical UI Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AP1WRLsPbmT6Rzx63gxvKW_nHZfyLpxBPTuClUNjMgmFVbON5MI_8HHiJdydZMR0FXqAbNAPFrj4bvStYlgEG_TotxE9Uj-UrXLs6QWojNdsdyby82TEW301cUKE6LKpdAEVyeFBcU1IuDM97fLiJFkgG2FMMjtCSwhSfDgRBlpCsSwLKNaiX8zZmm6VU6xvxDNI0adMag7jFJtTLN2COod_Bo95TXyoVZkNpf2pOAVOtn0sBOhmTf3lJpznyQn4"/>
@@ -291,7 +273,6 @@
 <h3 class="text-xl font-bold">Bone Implant Platform</h3>
 <p class="text-on-surface-variant">Healthcare UI/UX</p>
 </div>
-<!-- Project Card 4: Packaging -->
 <div class="group cursor-pointer">
 <div class="aspect-[3/4] overflow-hidden rounded-3xl mb-6 bg-white shadow-sm border border-border-low">
 <img alt="Gentleman Yogurt Packaging" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AP1WRLvMD8waKntbYxate1irDpoWwJjHjwn7sQ_hrdiyqyqV4W3WPILztNGoeTbjOFq9bezysnOO6-RLh7vpcOE4UD6ZTfMYM-chD4PujGAP2PHV-au1z1CDrtruZ0OfT4pKvDH0H-n0isCf3xpVSgsvd7alu5c3EAX_YhTISmS3psAG7xFPO2lKCBLEt5gH-KxrJxQigxx3dJTk1B8jJAmxPjoQEhYckgFJT5QS2joqsgNnR_L8GdfLJHaN-AVF"/>
@@ -299,7 +280,6 @@
 <h3 class="text-xl font-bold">Gentleman's Yogurt</h3>
 <p class="text-on-surface-variant">Brand Concept</p>
 </div>
-<!-- Project Card 5: Social Campaign -->
 <div class="group cursor-pointer">
 <div class="aspect-[3/4] overflow-hidden rounded-3xl mb-6 bg-white shadow-sm border border-border-low">
 <img alt="Social Poster Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AP1WRLuoHeBP8FPuQHZe9_tef2KMpLqaUZmpqrF9-E1vmLRpv0v2vwRX0gpNRo4FrlEJXLpBpxsMHQhrdZBpXFUAtFCSBByiazmrxxXrYxXS9lcfw7sWyutKltEjeyKHLnR-guGwauJnsocBaOMaOq8I3iYkNrCMsH-dHL2x8hwhiRUDh8AweFnpP5uS6i03WlHQgfMOHXkbjo3u6AgINPfDlmtSHjx4tIQ5vwSxdfRj8tvlMd98y6MD-x8Y38Vs"/>
@@ -307,7 +287,6 @@
 <h3 class="text-xl font-bold">No Drink / No Smoking</h3>
 <p class="text-on-surface-variant">Social Awareness Campaign</p>
 </div>
-<!-- Project Card 6: Mobile Interface -->
 <div class="group cursor-pointer">
 <div class="aspect-[3/4] overflow-hidden rounded-3xl mb-6 bg-white shadow-sm border border-border-low">
 <img alt="Mobile Vibes UI" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AP1WRLuDASQ0YvzXKdYrdo1DMXkYNTzPjEPW6PxIi2esFnzboQYc25G6X2dDfhpWQr3M-8Xk5AoyZDRBHsDXoC4tLi1MWffyEz41fQSZ3PTQ6Pxdr3QJ2b_zUBSArNtvrcU-2ooVrKwa4Au2CuDK8FiYgw3_RVy3HqyH_dcK25tJaAsNs6hu_zsN8qdi2zL2_wiHGOlLUYrC5o54Cjsk0dx_tAEK1Qkj1kRZ_ipcbN-j1UCxU5LYVZINWkImYxc"/>
@@ -319,6 +298,7 @@
 </div>
 </section>
 <!-- END: Design Portfolio Grid -->
+
 <!-- BEGIN: Billing/Admin Preview -->
 <section class="py-24 bg-white px-margin-mobile md:px-margin-desktop" data-purpose="dashboard-preview">
 <div class="max-w-container-max mx-auto bg-black rounded-[48px] p-8 md:p-20 text-white overflow-hidden relative">
@@ -353,7 +333,6 @@
 <div class="bg-white rounded-3xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:-translate-y-4">
 <img alt="Billing Dashboard Preview" class="w-full h-auto" src="https://lh3.googleusercontent.com/aida/AP1WRLsntg3unxWhA4RVPefSU6tMd0B4Kqi8WbKjf2cB3dcJwORSjP4wbgwLTt63WaXtKc184APrX-GXb5naxWBuz1o0zJULbbi3bZfRAkjyuuXI4TprPxra6aUDQoH-MCkgntH-sqJaZHpybUNPZ4jZzIUk4JrBG6ny0fivGr9Lp33yii0cUgCZylM81mKhB3gvXJyKjbuA03ew3teiLdsGnpeu2cNoaE3tT5qc7wbb4sleVQcxNwHiRZSCnDj_"/>
 </div>
-<!-- Decorative "card" behind -->
 <div class="absolute -bottom-10 -right-10 w-full h-full bg-white/5 rounded-3xl -z-10 translate-x-4 translate-y-4"></div>
 </div>
 </div>
@@ -361,7 +340,7 @@
 </section>
 <!-- END: Billing/Admin Preview -->
 </main>
-<!-- BEGIN: Footer -->
+
 <footer class="w-full py-16 px-margin-mobile md:px-margin-desktop border-t border-border-low bg-white" data-purpose="site-footer">
 <div class="max-w-container-max mx-auto">
 <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
@@ -407,16 +386,13 @@
 </div>
 </div>
 </footer>
-<!-- END: Footer -->
-<!-- BEGIN: Scripts -->
+
 <script data-purpose="cursor-animation">
     const cursor = document.getElementById('cursor');
-    
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
     });
-
     document.querySelectorAll('a, button').forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursor.style.transform = 'scale(2.5)';
@@ -429,11 +405,7 @@
     });
   </script>
 <script data-purpose="scroll-interactions">
-    // Simple intersection observer for reveal animations
-    const observerOptions = {
-      threshold: 0.1
-    };
-
+    const observerOptions = { threshold: 0.1 };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -442,11 +414,9 @@
         }
       });
     }, observerOptions);
-
     document.querySelectorAll('section > div').forEach(el => {
       el.style.opacity = '0';
       observer.observe(el);
     });
   </script>
-<!-- END: Scripts -->
 </body></html>
